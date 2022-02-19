@@ -3,5 +3,4 @@
 
 List of My Challenge :
 - Chapter 1 ([View](./challenge-01/))
-- Chapter 2 ([View](./challenge-02/))
 
