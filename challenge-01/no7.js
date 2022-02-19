@@ -1,4 +1,4 @@
-const dataPenjualan = [
+const dataPenjualanPakAldi = [
   {
     namaProduct: "Sepatu Futsal Nike Vapor Academy 8",
     hargaSatuan: 760000,
@@ -25,9 +25,9 @@ const dataPenjualan = [
   },
 ];
 
-getTotalPenjualan = (data) => {
-  if (typeof data === "object") {
-    terjual = data.map((val) => {
+getTotalPenjualan = (dataPenjualan) => {
+  if (typeof dataPenjualan === "object") {
+    terjual = dataPenjualan.map((val) => {
       return val.totalTerjual;
     });
 
@@ -37,11 +37,16 @@ getTotalPenjualan = (data) => {
     });
 
     return total;
-  } else if (typeof data === "number" || typeof data === "string") {
+  } else if (
+    typeof dataPenjualan === "number" ||
+    typeof dataPenjualan === "string"
+  ) {
     return "Error: Invalid data type";
   } else {
     return "Error: No parameter included";
   }
 };
 
-console.log(getTotalPenjualan(dataPenjualan));
+console.log(getTotalPenjualan(dataPenjualanPakAldi));
+console.log(getTotalPenjualan(0));
+console.log(getTotalPenjualan());

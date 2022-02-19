@@ -37,8 +37,8 @@ const dataPenjualanNovel = [
   },
 ];
 
-getInfoPenjualan = (data) => {
-  dataPenjualanObj = {
+getInfoPenjualan = (dataPenjualan) => {
+  let dataPenjualanObj = {
     totalKeuntungan: "",
     totalModal: "",
     persentaseKeuntungan: "",
@@ -46,8 +46,8 @@ getInfoPenjualan = (data) => {
     penulisTerlaris: "",
   };
 
-  if (typeof data === "object") {
-    mainObj = data.map((val) => {
+  if (typeof dataPenjualan === "object") {
+    let mainObj = dataPenjualan.map((val) => {
       let writerName = val.penulis;
       let bookName = val.namaProduk;
 
@@ -140,8 +140,8 @@ getInfoPenjualan = (data) => {
     });
 
     // penulisTerlaris
-    countPenulis = {};
-    countPersentage = {};
+    let countPenulis = {};
+    let countPersentage = {};
     let res = 0;
     let choosenWriter;
 
@@ -168,8 +168,11 @@ getInfoPenjualan = (data) => {
 
     dataPenjualanObj["penulisTerlaris"] = choosenWriter;
 
-    return { dataPenjualanObj, bookInfo, countPenulis, countPersentage };
-  } else if (typeof data === "number" || typeof data === "string") {
+    return dataPenjualanObj;
+  } else if (
+    typeof dataPenjualan === "number" ||
+    typeof dataPenjualan === "string"
+  ) {
     return "Error: Invalid data type";
   } else {
     return "Error: No parameter included";
@@ -177,3 +180,5 @@ getInfoPenjualan = (data) => {
 };
 
 console.log(getInfoPenjualan(dataPenjualanNovel));
+console.log(getInfoPenjualan(0));
+console.log(getInfoPenjualan());

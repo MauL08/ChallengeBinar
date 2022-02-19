@@ -1,5 +1,5 @@
 checkEmail = (email) => {
-  const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]{2}/;
+  const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]/;
 
   if (typeof email === "string") {
     res = emailRegEx.test(email);
@@ -15,9 +15,9 @@ checkEmail = (email) => {
   }
 };
 
-console.log(checkEmail("apranata@binar.co.id"));
-console.log(checkEmail("apranata@binar.com"));
-console.log(checkEmail("apranata@binar"));
-console.log(checkEmail("apranata")); // Error karena format email tidak lengkap
-// console.log(checkTypeNumber(checkEmail(3322))); // Erro karena tidak ada fungsi checkTypeNumber
+console.log(checkEmail("apranata@binar.co.id")); // Valid
+console.log(checkEmail("apranata@binar.com")); // Valid
+console.log(checkEmail("apranata@binar")); // Invalid
+console.log(checkEmail("apranata")); // Invalid
+console.log(checkTypeNumber(checkEmail(3322))); // Error karena tidak ada fungsi checkTypeNumber
 console.log(checkEmail()); // Error karena parameternya kosong

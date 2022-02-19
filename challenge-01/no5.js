@@ -27,14 +27,15 @@ getSplitName = (personName) => {
     }
 
     return nameObj;
-  } else if (
-    typeof givenNumber === "object" ||
-    typeof givenNumber === "number"
-  ) {
+  } else if (typeof personName === "object" || typeof personName === "number") {
     return "Error: Invalid data type";
   } else {
     return "Error: No parameter included";
   }
 };
 
-console.log(getSplitName("Aurora Yuri Tunip"));
+console.log(getSplitName("Aldi Daniela Pratama"));
+console.log(getSplitName("Dwi Kuncoro"));
+console.log(getSplitName("Aurora"));
+console.log(getSplitName("Aurora Aureliya Sukma Darma"));
+console.log(getSplitName(0));
