@@ -1,7 +1,7 @@
 getAngkaTerbesarKedua = (dataNumbers) => {
   if (typeof dataNumbers === "object") {
     sortedNumbers = dataNumbers.sort().reverse();
-    return sortedNumbers[1];
+    return [...new Set(sortedNumbers)][1];
   } else if (
     typeof dataNumbers === "number" ||
     typeof dataNumbers === "string"

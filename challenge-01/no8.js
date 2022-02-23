@@ -67,7 +67,6 @@ getInfoPenjualan = (dataPenjualan) => {
 
       // Untung
       let untung = hasilJual - modal;
-      if (untung < 0) untung = 0;
 
       // persentaseBukuTerlaris
       let persentaseProdukTerlaris = (stokTerjual / totalStok) * 100;
@@ -89,7 +88,6 @@ getInfoPenjualan = (dataPenjualan) => {
 
     let totalUntung = 0;
     let totalModal = 0;
-    let totalHasilJual = 0;
 
     let booksProb = [];
     let bookInfo = {};
@@ -97,7 +95,6 @@ getInfoPenjualan = (dataPenjualan) => {
     mainObj.forEach((val, index) => {
       totalUntung += val.untung;
       totalModal += val.modal;
-      totalHasilJual += val.hasilJual;
 
       booksProb[index] = val.persentaseProdukTerlaris;
 
@@ -124,11 +121,10 @@ getInfoPenjualan = (dataPenjualan) => {
       .split(",")[0];
 
     // persentaseKeuntungan
-    let persentaseKeuntungan =
-      ((totalHasilJual - totalModal) / totalModal) * 100;
+    let persentaseKeuntungan = (totalUntung / totalModal) * 100;
 
     dataPenjualanObj["persentaseKeuntungan"] =
-      String(Math.round(persentaseKeuntungan)) + "%";
+      String(persentaseKeuntungan.toFixed(2)) + "%";
 
     // produkBukuTerlaris
     let highBookProb = booksProb.sort().reverse()[0];
