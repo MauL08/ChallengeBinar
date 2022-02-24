@@ -1,12 +1,12 @@
-getSplitName = (personName) => {
-  nameObj = {
+const getSplitName = (personName) => {
+  let nameObj = {
     firstName: "",
     middleName: "",
     lastName: "",
   };
 
   if (typeof personName === "string") {
-    nameValue = personName.split(" ");
+    let nameValue = personName.split(" ");
 
     for (let i = 0; i < nameValue.length; i++) {
       if (nameValue.length > 3) {
@@ -14,7 +14,6 @@ getSplitName = (personName) => {
       } else {
         if (nameValue.length === 1) {
           nameObj["firstName"] = nameValue[0];
-          break;
         } else if (nameValue.length === 2) {
           nameObj["firstName"] = nameValue[0];
           nameObj["lastName"] = nameValue[1];

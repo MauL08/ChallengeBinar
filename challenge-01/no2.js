@@ -1,4 +1,4 @@
-checkTypeNumber = (givenNumber) => {
+const checkTypeNumber = (givenNumber) => {
   if (typeof givenNumber === "number") {
     if (givenNumber % 2 === 0) {
       return "GENAP";

@@ -1,6 +1,6 @@
-getAngkaTerbesarKedua = (dataNumbers) => {
+const getAngkaTerbesarKedua = (dataNumbers) => {
   if (typeof dataNumbers === "object") {
-    sortedNumbers = dataNumbers.sort().reverse();
+    let sortedNumbers = dataNumbers.sort().reverse();
     return [...new Set(sortedNumbers)][1];
   } else if (
     typeof dataNumbers === "number" ||

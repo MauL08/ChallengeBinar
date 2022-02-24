@@ -37,7 +37,7 @@ const dataPenjualanNovel = [
   },
 ];
 
-getInfoPenjualan = (dataPenjualan) => {
+const getInfoPenjualan = (dataPenjualan) => {
   let dataPenjualanObj = {
     totalKeuntungan: "",
     totalModal: "",

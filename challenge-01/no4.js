@@ -1,8 +1,8 @@
-isValidPassword = (givenPassword) => {
+const isValidPassword = (givenPassword) => {
   const passRegEx = /(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8})/;
 
   if (typeof givenPassword === "string") {
-    res = passRegEx.test(givenPassword);
+    let res = passRegEx.test(givenPassword);
     return res;
   } else if (
     typeof givenPassword === "object" ||

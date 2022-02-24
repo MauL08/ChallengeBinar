@@ -1,8 +1,8 @@
-checkEmail = (email) => {
+const checkEmail = (email) => {
   const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]/;
 
   if (typeof email === "string") {
-    res = emailRegEx.test(email);
+    let res = emailRegEx.test(email);
     if (res) {
       return "VALID";
     } else {

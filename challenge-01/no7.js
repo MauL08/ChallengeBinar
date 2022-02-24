@@ -25,13 +25,13 @@ const dataPenjualanPakAldi = [
   },
 ];
 
-getTotalPenjualan = (dataPenjualan) => {
+const getTotalPenjualan = (dataPenjualan) => {
   if (typeof dataPenjualan === "object") {
-    terjual = dataPenjualan.map((val) => {
+    let terjual = dataPenjualan.map((val) => {
       return val.totalTerjual;
     });
 
-    total = 0;
+    let total = 0;
     terjual.forEach((val) => {
       total += val;
     });
