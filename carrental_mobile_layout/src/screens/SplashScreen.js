@@ -1,7 +1,13 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const SplashScreen = () => {
+const SplashScreen = ({navigation}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('Main');
+    }, 2000);
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <View style={styles.textContainer}>

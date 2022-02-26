@@ -2,10 +2,10 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import SplashScreen from '../pages/SplashScreen';
-import HomeScreen from '../pages/HomeScreen';
-import CarListScreen from '../pages/CarListScreen';
-import UserScreen from '../pages/UserScreen';
+import SplashScreen from '../screens/SplashScreen';
+import HomeScreen from '../screens/HomeScreen';
+import CarListScreen from '../screens/CarListScreen';
+import UserScreen from '../screens/UserScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,14 +19,20 @@ function MainScreen() {
         options={{headerShown: false}}
       />
       <Tab.Screen
-        name="CarList"
+        name="Daftar Mobil"
         component={CarListScreen}
-        options={{headerShown: false}}
+        options={{
+          headerTransparent: true,
+          headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
+        }}
       />
       <Tab.Screen
-        name="User"
+        name="Akun"
         component={UserScreen}
-        options={{headerShown: false}}
+        options={{
+          headerTransparent: true,
+          headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
+        }}
       />
     </Tab.Navigator>
   );
