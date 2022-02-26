@@ -1,10 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
 const SplashScreen = () => {
   return (
     <View style={styles.container}>
-      <Image></Image>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>BCR</Text>
+        <Text style={styles.text}>Binar Car Rental</Text>
+      </View>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../assets/images/splashCar.png')}
+          style={styles.image}></Image>
+      </View>
     </View>
   );
 };
@@ -16,7 +24,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#091B6F',
   },
-  image: {
+  textContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+  },
+  text: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  imageContainer: {
+    flex: 1,
     justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  image: {
+    width: '100%',
   },
 });
