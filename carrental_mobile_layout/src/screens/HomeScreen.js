@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import React from 'react';
 import Data from '../models/carList';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const HomeScreen = () => {
   return (
@@ -71,12 +70,16 @@ const HomeScreen = () => {
                 <Text style={styles.carTitle}>{item.title}</Text>
                 <View style={styles.carInfo}>
                   <View style={styles.carPeople}>
-                    <FontAwesome5 name={'comments'} />
-                    <Text>{item.people}</Text>
+                    <Image
+                      source={require('../assets/images/icon/icon_people.png')}
+                    />
+                    <Text style={styles.carPeopleText}>{item.people}</Text>
                   </View>
                   <View style={styles.carStorage}>
-                    <FontAwesome5 name={'comments'} />
-                    <Text>{item.storage}</Text>
+                    <Image
+                      source={require('../assets/images/icon/icon_storage.png')}
+                    />
+                    <Text style={styles.carStorageText}>{item.storage}</Text>
                   </View>
                 </View>
                 <Text style={styles.carPrice}>{item.price}</Text>
@@ -208,10 +211,18 @@ const styles = StyleSheet.create({
   },
   carPeople: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   carStorage: {
     flexDirection: 'row',
     marginLeft: 20,
+    alignItems: 'center',
+  },
+  carPeopleText: {
+    marginLeft: 4,
+  },
+  carStorageText: {
+    marginLeft: 4,
   },
   carPrice: {
     color: '#5CB85F',

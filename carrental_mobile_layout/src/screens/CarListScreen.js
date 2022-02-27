@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import React from 'react';
 import Data from '../models/carList';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const CarListScreen = () => {
   return (
@@ -24,12 +23,16 @@ const CarListScreen = () => {
               <Text style={styles.carTitle}>{item.title}</Text>
               <View style={styles.carInfo}>
                 <View style={styles.carPeople}>
-                  <Ionicons name="ios-information-circle" />
-                  <Text>{item.people}</Text>
+                  <Image
+                    source={require('../assets/images/icon/icon_people.png')}
+                  />
+                  <Text style={styles.carPeopleText}>{item.people}</Text>
                 </View>
                 <View style={styles.carStorage}>
-                  <Ionicons name="ios-information-circle" />
-                  <Text>{item.storage}</Text>
+                  <Image
+                    source={require('../assets/images/icon/icon_storage.png')}
+                  />
+                  <Text style={styles.carStorageText}>{item.storage}</Text>
                 </View>
               </View>
               <Text style={styles.carPrice}>{item.price}</Text>
@@ -70,7 +73,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   carTitle: {
-    fontSize: 16,
+    fontSize: 14,
   },
   carListInfo: {
     marginLeft: 16,
@@ -82,13 +85,21 @@ const styles = StyleSheet.create({
   },
   carPeople: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   carStorage: {
     flexDirection: 'row',
     marginLeft: 20,
+    alignItems: 'center',
+  },
+  carPeopleText: {
+    marginLeft: 4,
+  },
+  carStorageText: {
+    marginLeft: 4,
   },
   carPrice: {
     color: '#5CB85F',
-    fontSize: 16,
+    fontSize: 14,
   },
 });
