@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     marginTop: 16,
     paddingHorizontal: 12,
     paddingVertical: 8,
-    borderRadius: 5,
+    borderRadius: 2,
   },
   regButtonText: {
     color: 'white',
