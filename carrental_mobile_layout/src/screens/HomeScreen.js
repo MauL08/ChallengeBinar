@@ -4,14 +4,15 @@ import {
   View,
   Image,
   TouchableOpacity,
-  FlatList,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import Data from '../models/carList';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.userContainer}>
         <View style={styles.userGreeting}>
           <Text style={styles.greet}>Hi, Akbar</Text>
@@ -60,9 +61,31 @@ const HomeScreen = () => {
       </View>
       <View style={styles.listContainer}>
         <Text style={styles.listTitle}>Daftar Mobil Pilihan</Text>
-        <FlatList></FlatList>
+        {Data.map(item => {
+          return (
+            <TouchableOpacity style={styles.carListContainer} key={item.id}>
+              <View style={styles.carImage}>
+                <Image source={require('../assets/images/listCar.png')}></Image>
+              </View>
+              <View style={styles.carListInfo}>
+                <Text style={styles.carTitle}>{item.title}</Text>
+                <View style={styles.carInfo}>
+                  <View style={styles.carPeople}>
+                    <FontAwesome5 name={'comments'} />
+                    <Text>{item.people}</Text>
+                  </View>
+                  <View style={styles.carStorage}>
+                    <FontAwesome5 name={'comments'} />
+                    <Text>{item.storage}</Text>
+                  </View>
+                </View>
+                <Text style={styles.carPrice}>{item.price}</Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -75,29 +98,30 @@ const styles = StyleSheet.create({
   },
   userContainer: {
     backgroundColor: '#D3D9FD',
-    padding: 16,
-    height: 200,
+    height: 146,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
-  },
-  greet: {
-    fontSize: 14,
-  },
-  location: {
-    marginTop: 4,
-    fontSize: 18,
-    fontWeight: 'bold',
   },
   userGreeting: {
     marginTop: 16,
+    marginLeft: 16,
+  },
+  greet: {
+    fontSize: 12,
+    fontWeight: '300',
+  },
+  location: {
+    marginTop: 4,
+    fontSize: 14,
+    fontWeight: 'bold',
   },
   userIconContainer: {
     marginTop: 23,
+    marginRight: 16,
   },
   userIcon: {
-    width: 35,
-    height: 35,
+    width: 28,
+    height: 28,
     borderRadius: 20,
   },
   bannerContainer: {
@@ -106,7 +130,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     paddingTop: 24,
     paddingLeft: 24,
-    marginTop: -80,
+    marginTop: -74,
     flexDirection: 'row',
   },
   bannerFlowContainer: {
@@ -138,8 +162,9 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 8,
   },
   navIconContainer: {
-    paddingTop: 32,
-    paddingHorizontal: 20,
+    marginTop: 32,
+    marginHorizontal: 20,
+    marginBottom: 24,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -148,15 +173,48 @@ const styles = StyleSheet.create({
   },
   navIconText: {
     fontSize: 12,
-    paddingTop: 8,
+    marginTop: 8,
   },
   listContainer: {
-    paddingTop: 24,
-    paddingHorizontal: 16,
+    marginHorizontal: 16,
   },
   listTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    paddingBottom: 16,
+    marginBottom: 16,
+  },
+  carListContainer: {
+    paddingVertical: 16,
+    paddingLeft: 16,
+    marginBottom: 16,
+    backgroundColor: 'white',
+    borderRadius: 4,
+    flexDirection: 'row',
+    elevation: 4,
+  },
+  carImage: {
+    marginTop: 8,
+  },
+  carTitle: {
+    fontSize: 14,
+  },
+  carListInfo: {
+    marginLeft: 16,
+  },
+  carInfo: {
+    flexDirection: 'row',
+    marginTop: 4,
+    marginBottom: 8,
+  },
+  carPeople: {
+    flexDirection: 'row',
+  },
+  carStorage: {
+    flexDirection: 'row',
+    marginLeft: 20,
+  },
+  carPrice: {
+    color: '#5CB85F',
+    fontSize: 14,
   },
 });

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import SplashScreen from '../screens/SplashScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -12,7 +13,22 @@ const Tab = createBottomTabNavigator();
 
 function MainScreen() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={() => ({
+        tabBarIcon: ({focused, color, size}) => {
+          let iconName;
+          let iconColor;
+
+          if (Router.name === 'Home') {
+            iconName = 'ios-information-circle';
+            iconColor = focused ? '#0D28A6' : '#000000';
+          }
+
+          return <Ionicons name={iconName} size={size} color={iconColor} />;
+        },
+        tabBarActiveTintColor: '#0D28A6',
+        tabBarInactiveTintColor: '#000000',
+      })}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -21,18 +37,12 @@ function MainScreen() {
       <Tab.Screen
         name="Daftar Mobil"
         component={CarListScreen}
-        options={{
-          headerTransparent: true,
-          headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
-        }}
+        options={{headerShown: false}}
       />
       <Tab.Screen
         name="Akun"
         component={UserScreen}
-        options={{
-          headerTransparent: true,
-          headerTitleStyle: {fontSize: 18, fontWeight: 'bold'},
-        }}
+        options={{headerShown: false}}
       />
     </Tab.Navigator>
   );

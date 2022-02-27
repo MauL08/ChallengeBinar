@@ -1,0 +1,60 @@
+const Data = [
+  {
+    id: 1,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 2,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 3,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 4,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 5,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 6,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+  {
+    id: 7,
+    title: 'Daihatsu Xenia',
+    image: '../assets/images/listCar.png',
+    price: 'Rp 230.000',
+    people: 4,
+    storage: 2,
+  },
+];
+
+export default Data;
