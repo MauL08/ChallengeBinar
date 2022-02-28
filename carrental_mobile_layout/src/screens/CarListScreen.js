@@ -19,7 +19,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   screenTitle: {
-    fontSize: 16,
+    fontSize: 14,
+    fontFamily: 'Helvetica',
     fontWeight: 'bold',
     color: 'black',
     marginTop: 18,

@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   },
   bannerText: {
     color: 'white',
+    fontFamily: 'Helvetica',
     fontSize: 16,
   },
   bannerButton: {
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 14,
     fontWeight: 'bold',
+    fontFamily: 'Helvetica',
   },
   imageContainer: {
     flex: 1,

@@ -41,5 +41,6 @@ const styles = StyleSheet.create({
   navIconText: {
     fontSize: 12,
     marginTop: 8,
+    fontFamily: 'Helvetica',
   },
 });

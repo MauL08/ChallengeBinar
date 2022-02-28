@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   screenTitle: {
-    fontSize: 16,
+    fontSize: 14,
+    fontFamily: 'Helvetica',
     fontWeight: 'bold',
     color: 'black',
     marginTop: 18,
@@ -37,10 +38,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 24,
   },
   text: {
     marginTop: 16,
     textAlign: 'center',
+    fontSize: 14,
+    fontFamily: 'Helvetica',
+    fontWeight: '300',
   },
   regButton: {
     backgroundColor: '#5CB85F',
@@ -52,6 +57,7 @@ const styles = StyleSheet.create({
   regButtonText: {
     color: 'white',
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    fontFamily: 'Helvetica',
   },
 });

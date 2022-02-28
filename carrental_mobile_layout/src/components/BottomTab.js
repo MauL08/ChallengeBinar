@@ -30,7 +30,6 @@ const MainScreen = () => {
               }}>
               <Image
                 source={require('../assets/images/bottomNav/home.png')}
-                resizeMode="contain"
                 style={{
                   tintColor: focused ? '#0D28A6' : '#000000',
                 }}
@@ -40,6 +39,7 @@ const MainScreen = () => {
                   fontSize: 10,
                   color: focused ? '#0D28A6' : '#000000',
                   fontWeight: focused ? 'bold' : '300',
+                  fontFamily: 'Helvetica',
                 }}>
                 Home
               </Text>
@@ -56,7 +56,6 @@ const MainScreen = () => {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Image
                 source={require('../assets/images/bottomNav/list.png')}
-                resizeMode="contain"
                 style={{
                   tintColor: focused ? '#0D28A6' : '#000000',
                 }}
@@ -66,6 +65,7 @@ const MainScreen = () => {
                   fontSize: 10,
                   color: focused ? '#0D28A6' : '#000000',
                   fontWeight: focused ? 'bold' : '300',
+                  fontFamily: 'Helvetica',
                 }}>
                 Daftar Mobil
               </Text>
@@ -82,7 +82,6 @@ const MainScreen = () => {
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Image
                 source={require('../assets/images/bottomNav/user.png')}
-                resizeMode="contain"
                 style={{
                   tintColor: focused ? '#0D28A6' : '#000000',
                 }}
@@ -92,6 +91,7 @@ const MainScreen = () => {
                   fontSize: 10,
                   color: focused ? '#0D28A6' : '#000000',
                   fontWeight: focused ? 'bold' : '300',
+                  fontFamily: 'Helvetica',
                 }}>
                 Akun
               </Text>

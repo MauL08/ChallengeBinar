@@ -32,12 +32,14 @@ const styles = StyleSheet.create({
   },
   greet: {
     fontSize: 12,
+    fontFamily: 'Helvetica',
     fontWeight: '300',
   },
   location: {
     marginTop: 4,
     fontSize: 14,
     fontWeight: 'bold',
+    fontFamily: 'Helvetica',
   },
   userIconContainer: {
     marginTop: 23,

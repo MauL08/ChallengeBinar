@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     fontSize: 14,
     fontWeight: 'bold',
+    fontFamily: 'Helvetica',
     marginBottom: 16,
   },
 });

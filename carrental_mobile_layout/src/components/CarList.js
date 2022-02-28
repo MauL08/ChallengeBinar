@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   },
   carTitle: {
     fontSize: 14,
+    fontFamily: 'Helvetica',
   },
   carListInfo: {
     marginLeft: 16,
@@ -70,12 +71,15 @@ const styles = StyleSheet.create({
   },
   carPeopleText: {
     marginLeft: 4,
+    fontFamily: 'Helvetica',
   },
   carStorageText: {
     marginLeft: 4,
+    fontFamily: 'Helvetica',
   },
   carPrice: {
     color: '#5CB85F',
     fontSize: 14,
+    fontFamily: 'Helvetica',
   },
 });

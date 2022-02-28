@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontWeight: 'bold',
+    fontFamily: 'Helvetica',
     fontSize: 24,
   },
   imageContainer: {
