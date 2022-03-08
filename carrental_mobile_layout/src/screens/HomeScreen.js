@@ -1,4 +1,4 @@
-import {StyleSheet, Text, ScrollView, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
@@ -17,14 +17,14 @@ function HomeStatusBar() {
 
 const HomeScreen = () => {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <HomeStatusBar />
       <Greeting />
       <HomeBanner />
       <IconNav />
       <Text style={styles.listTitle}>Daftar Mobil Pilihan</Text>
       <CarList />
-    </ScrollView>
+    </View>
   );
 };
 

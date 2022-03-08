@@ -1,35 +1,47 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import React from 'react';
+
 import Data from '../models/car';
 
 const CarList = () => {
-  return Data.map(item => {
-    return (
-      <TouchableOpacity style={styles.carListContainer} key={item.id}>
-        <View style={styles.carImage}>
-          <Image source={require('../assets/images/listCar.png')}></Image>
-        </View>
-        <View style={styles.carListInfo}>
-          <Text style={styles.carTitle}>{item.title}</Text>
-          <View style={styles.carInfo}>
-            <View style={styles.carPeople}>
-              <Image
-                source={require('../assets/images/icon/icon_people.png')}
-              />
-              <Text style={styles.carPeopleText}>{item.people}</Text>
-            </View>
-            <View style={styles.carStorage}>
-              <Image
-                source={require('../assets/images/icon/icon_storage.png')}
-              />
-              <Text style={styles.carStorageText}>{item.storage}</Text>
-            </View>
+  return (
+    <FlatList
+      data={Data}
+      keyExtractor={item => item.id}
+      renderItem={({item}) => (
+        <TouchableOpacity style={styles.carListContainer}>
+          <View style={styles.carImage}>
+            <Image source={require('../assets/images/listCar.png')}></Image>
           </View>
-          <Text style={styles.carPrice}>{item.price}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  });
+          <View style={styles.carListInfo}>
+            <Text style={styles.carTitle}>{item.title}</Text>
+            <View style={styles.carInfo}>
+              <View style={styles.carPeople}>
+                <Image
+                  source={require('../assets/images/icon/icon_people.png')}
+                />
+                <Text style={styles.carPeopleText}>{item.people}</Text>
+              </View>
+              <View style={styles.carStorage}>
+                <Image
+                  source={require('../assets/images/icon/icon_storage.png')}
+                />
+                <Text style={styles.carStorageText}>{item.storage}</Text>
+              </View>
+            </View>
+            <Text style={styles.carPrice}>{item.price}</Text>
+          </View>
+        </TouchableOpacity>
+      )}
+    />
+  );
 };
 
 export default CarList;
