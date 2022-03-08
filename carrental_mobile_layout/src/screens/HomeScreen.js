@@ -1,13 +1,24 @@
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView, StatusBar} from 'react-native';
 import React from 'react';
+import {useIsFocused} from '@react-navigation/native';
+
 import CarList from '../components/CarList';
 import HomeBanner from '../components/HomeBanner';
 import IconNav from '../components/IconNav';
 import Greeting from '../components/Greeting';
 
+function HomeStatusBar() {
+  const focus = useIsFocused();
+
+  return focus ? (
+    <StatusBar backgroundColor="#D3D9FD" barStyle="dark-content" />
+  ) : null;
+}
+
 const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
+      <HomeStatusBar />
       <Greeting />
       <HomeBanner />
       <IconNav />

@@ -1,9 +1,26 @@
-import {StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  StatusBar,
+} from 'react-native';
 import React from 'react';
+import {useIsFocused} from '@react-navigation/native';
+
+function UserStatusBar() {
+  const focus = useIsFocused();
+
+  return focus ? (
+    <StatusBar backgroundColor="white" barStyle="dark-content" />
+  ) : null;
+}
 
 const UserScreen = () => {
   return (
     <View style={styles.container}>
+      <UserStatusBar />
       <Text style={styles.screenTitle}>Akun</Text>
       <View style={styles.semiContainer}>
         <Image source={require('../assets/images/park.png')}></Image>

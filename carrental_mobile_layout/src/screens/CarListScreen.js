@@ -1,10 +1,21 @@
-import {StyleSheet, Text, ScrollView} from 'react-native';
+import {StyleSheet, Text, ScrollView, StatusBar} from 'react-native';
 import React from 'react';
+import {useIsFocused} from '@react-navigation/native';
+
 import CarList from '../components/CarList';
+
+function CarListStatusBar() {
+  const focus = useIsFocused();
+
+  return focus ? (
+    <StatusBar backgroundColor="white" barStyle="dark-content" />
+  ) : null;
+}
 
 const CarListScreen = () => {
   return (
     <ScrollView style={styles.container}>
+      <CarListStatusBar />
       <Text style={styles.screenTitle}>Daftar Mobil</Text>
       <CarList />
     </ScrollView>
