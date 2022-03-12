@@ -1,10 +1,18 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
+import Color from '../config/utils/color';
+
 const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: Color.MAIN_COLOR,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <Text>Home Screen</Text>
     </View>
   );
 };
