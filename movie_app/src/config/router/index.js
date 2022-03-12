@@ -1,17 +1,17 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import HomeScreen from '../screens/HomeScreen';
-import DetailScreen from '../screens/DetailScreen';
+import MainScreen from '../../components/BottomTab';
+import DetailScreen from '../../screens/DetailScreen';
 
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="">
+    <Stack.Navigator initialRouteName="Main">
       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Main"
+        component={MainScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
