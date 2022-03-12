@@ -8,22 +8,11 @@ const HomeScreen = ({navigation}) => {
     <View
       style={{
         flex: 1,
-        backgroundColor: Color.MAIN_COLOR,
+        backgroundColor: Color.BACKGROUND_COLOR,
         justifyContent: 'center',
         alignItems: 'center',
       }}>
       <Text>Home Screen</Text>
-      <TouchableOpacity
-        style={{
-          backgroundColor: 'blue',
-          padding: 20,
-          borderRadius: 10,
-        }}
-        onPress={() => {
-          navigation.navigate('Detail');
-        }}>
-        <Text>Press here to Detail Screen</Text>
-      </TouchableOpacity>
     </View>
   );
 };

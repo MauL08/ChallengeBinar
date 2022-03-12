@@ -1,5 +1,9 @@
 const Color = {
-  MAIN_COLOR: '#000000',
+  BACKGROUND_COLOR: '#04103A',
+  CONTAINER_COLOR: '#12244A',
+  ACTIVE_BUTTON_COLOR: '#4ACFEE',
+  DISABLE_BUTTON_COLOR: '#42506D',
+  TEXT_COLOR: '#FFF',
 };
 
 export default Color;

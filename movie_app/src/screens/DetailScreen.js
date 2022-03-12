@@ -8,7 +8,7 @@ const DetailScreen = () => {
     <View
       style={{
         flex: 1,
-        backgroundColor: Color.MAIN_COLOR,
+        backgroundColor: Color.BACKGROUND_COLOR,
         justifyContent: 'center',
         alignItems: 'center',
       }}>

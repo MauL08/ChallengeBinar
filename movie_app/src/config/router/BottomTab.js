@@ -8,6 +8,8 @@ import HomeScreen from '../../screens/HomeScreen';
 import FavoriteScreen from '../../screens/FavoriteScreen';
 import AccountScreen from '../../screens/AccountScreen';
 
+import Color from '../../config/utils/color';
+
 const MainScreen = () => {
   return (
     <Tab.Navigator
@@ -15,11 +17,10 @@ const MainScreen = () => {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: 'grey',
+          backgroundColor: Color.CONTAINER_COLOR,
           height: 60,
           margin: 20,
-          elevation: 2,
-          borderRadius: 20,
+          borderRadius: 15,
           position: 'absolute',
         },
       }}>
@@ -42,7 +43,9 @@ const MainScreen = () => {
               <Text
                 style={{
                   fontSize: 14,
-                  color: focused ? 'orange' : '#000000',
+                  color: focused
+                    ? Color.ACTIVE_BUTTON_COLOR
+                    : Color.DISABLE_BUTTON_COLOR,
                   fontWeight: focused ? 'bold' : '300',
                 }}>
                 Home
