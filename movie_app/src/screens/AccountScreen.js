@@ -1,9 +1,18 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, StatusBar} from 'react-native';
 import React from 'react';
+import {useIsFocused} from '@react-navigation/native';
 
 import Color from '../config/utils/color';
 
 const AccountScreen = () => {
+  function AccountScreenStatusBar() {
+    const focus = useIsFocused();
+
+    return focus ? (
+      <StatusBar backgroundColor={Color.BACKGROUND_COLOR} />
+    ) : null;
+  }
+
   return (
     <View
       style={{
@@ -12,6 +21,7 @@ const AccountScreen = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+      <AccountScreenStatusBar />
       <Text>Sorry! This screen is currently empty.</Text>
     </View>
   );
