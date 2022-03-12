@@ -3,9 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-import HomeScreen from '../screens/HomeScreen';
-import FavoriteScreen from '../screens/FavoriteScreen';
-import AccountScreen from '../screens/AccountScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import FavoriteScreen from '../../screens/FavoriteScreen';
+import AccountScreen from '../../screens/AccountScreen';
 
 const MainScreen = () => {
   return (

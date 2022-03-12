@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
-import Router from './router';
+import Router from './config/router';
 
 const App = () => {
   return (
