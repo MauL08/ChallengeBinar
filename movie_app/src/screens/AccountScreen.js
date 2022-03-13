@@ -22,7 +22,9 @@ const AccountScreen = () => {
         alignItems: 'center',
       }}>
       <AccountScreenStatusBar />
-      <Text>Sorry! This screen is currently empty.</Text>
+      <Text style={{color: Color.TEXT_COLOR}}>
+        Sorry! This screen is currently empty.
+      </Text>
     </View>
   );
 };

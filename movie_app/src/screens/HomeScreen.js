@@ -1,20 +1,15 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  StatusBar,
-  Dimensions,
-} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import React from 'react';
 import {useIsFocused} from '@react-navigation/native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 import Color from '../config/utils/color';
+
 import Header from '../components/Header';
+import Recommended from '../components/Recommended';
+import Latest from '../components/Latest';
 
-const {height, width} = Dimensions.get('window');
-
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
   function HomeScreenStatusBar() {
     const focus = useIsFocused();
 
@@ -24,10 +19,12 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <HomeScreenStatusBar />
       <Header />
-    </View>
+      <Recommended />
+      <Latest />
+    </SafeAreaView>
   );
 };
 
