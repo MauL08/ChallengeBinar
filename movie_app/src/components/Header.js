@@ -1,14 +1,29 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
+
+import {Logo, SearchIcon, ListIcon} from '../assets/index';
 
 const Header = () => {
   return (
-    <View>
-      <Text>Header</Text>
+    <View style={styles.container}>
+      <TouchableOpacity>
+        <Image source={ListIcon} />
+      </TouchableOpacity>
+      <Image source={Logo} />
+      <TouchableOpacity>
+        <Image source={SearchIcon} />
+      </TouchableOpacity>
     </View>
   );
 };
 
 export default Header;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    margin: 16,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});

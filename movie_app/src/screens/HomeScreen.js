@@ -10,6 +10,7 @@ import React from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
 import Color from '../config/utils/color';
+import Header from '../components/Header';
 
 const {height, width} = Dimensions.get('window');
 
@@ -23,19 +24,18 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: Color.BACKGROUND_COLOR,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <View style={styles.container}>
       <HomeScreenStatusBar />
-      <Text>Home Screen</Text>
+      <Header />
     </View>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Color.BACKGROUND_COLOR,
+  },
+});
