@@ -21,9 +21,9 @@ const MainScreen = () => {
         tabBarStyle: {
           backgroundColor: Color.CONTAINER_COLOR,
           height: 70,
-          right: 35,
-          left: 35,
-          bottom: 25,
+          right: 25,
+          left: 25,
+          bottom: 15,
           borderRadius: 10,
           position: 'absolute',
         },
