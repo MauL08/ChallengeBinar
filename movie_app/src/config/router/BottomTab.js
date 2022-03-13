@@ -73,7 +73,9 @@ const MainScreen = () => {
               <Text
                 style={{
                   fontSize: 14,
-                  color: focused ? 'orange' : '#000000',
+                  color: focused
+                    ? Color.ACTIVE_BUTTON_COLOR
+                    : Color.DISABLE_BUTTON_COLOR,
                   fontWeight: focused ? 'bold' : '300',
                 }}>
                 Favorite
@@ -101,7 +103,9 @@ const MainScreen = () => {
               <Text
                 style={{
                   fontSize: 14,
-                  color: focused ? 'orange' : '#000000',
+                  color: focused
+                    ? Color.ACTIVE_BUTTON_COLOR
+                    : Color.DISABLE_BUTTON_COLOR,
                   fontWeight: focused ? 'bold' : '300',
                 }}>
                 Account

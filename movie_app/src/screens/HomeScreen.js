@@ -4,11 +4,14 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+  Dimensions,
 } from 'react-native';
 import React from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
 import Color from '../config/utils/color';
+
+const {height, width} = Dimensions.get('window');
 
 const HomeScreen = ({navigation}) => {
   function HomeScreenStatusBar() {
