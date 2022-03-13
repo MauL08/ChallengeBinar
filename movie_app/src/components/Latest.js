@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const Drawer = () => {
+const Latest = () => {
   return (
     <View>
-      <Text>Drawer</Text>
+      <Text>Latest</Text>
     </View>
   );
 };
 
-export default Drawer;
+export default Latest;
 
 const styles = StyleSheet.create({});

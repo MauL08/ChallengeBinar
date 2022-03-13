@@ -1,14 +1,16 @@
-import {View, Text} from 'react-native';
+import {View, Image} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
 
 import HomeScreen from '../../screens/HomeScreen';
 import FavoriteScreen from '../../screens/FavoriteScreen';
 import AccountScreen from '../../screens/AccountScreen';
 
+import {Home, Favorite, User} from '../../assets';
+
 import Color from '../../config/utils/color';
+
+const Tab = createBottomTabNavigator();
 
 const MainScreen = () => {
   return (
@@ -18,9 +20,11 @@ const MainScreen = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: Color.CONTAINER_COLOR,
-          height: 60,
-          margin: 20,
-          borderRadius: 15,
+          height: 70,
+          right: 35,
+          left: 35,
+          bottom: 25,
+          borderRadius: 10,
           position: 'absolute',
         },
       }}>
@@ -29,27 +33,15 @@ const MainScreen = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              {/* <Image
-                source={require('../assets/images/bottomNav/home.png')}
+            <View>
+              <Image
+                source={Home}
                 style={{
-                  tintColor: focused ? '#0D28A6' : '#000000',
-                }}
-              /> */}
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: focused
+                  tintColor: focused
                     ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
-                  fontWeight: focused ? 'bold' : '300',
-                }}>
-                Home
-              </Text>
+                }}
+              />
             </View>
           ),
         }}
@@ -59,27 +51,15 @@ const MainScreen = () => {
         component={FavoriteScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              {/* <Image
-                source={require('../assets/images/bottomNav/home.png')}
+            <View>
+              <Image
+                source={Favorite}
                 style={{
-                  tintColor: focused ? '#0D28A6' : '#000000',
-                }}
-              /> */}
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: focused
+                  tintColor: focused
                     ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
-                  fontWeight: focused ? 'bold' : '300',
-                }}>
-                Favorite
-              </Text>
+                }}
+              />
             </View>
           ),
         }}
@@ -89,27 +69,15 @@ const MainScreen = () => {
         component={AccountScreen}
         options={{
           tabBarIcon: ({focused}) => (
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}>
-              {/* <Image
-                source={require('../assets/images/bottomNav/home.png')}
+            <View>
+              <Image
+                source={User}
                 style={{
-                  tintColor: focused ? '#0D28A6' : '#000000',
-                }}
-              /> */}
-              <Text
-                style={{
-                  fontSize: 14,
-                  color: focused
+                  tintColor: focused
                     ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
-                  fontWeight: focused ? 'bold' : '300',
-                }}>
-                Account
-              </Text>
+                }}
+              />
             </View>
           ),
         }}
