@@ -15,6 +15,16 @@ import Color from '../config/utils/color';
 const Latest = () => {
   const navigation = useNavigation();
 
+  function changeDate(date) {
+    let splitDate = date.split('-');
+
+    let day = splitDate[2];
+    let month = splitDate[1];
+    let year = splitDate[0];
+
+    return day + '-' + month + '-' + year;
+  }
+
   function GenresGenerator(props) {
     return (
       <View style={{flexDirection: 'row'}}>
@@ -36,8 +46,9 @@ const Latest = () => {
       <Text style={{color: 'white', marginTop: 12, marginLeft: 16}}>
         Latest Updates
       </Text>
-      <View style={{marginTop: 24, marginBottom: 16}}>
+      <View style={{marginTop: 24, marginBottom: 112}}>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={Data}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
@@ -59,15 +70,23 @@ const Latest = () => {
               <View style={{marginLeft: 16}}>
                 <Text style={{color: Color.TEXT_COLOR}}>{item.title}</Text>
                 <Text style={{color: Color.TEXT_COLOR}}>
-                  {item.release_date}
+                  {changeDate(item.release_date)}
                 </Text>
-                <Text style={{color: Color.TEXT_COLOR}}>{item.popularity}</Text>
-                <GenresGenerator value={item.genres} />
-                <TouchableOpacity
-                  onPress={() => navigation.navigate('Detail')}
-                  style={{backgroundColor: Color.ACTIVE_BUTTON_COLOR}}>
-                  <Text>Show More</Text>
-                </TouchableOpacity>
+                <Text style={{color: Color.TEXT_COLOR}}>
+                  {item.vote_average}
+                </Text>
+                <View>
+                  <Text style={{color: Color.TEXT_COLOR}}>
+                    {item.genre_ids}
+                  </Text>
+                </View>
+                <View style={{alignItems: 'flex-start'}}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate('Detail')}
+                    style={{backgroundColor: Color.ACTIVE_BUTTON_COLOR}}>
+                    <Text>Show More</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             </View>
           )}
