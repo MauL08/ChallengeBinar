@@ -11,15 +11,15 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 // Models
-import Data from '../models/movie';
-import ListGenre from '../models/genre';
+import Data from '../../models/movie';
+import ListGenre from '../../models/genre';
 
 // Utils
-import Color from '../config/utils/color';
-import * as Date from '../config/utils/changeDate';
+import Color from '../../config/utils/color';
+import * as Date from '../../config/utils/changeDate';
 
 // Assets
-import {RateIcon} from '../assets/index';
+import {RateIcon} from '../../assets/index';
 
 const Latest = () => {
   const navigation = useNavigation();
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   listParent: {
     marginTop: 20,
     marginHorizontal: 16,
-    marginBottom: 108,
+    marginBottom: 24,
   },
   listContainer: {
     backgroundColor: Color.CONTAINER_COLOR,

@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import Data from '../models/movie';
-import Color from '../config/utils/color';
-import {RateIcon} from '../assets/index';
+import Data from '../../models/movie';
+import Color from '../../config/utils/color';
+import {RateIcon} from '../../assets/index';
 
 const Recommended = () => {
   return (

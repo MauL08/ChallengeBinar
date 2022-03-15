@@ -19,14 +19,8 @@ const MainScreen = () => {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: Color.ACTIVE_BUTTON_COLOR,
-          height: 70,
-          right: 25,
-          left: 25,
-          bottom: 12,
-          borderRadius: 10,
-          borderTopWidth: 0,
-          position: 'absolute',
+          backgroundColor: Color.BACKGROUND_COLOR,
+          elevation: 0,
         },
       }}>
       <Tab.Screen
@@ -39,7 +33,7 @@ const MainScreen = () => {
                 source={Home}
                 style={{
                   tintColor: focused
-                    ? Color.TEXT_COLOR
+                    ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
                 }}
               />
@@ -57,7 +51,7 @@ const MainScreen = () => {
                 source={Favorite}
                 style={{
                   tintColor: focused
-                    ? Color.TEXT_COLOR
+                    ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
                 }}
               />
@@ -75,7 +69,7 @@ const MainScreen = () => {
                 source={User}
                 style={{
                   tintColor: focused
-                    ? Color.TEXT_COLOR
+                    ? Color.ACTIVE_BUTTON_COLOR
                     : Color.DISABLE_BUTTON_COLOR,
                 }}
               />

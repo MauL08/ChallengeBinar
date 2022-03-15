@@ -1,7 +1,7 @@
 import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
 
-import {Logo, SearchIcon, ListIcon} from '../assets/index';
+import {Logo, SearchIcon, ListIcon} from '../../assets/index';
 
 const Header = () => {
   return (
