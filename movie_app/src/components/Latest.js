@@ -5,86 +5,74 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
+// Models
 import Data from '../models/movie';
+import ListGenre from '../models/genre';
+
+// Utils
 import Color from '../config/utils/color';
+import * as Date from '../config/utils/changeDate';
+
+// Assets
+import {RateIcon} from '../assets/index';
 
 const Latest = () => {
   const navigation = useNavigation();
 
-  function changeDate(date) {
-    let splitDate = date.split('-');
+  const Genres = props => {
+    let keys = props.keys;
+    let list = props.list;
 
-    let day = splitDate[2];
-    let month = splitDate[1];
-    let year = splitDate[0];
+    return keys.map((key, index) => {
+      let genre = Object.keys(list).find(data => list[data] === key);
 
-    return day + '-' + month + '-' + year;
-  }
-
-  function GenresGenerator(props) {
-    return (
-      <View style={{flexDirection: 'row'}}>
-        <FlatList
-          data={props.value}
-          key={item => item.id}
-          renderItem={({item}) => (
-            <View style={{backgroundColor: 'green'}}>
-              <Text style={{color: Color.TEXT_COLOR}}>{item.name}</Text>
-            </View>
-          )}
-        />
-      </View>
-    );
-  }
+      return (
+        <View style={styles.genreSemiContainer} key={index}>
+          <Text style={styles.genreText}>{genre}</Text>
+        </View>
+      );
+    });
+  };
 
   return (
-    <View style={{flex: 1}}>
-      <Text style={{color: 'white', marginTop: 12, marginLeft: 16}}>
-        Latest Updates
-      </Text>
-      <View style={{marginTop: 24, marginBottom: 112}}>
+    <View style={styles.container}>
+      <Text style={styles.pageTitle}>Latest Updates</Text>
+      <View style={styles.listParent}>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={Data}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <View
-              style={{
-                backgroundColor: Color.CONTAINER_COLOR,
-                marginHorizontal: 16,
-                marginBottom: 14,
-                padding: 16,
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                borderRadius: 10,
-              }}>
+            <View style={styles.listContainer}>
               <Image
                 source={{uri: item.poster_path}}
-                style={{height: 100, width: 70, borderRadius: 10}}
+                style={styles.imagePoster}
               />
-              <View style={{marginLeft: 16}}>
-                <Text style={{color: Color.TEXT_COLOR}}>{item.title}</Text>
-                <Text style={{color: Color.TEXT_COLOR}}>
-                  {changeDate(item.release_date)}
+              <View style={styles.detailContainer}>
+                <Text style={styles.detailTitle}>{item.title}</Text>
+                <Text style={styles.detailDate}>
+                  Released on {Date.changeDate(item.release_date)}
                 </Text>
-                <Text style={{color: Color.TEXT_COLOR}}>
-                  {item.vote_average}
-                </Text>
-                <View>
-                  <Text style={{color: Color.TEXT_COLOR}}>
-                    {item.genre_ids}
-                  </Text>
+                <View style={styles.ratingContainer}>
+                  <Image source={RateIcon} style={styles.ratingIcon} />
+                  <Text style={styles.ratingText}>{item.vote_average}/10</Text>
                 </View>
-                <View style={{alignItems: 'flex-start'}}>
+                <ScrollView
+                  horizontal={true}
+                  showsHorizontalScrollIndicator={false}
+                  style={styles.genreContainer}>
+                  <Genres keys={item.genre_ids} list={ListGenre} />
+                </ScrollView>
+                <View style={styles.showButtonContainer}>
                   <TouchableOpacity
                     onPress={() => navigation.navigate('Detail')}
-                    style={{backgroundColor: Color.ACTIVE_BUTTON_COLOR}}>
-                    <Text>Show More</Text>
+                    style={styles.showButton}>
+                    <Text style={styles.showButtonText}>Show More</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -98,4 +86,89 @@ const Latest = () => {
 
 export default Latest;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  pageTitle: {
+    color: Color.TEXT_COLOR,
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 16,
+  },
+  listParent: {
+    marginTop: 20,
+    marginHorizontal: 16,
+    marginBottom: 108,
+  },
+  listContainer: {
+    backgroundColor: Color.CONTAINER_COLOR,
+    marginBottom: 12,
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderRadius: 10,
+    elevation: 2,
+  },
+  imagePoster: {
+    height: 120,
+    width: 70,
+    borderRadius: 10,
+  },
+  detailContainer: {
+    width: 220,
+    marginLeft: 16,
+  },
+  detailTitle: {
+    color: Color.TEXT_COLOR,
+    fontSize: 14,
+    marginBottom: 4,
+    fontWeight: 'bold',
+  },
+  detailDate: {
+    color: Color.TEXT_COLOR,
+    fontSize: 12,
+  },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  ratingIcon: {
+    marginRight: 3,
+  },
+  ratingText: {
+    color: Color.TEXT_COLOR,
+    fontSize: 12,
+  },
+  genreContainer: {
+    flexDirection: 'row',
+    marginTop: 6,
+  },
+  genreSemiContainer: {
+    backgroundColor: Color.DISABLE_BUTTON_COLOR,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 20,
+    marginRight: 8,
+  },
+  genreText: {
+    color: Color.TEXT_COLOR,
+    fontSize: 10,
+  },
+  showButtonContainer: {
+    alignItems: 'flex-start',
+    marginTop: 8,
+  },
+  showButton: {
+    backgroundColor: Color.ACTIVE_BUTTON_COLOR,
+    padding: 5,
+    borderRadius: 6,
+  },
+  showButtonText: {
+    color: Color.TEXT_COLOR,
+    fontWeight: 'bold',
+    fontSize: 12,
+  },
+});

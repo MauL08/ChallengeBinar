@@ -44,14 +44,15 @@ export default Recommended;
 const styles = StyleSheet.create({
   pageTitle: {
     color: Color.TEXT_COLOR,
-    marginTop: 16,
-    marginLeft: 16,
     fontSize: 16,
     fontWeight: 'bold',
+    marginTop: 16,
+    marginLeft: 16,
   },
   posterContainer: {
     marginHorizontal: 12,
-    marginVertical: 20,
+    marginTop: 16,
+    marginBottom: 24,
     width: 150,
   },
   posterImage: {

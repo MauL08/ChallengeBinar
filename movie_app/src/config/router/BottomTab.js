@@ -21,8 +21,8 @@ const MainScreen = () => {
         tabBarStyle: {
           backgroundColor: Color.ACTIVE_BUTTON_COLOR,
           height: 70,
-          right: 45,
-          left: 45,
+          right: 25,
+          left: 25,
           bottom: 12,
           borderRadius: 10,
           borderTopWidth: 0,
