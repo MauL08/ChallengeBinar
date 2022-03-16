@@ -1,4 +1,4 @@
-import {StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar, ScrollView} from 'react-native';
 import React from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -19,13 +19,13 @@ const DetailScreen = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       <DetailScreenStatusBar />
       <BackdropNavigation />
       <DetailBanner />
       <BodyDetail />
       <ActorList />
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 

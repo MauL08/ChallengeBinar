@@ -8,6 +8,7 @@ import RateIcon from './icons/star.png';
 import BackIcon from './icons/backArrow.png';
 import LoveIcon from './icons/love.png';
 import ShareIcon from './icons/share.png';
+import TimeIcon from './icons/time.png';
 
 // Bottom Navbar Icons
 import Home from './icons/bottomNav/home.png';
@@ -22,6 +23,7 @@ export {
   BackIcon,
   LoveIcon,
   ShareIcon,
+  TimeIcon,
   Home,
   Favorite,
   User,

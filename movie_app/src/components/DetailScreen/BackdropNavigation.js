@@ -55,10 +55,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 12,
     marginTop: 10,
   },
+  backIconContainer: {
+    padding: 8,
+    backgroundColor: Color.ACTIVE_BUTTON_COLOR,
+    borderRadius: 20,
+  },
   backIcon: {
-    height: 28,
-    width: 28,
-    tintColor: Color.ACTIVE_BUTTON_COLOR,
+    height: 20,
+    width: 20,
+    tintColor: Color.DISABLE_BUTTON_COLOR,
   },
   interactionContainer: {
     flexDirection: 'row',
