@@ -3,36 +3,17 @@ import React from 'react';
 
 import Color from '../../config/utils/color';
 
-const ActorList = props => {
+const ActorListTitle = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.castListTitle}>Actor / Artist</Text>
-      <View style={styles.castMainContainer}>
-        <FlatList
-          scrollEnabled={false}
-          numColumns={3}
-          data={props.movieData.credits.cast}
-          keyExtractor={(item, index) => String(index)}
-          renderItem={({item, index}) => (
-            <View style={styles.castContainer}>
-              <Image
-                source={{uri: item.profile_path}}
-                style={styles.castPicture}
-              />
-              <View style={styles.castNameContainer}>
-                <Text style={styles.castName}>{item.name}</Text>
-              </View>
-            </View>
-          )}
-        />
-      </View>
     </View>
   );
 };
 
-export default ActorList;
+export default ActorListTitle;
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     marginTop: 12,
     marginHorizontal: 20,
@@ -45,6 +26,7 @@ const styles = StyleSheet.create({
     color: Color.TEXT_COLOR,
     fontWeight: 'bold',
     fontSize: 16,
+    marginBottom: 12,
   },
   castMainContainer: {
     marginTop: 12,
@@ -52,7 +34,6 @@ const styles = StyleSheet.create({
   castContainer: {
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
     borderRadius: 10,
-    alignItems: 'center',
     marginBottom: 10,
     marginRight: 8,
     padding: 6,

@@ -7,11 +7,10 @@ import * as Time from '../../config/utils/runtime';
 import {RateIcon, TimeIcon} from '../../assets';
 
 const DetailBanner = props => {
-  console.log(props.movieData.release_date);
   return (
     <View style={styles.detailContainer}>
       <Image
-        source={{uri: props.movieData.poster_path}}
+        source={{uri: props.movieData.poster_path || ''}}
         style={styles.imagePoster}
       />
       <View style={styles.infoContainer}>
@@ -36,7 +35,7 @@ const DetailBanner = props => {
               style={{tintColor: 'white', width: 12, height: 12}}
             />
             <Text style={styles.titleTime}>
-              {Time.changeRuntime(props.movieData.runtime)}
+              {Time.changeRuntime(props.movieData.runtime || 1)}
             </Text>
           </View>
         </View>

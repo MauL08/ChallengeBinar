@@ -1,4 +1,4 @@
-import {StyleSheet, StatusBar} from 'react-native';
+import {StyleSheet, StatusBar, ActivityIndicator} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';

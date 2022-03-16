@@ -12,13 +12,12 @@ import Color from '../../config/utils/color';
 import {BackIcon, LoveIcon, ShareIcon} from '../../assets';
 
 const BackdropNavigation = props => {
-  console.log(props.movieData.backdrop_path);
   const navigation = useNavigation();
   const [loveCheck, setLoveCheck] = useState(false);
 
   return (
     <ImageBackground
-      source={{uri: props.movieData.backdrop_path}}
+      source={{uri: props.movieData.backdrop_path || ''}}
       style={styles.container}>
       <View style={styles.topBarContainer}>
         <TouchableOpacity

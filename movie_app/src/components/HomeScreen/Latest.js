@@ -61,12 +61,9 @@ const Latest = props => {
                   <Image source={RateIcon} style={styles.ratingIcon} />
                   <Text style={styles.ratingText}>{item.vote_average}/10</Text>
                 </View>
-                <ScrollView
-                  horizontal={true}
-                  showsHorizontalScrollIndicator={false}
-                  style={styles.genreContainer}>
+                <View style={styles.genreContainer}>
                   <Genres keys={item.genre_ids} list={ListGenre} />
-                </ScrollView>
+                </View>
                 <View style={styles.showButtonContainer}>
                   <TouchableOpacity
                     onPress={() =>
@@ -145,6 +142,7 @@ const styles = StyleSheet.create({
   },
   genreContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     marginTop: 6,
   },
   genreSemiContainer: {
@@ -153,6 +151,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: 20,
     marginRight: 8,
+    marginVertical: 5,
   },
   genreText: {
     color: Color.TEXT_COLOR,
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   showButtonText: {
-    color: Color.TEXT_COLOR,
+    color: Color.DISABLE_BUTTON_COLOR,
     fontWeight: 'bold',
     fontSize: 12,
   },

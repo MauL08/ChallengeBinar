@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import React from 'react';
 
 import Color from '../../config/utils/color';
@@ -11,7 +18,7 @@ const BodyDetail = props => {
         <FlatList
           scrollEnabled={false}
           horizontal={true}
-          data={props.movieData.genres}
+          data={props.movieData.genres || []}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
             <TouchableOpacity style={styles.genreItemContainer}>
