@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {moderateScale} from 'react-native-size-matters';
 
 import Color from '../../config/utils/color';
 import {RateIcon} from '../../assets/index';
@@ -48,37 +49,37 @@ export default Recommended;
 const styles = StyleSheet.create({
   pageTitle: {
     color: Color.TEXT_COLOR,
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 'bold',
-    marginTop: 16,
-    marginLeft: 16,
+    marginTop: moderateScale(16),
+    marginLeft: moderateScale(16),
   },
   posterContainer: {
-    marginHorizontal: 12,
-    marginTop: 16,
-    marginBottom: 24,
-    width: 150,
+    marginHorizontal: moderateScale(12),
+    marginTop: moderateScale(16),
+    marginBottom: moderateScale(24),
+    width: moderateScale(150),
   },
   posterImage: {
-    height: 220,
-    borderRadius: 10,
+    height: moderateScale(220),
+    borderRadius: moderateScale(10),
   },
   posterText: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
-    marginTop: 12,
+    fontSize: moderateScale(12),
+    marginTop: moderateScale(12),
     fontWeight: 'bold',
   },
   ratingContainer: {
-    marginTop: 5,
+    marginTop: moderateScale(5),
     flexDirection: 'row',
     alignItems: 'center',
   },
   rateIcon: {
-    marginRight: 5,
+    marginRight: moderateScale(5),
   },
   ratingText: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(12),
   },
 });

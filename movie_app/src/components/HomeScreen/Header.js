@@ -1,5 +1,6 @@
 import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
+import {moderateScale} from 'react-native-size-matters';
 
 import {Logo, SearchIcon, ListIcon} from '../../assets/index';
 
@@ -22,7 +23,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    margin: 16,
+    margin: moderateScale(16),
     justifyContent: 'space-between',
     alignItems: 'center',
   },

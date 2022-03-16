@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
+import {moderateScale} from 'react-native-size-matters';
 
 // Models
 import ListGenre from '../../models/genre';
@@ -89,85 +90,86 @@ const styles = StyleSheet.create({
   },
   pageTitle: {
     color: Color.TEXT_COLOR,
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontWeight: 'bold',
-    marginLeft: 16,
+    marginLeft: moderateScale(16),
   },
   listParent: {
-    marginTop: 20,
-    marginHorizontal: 16,
-    marginBottom: 24,
+    marginTop: moderateScale(20),
+    marginHorizontal: moderateScale(16),
+    marginBottom: moderateScale(24),
   },
   listContainer: {
     backgroundColor: Color.CONTAINER_COLOR,
-    marginBottom: 12,
-    padding: 16,
+    marginBottom: moderateScale(12),
+    padding: moderateScale(16),
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    borderRadius: 10,
+    borderRadius: moderateScale(10),
     elevation: 2,
   },
   imagePoster: {
-    height: 170,
-    width: 100,
-    borderRadius: 10,
+    height: moderateScale(150),
+    width: moderateScale(100),
+    borderRadius: moderateScale(10),
   },
   detailContainer: {
-    width: 220,
-    marginLeft: 16,
+    width: moderateScale(220),
+    marginLeft: moderateScale(16),
   },
   detailTitle: {
     color: Color.TEXT_COLOR,
-    fontSize: 14,
-    marginBottom: 4,
+    fontSize: moderateScale(14),
+    marginBottom: moderateScale(4),
     fontWeight: 'bold',
+    width: moderateScale(200),
   },
   detailDate: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(10),
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 4,
+    marginTop: moderateScale(4),
   },
   ratingIcon: {
-    marginRight: 3,
+    marginRight: moderateScale(3),
   },
   ratingText: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(10),
   },
   genreContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 6,
+    marginTop: moderateScale(3),
   },
   genreSemiContainer: {
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 20,
-    marginRight: 8,
-    marginVertical: 5,
+    paddingVertical: moderateScale(2),
+    paddingHorizontal: moderateScale(8),
+    borderRadius: moderateScale(20),
+    marginRight: moderateScale(8),
+    marginVertical: moderateScale(5),
   },
   genreText: {
     color: Color.TEXT_COLOR,
-    fontSize: 10,
+    fontSize: moderateScale(10),
   },
   showButtonContainer: {
     alignItems: 'flex-start',
-    marginTop: 8,
+    marginTop: moderateScale(3),
   },
   showButton: {
     backgroundColor: Color.ACTIVE_BUTTON_COLOR,
-    padding: 5,
-    borderRadius: 6,
+    padding: moderateScale(4),
+    borderRadius: moderateScale(5),
   },
   showButtonText: {
     color: Color.DISABLE_BUTTON_COLOR,
     fontWeight: 'bold',
-    fontSize: 12,
+    fontSize: moderateScale(11),
   },
 });

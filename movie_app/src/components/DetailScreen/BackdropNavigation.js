@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   loveIconContainer: {
-    padding: 8,
+    padding: 9,
     backgroundColor: Color.ACTIVE_BUTTON_COLOR,
     marginRight: 8,
     borderRadius: 20,
