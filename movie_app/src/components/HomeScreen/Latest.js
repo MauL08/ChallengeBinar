@@ -11,7 +11,6 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 // Models
-import Data from '../../models/movie';
 import ListGenre from '../../models/genre';
 
 // Utils
@@ -21,7 +20,7 @@ import * as Date from '../../config/utils/changeDate';
 // Assets
 import {RateIcon} from '../../assets/index';
 
-const Latest = () => {
+const Latest = props => {
   const navigation = useNavigation();
 
   const Genres = props => {
@@ -45,7 +44,7 @@ const Latest = () => {
       <View style={styles.listParent}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={Data}
+          data={props.data}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
             <View style={styles.listContainer}>
@@ -70,7 +69,9 @@ const Latest = () => {
                 </ScrollView>
                 <View style={styles.showButtonContainer}>
                   <TouchableOpacity
-                    onPress={() => navigation.navigate('Detail')}
+                    onPress={() =>
+                      navigation.navigate('Detail', {movieId: item.id})
+                    }
                     style={styles.showButton}>
                     <Text style={styles.showButtonText}>Show More</Text>
                   </TouchableOpacity>

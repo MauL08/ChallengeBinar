@@ -8,17 +8,16 @@ import {
 } from 'react-native';
 import React from 'react';
 
-import Data from '../../models/movie';
 import Color from '../../config/utils/color';
 import {RateIcon} from '../../assets/index';
 
-const Recommended = () => {
+const Recommended = props => {
   return (
     <View>
       <Text style={styles.pageTitle}>Recommended</Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
-        data={Data}
+        data={props.data}
         keyExtractor={item => item.id}
         horizontal={true}
         renderItem={({item}) => (

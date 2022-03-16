@@ -2,9 +2,8 @@ import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import Color from '../../config/utils/color';
-import Data from '../../models/batman';
 
-const BodyDetail = () => {
+const BodyDetail = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.genreTitle}>Genres</Text>
@@ -12,7 +11,7 @@ const BodyDetail = () => {
         <FlatList
           scrollEnabled={false}
           horizontal={true}
-          data={Data.genres}
+          data={props.movieData.genres}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
             <TouchableOpacity style={styles.genreItemContainer}>
@@ -24,7 +23,7 @@ const BodyDetail = () => {
       <View style={styles.synopshisContainer}>
         <Text style={styles.synopshisTitle}>Synopsis</Text>
         <View style={styles.synopshisTextContainer}>
-          <Text style={styles.synopshisText}>{Data.overview}</Text>
+          <Text style={styles.synopshisText}>{props.movieData.overview}</Text>
         </View>
       </View>
     </View>

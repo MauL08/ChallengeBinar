@@ -1,6 +1,5 @@
 import {
   StyleSheet,
-  Text,
   View,
   Image,
   ImageBackground,
@@ -10,16 +9,16 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 
 import Color from '../../config/utils/color';
-import Data from '../../models/batman';
 import {BackIcon, LoveIcon, ShareIcon} from '../../assets';
 
-const BackdropNavigation = () => {
+const BackdropNavigation = props => {
+  console.log(props.movieData.backdrop_path);
   const navigation = useNavigation();
   const [loveCheck, setLoveCheck] = useState(false);
 
   return (
     <ImageBackground
-      source={{uri: Data.backdrop_path}}
+      source={{uri: props.movieData.backdrop_path}}
       style={styles.container}>
       <View style={styles.topBarContainer}>
         <TouchableOpacity

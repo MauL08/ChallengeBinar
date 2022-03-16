@@ -1,29 +1,34 @@
 import {StyleSheet, Text, View, Image} from 'react-native';
 import React from 'react';
 
-import Data from '../../models/batman';
 import Color from '../../config/utils/color';
 import * as Date from '../../config/utils/changeDate';
 import * as Time from '../../config/utils/runtime';
 import {RateIcon, TimeIcon} from '../../assets';
 
-const DetailBanner = () => {
+const DetailBanner = props => {
+  console.log(props.movieData.release_date);
   return (
     <View style={styles.detailContainer}>
-      <Image source={{uri: Data.poster_path}} style={styles.imagePoster} />
+      <Image
+        source={{uri: props.movieData.poster_path}}
+        style={styles.imagePoster}
+      />
       <View style={styles.infoContainer}>
-        <Text style={styles.titleName}>{Data.original_title}</Text>
-        <Text style={styles.titleTagline}>{Data.tagline}</Text>
+        <Text style={styles.titleName}>{props.movieData.original_title}</Text>
+        <Text style={styles.titleTagline}>{props.movieData.tagline}</Text>
         <View style={styles.releaseContainer}>
-          <Text style={styles.titleStatus}>{Data.status}</Text>
+          <Text style={styles.titleStatus}>{props.movieData.status}</Text>
           <Text style={styles.titleDate}>
-            {Date.changeDate(Data.release_date)}
+            {Date.changeDate(props.movieData.release_date)}
           </Text>
         </View>
         <View style={styles.rateTimeContainer}>
           <View style={styles.rateContainer}>
             <Image source={RateIcon} />
-            <Text style={styles.titleRating}>{Data.vote_average}/10</Text>
+            <Text style={styles.titleRating}>
+              {props.movieData.vote_average}/10
+            </Text>
           </View>
           <View style={styles.timeContainer}>
             <Image
@@ -31,7 +36,7 @@ const DetailBanner = () => {
               style={{tintColor: 'white', width: 12, height: 12}}
             />
             <Text style={styles.titleTime}>
-              {Time.changeRuntime(Data.runtime)}
+              {Time.changeRuntime(props.movieData.runtime)}
             </Text>
           </View>
         </View>

@@ -2,9 +2,8 @@ import {StyleSheet, Text, View, FlatList, Image} from 'react-native';
 import React from 'react';
 
 import Color from '../../config/utils/color';
-import Data from '../../models/batman';
 
-const ActorList = () => {
+const ActorList = props => {
   return (
     <View style={styles.container}>
       <Text style={styles.castListTitle}>Actor / Artist</Text>
@@ -12,7 +11,7 @@ const ActorList = () => {
         <FlatList
           scrollEnabled={false}
           numColumns={3}
-          data={Data.credits.cast}
+          data={props.movieData.credits.cast}
           keyExtractor={(item, index) => String(index)}
           renderItem={({item, index}) => (
             <View style={styles.castContainer}>
