@@ -17,7 +17,7 @@ const BackdropNavigation = props => {
 
   return (
     <ImageBackground
-      source={{uri: props.movieData.backdrop_path || 'throw'}}
+      source={{uri: props.movieData.backdrop_path}}
       style={styles.container}>
       <View style={styles.topBarContainer}>
         <TouchableOpacity

@@ -10,7 +10,7 @@ const DetailBanner = props => {
   return (
     <View style={styles.detailContainer}>
       <Image
-        source={{uri: props.movieData.poster_path || 'throw'}}
+        source={{uri: props.movieData.poster_path}}
         style={styles.imagePoster}
       />
       <View style={styles.infoContainer}>
@@ -35,7 +35,7 @@ const DetailBanner = props => {
               style={{tintColor: 'white', width: 12, height: 12}}
             />
             <Text style={styles.titleTime}>
-              {Time.changeRuntime(props.movieData.runtime || 1)}
+              {Time.changeRuntime(props.movieData.runtime)}
             </Text>
           </View>
         </View>

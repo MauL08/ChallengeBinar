@@ -15,6 +15,9 @@ import Home from './icons/bottomNav/home.png';
 import Favorite from './icons/bottomNav/favorite.png';
 import User from './icons/bottomNav/user.png';
 
+// Animation
+import HandAnimation from './animation/loading.json';
+
 export {
   Logo,
   SearchIcon,
@@ -27,4 +30,5 @@ export {
   Home,
   Favorite,
   User,
+  HandAnimation,
 };

@@ -11,7 +11,7 @@ const BodyDetail = props => {
         <FlatList
           scrollEnabled={false}
           horizontal={true}
-          data={props.movieData.genres || []}
+          data={props.movieData.genres}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
             <TouchableOpacity style={styles.genreItemContainer}>

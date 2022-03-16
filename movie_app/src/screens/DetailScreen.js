@@ -9,12 +9,13 @@ import Color from '../config/utils/color';
 import BackdropNavigation from '../components/DetailScreen/BackdropNavigation';
 import DetailBanner from '../components/DetailScreen/DetailBanner';
 import BodyDetail from '../components/DetailScreen/BodyDetail';
+import Loading from '../components/Loading';
 
 import ActorListTitle from '../components/DetailScreen/ActorList';
 import {styles} from '../components/DetailScreen/ActorList';
 
 const DetailScreen = ({route}) => {
-  const [data, getData] = useState({});
+  const [data, getData] = useState(false);
 
   useEffect(() => {
     FetchSpecific.get(getData, route);
@@ -28,36 +29,40 @@ const DetailScreen = ({route}) => {
     ) : null;
   }
 
-  return (
-    <SafeAreaView style={styleContainer.container}>
-      <FlatList
-        columnWrapperStyle={{marginHorizontal: 20}}
-        numColumns={3}
-        data={data.credits?.cast}
-        keyExtractor={(item, index) => index}
-        ListHeaderComponent={() => (
-          <>
-            <DetailScreenStatusBar />
-            <BackdropNavigation movieData={data} />
-            <DetailBanner movieData={data} />
-            <BodyDetail movieData={data} />
-            <ActorListTitle />
-          </>
-        )}
-        renderItem={({item}) => (
-          <View style={styles.castContainer}>
-            <Image
-              source={{uri: item.profile_path || 'throw'}}
-              style={styles.castPicture}
-            />
-            <View style={styles.castNameContainer}>
-              <Text style={styles.castName}>{item.name}</Text>
+  if (data) {
+    return (
+      <SafeAreaView style={styleContainer.container}>
+        <FlatList
+          columnWrapperStyle={{marginHorizontal: 20}}
+          numColumns={3}
+          data={data.credits.cast}
+          keyExtractor={(item, index) => index}
+          ListHeaderComponent={() => (
+            <>
+              <DetailScreenStatusBar />
+              <BackdropNavigation movieData={data} />
+              <DetailBanner movieData={data} />
+              <BodyDetail movieData={data} />
+              <ActorListTitle />
+            </>
+          )}
+          renderItem={({item}) => (
+            <View style={styles.castContainer}>
+              <Image
+                source={{uri: item.profile_path}}
+                style={styles.castPicture}
+              />
+              <View style={styles.castNameContainer}>
+                <Text style={styles.castName}>{item.name}</Text>
+              </View>
             </View>
-          </View>
-        )}
-      />
-    </SafeAreaView>
-  );
+          )}
+        />
+      </SafeAreaView>
+    );
+  } else {
+    return <Loading />;
+  }
 };
 
 export default DetailScreen;
