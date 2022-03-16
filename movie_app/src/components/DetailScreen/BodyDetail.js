@@ -1,11 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  ActivityIndicator,
-} from 'react-native';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import Color from '../../config/utils/color';
@@ -55,6 +48,7 @@ const styles = StyleSheet.create({
   },
   genreContainer: {
     marginTop: 12,
+    flexWrap: 'wrap',
   },
   genreItemContainer: {
     backgroundColor: Color.CONTAINER_COLOR,

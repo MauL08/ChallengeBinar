@@ -1,13 +1,10 @@
-import {StyleSheet, StatusBar, ActivityIndicator} from 'react-native';
+import {StyleSheet, StatusBar} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import axios from 'axios';
-import {API_URL} from '@env';
 
+import {FetchAll} from '../config/api/index';
 import Color from '../config/utils/color';
-
-import * as API from '../config/api/getAll';
 
 import Header from '../components/HomeScreen/Header';
 import Recommended from '../components/HomeScreen/Recommended';
@@ -17,20 +14,8 @@ const HomeScreen = () => {
   const [data, getData] = useState([]);
 
   useEffect(() => {
-    getAPI();
+    FetchAll.get(getData);
   }, []);
-
-  const getAPI = async () => {
-    await axios
-      .get(API_URL)
-      .then(req => {
-        // console.log(req.data.results);
-        getData(req.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   function HomeScreenStatusBar() {
     const focus = useIsFocused();

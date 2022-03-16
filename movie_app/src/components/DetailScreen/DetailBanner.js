@@ -10,7 +10,7 @@ const DetailBanner = props => {
   return (
     <View style={styles.detailContainer}>
       <Image
-        source={{uri: props.movieData.poster_path || ''}}
+        source={{uri: props.movieData.poster_path || 'throw'}}
         style={styles.imagePoster}
       />
       <View style={styles.infoContainer}>

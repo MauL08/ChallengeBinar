@@ -1,4 +1,4 @@
-export function changeDate(date = '01-01-01') {
+export function changeDate(date = '0-0-0') {
   let splitDate = date.split('-');
   let months = [
     'January',

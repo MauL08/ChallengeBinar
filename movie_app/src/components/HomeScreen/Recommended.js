@@ -7,11 +7,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import Color from '../../config/utils/color';
 import {RateIcon} from '../../assets/index';
 
 const Recommended = props => {
+  const navigation = useNavigation();
+
   return (
     <View>
       <Text style={styles.pageTitle}>Recommended</Text>
@@ -21,7 +24,9 @@ const Recommended = props => {
         keyExtractor={item => item.id}
         horizontal={true}
         renderItem={({item}) => (
-          <TouchableOpacity style={styles.posterContainer}>
+          <TouchableOpacity
+            style={styles.posterContainer}
+            onPress={() => navigation.navigate('Detail', {movieId: item.id})}>
             <Image
               style={styles.posterImage}
               source={{uri: item.poster_path}}

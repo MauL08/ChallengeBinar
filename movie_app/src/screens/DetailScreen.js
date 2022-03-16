@@ -2,35 +2,23 @@ import {StyleSheet, StatusBar, FlatList, View, Image, Text} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import axios from 'axios';
-import {API_URL} from '@env';
 
+import {FetchSpecific} from '../config/api/index';
 import Color from '../config/utils/color';
+
 import BackdropNavigation from '../components/DetailScreen/BackdropNavigation';
 import DetailBanner from '../components/DetailScreen/DetailBanner';
 import BodyDetail from '../components/DetailScreen/BodyDetail';
-import ActorListTitle from '../components/DetailScreen/ActorList';
 
+import ActorListTitle from '../components/DetailScreen/ActorList';
 import {styles} from '../components/DetailScreen/ActorList';
 
 const DetailScreen = ({route}) => {
   const [data, getData] = useState({});
 
   useEffect(() => {
-    getByID();
+    FetchSpecific.get(getData, route);
   }, []);
-
-  const getByID = async () => {
-    await axios
-      .get(`${API_URL}/${route.params.movieId}`)
-      .then(req => {
-        console.log(req.data);
-        getData(req.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
 
   function DetailScreenStatusBar() {
     const focus = useIsFocused();
@@ -59,7 +47,7 @@ const DetailScreen = ({route}) => {
         renderItem={({item}) => (
           <View style={styles.castContainer}>
             <Image
-              source={{uri: item.profile_path || ''}}
+              source={{uri: item.profile_path || 'throw'}}
               style={styles.castPicture}
             />
             <View style={styles.castNameContainer}>

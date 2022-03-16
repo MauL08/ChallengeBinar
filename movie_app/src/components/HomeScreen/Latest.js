@@ -5,7 +5,6 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -110,8 +109,8 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   imagePoster: {
-    height: 120,
-    width: 70,
+    height: 170,
+    width: 100,
     borderRadius: 10,
   },
   detailContainer: {
