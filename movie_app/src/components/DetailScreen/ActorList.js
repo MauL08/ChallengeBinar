@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {moderateScale} from 'react-native-size-matters';
 
 import Color from '../../config/utils/color';
 
@@ -15,44 +16,42 @@ export default ActorListTitle;
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: 12,
-    marginHorizontal: 20,
+    marginTop: moderateScale(12),
+    marginHorizontal: moderateScale(20),
   },
   castListTitle: {
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
     textAlign: 'center',
-    padding: 8,
-    borderRadius: 8,
+    padding: moderateScale(8),
+    borderRadius: moderateScale(8),
     color: Color.TEXT_COLOR,
     fontWeight: 'bold',
-    fontSize: 16,
-    marginBottom: 12,
-  },
-  castMainContainer: {
-    marginTop: 12,
+    fontSize: moderateScale(16),
+    marginBottom: moderateScale(12),
   },
   castContainer: {
+    alignItems: 'center',
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
-    borderRadius: 10,
-    marginBottom: 10,
-    marginRight: 8,
-    padding: 6,
+    borderRadius: moderateScale(10),
+    marginBottom: moderateScale(8),
+    marginRight: moderateScale(8),
+    padding: moderateScale(8),
   },
   castPicture: {
-    height: 160,
-    width: 100,
-    borderRadius: 4,
+    height: moderateScale(120),
+    width: moderateScale(90),
+    borderRadius: moderateScale(4),
   },
   castNameContainer: {
     backgroundColor: Color.CONTAINER_COLOR,
-    borderRadius: 4,
-    padding: 2,
-    width: 100,
-    marginTop: 5,
+    borderRadius: moderateScale(4),
+    padding: moderateScale(2),
+    width: moderateScale(90),
+    marginTop: moderateScale(5),
   },
   castName: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(11),
     textAlign: 'center',
   },
 });

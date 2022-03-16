@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {moderateScale} from 'react-native-size-matters';
 
 import Color from '../../config/utils/color';
 
@@ -34,51 +35,51 @@ export default BodyDetail;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 20,
-    marginTop: 20,
+    marginHorizontal: moderateScale(20),
+    marginTop: moderateScale(20),
   },
   genreTitle: {
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
     textAlign: 'center',
-    padding: 8,
-    borderRadius: 8,
+    padding: moderateScale(8),
+    borderRadius: moderateScale(8),
     color: Color.TEXT_COLOR,
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   genreContainer: {
-    marginTop: 12,
+    marginTop: moderateScale(12),
     flexWrap: 'wrap',
   },
   genreItemContainer: {
     backgroundColor: Color.CONTAINER_COLOR,
-    marginRight: 8,
-    paddingVertical: 4,
-    paddingHorizontal: 6,
-    borderRadius: 10,
+    marginRight: moderateScale(8),
+    paddingVertical: moderateScale(4),
+    paddingHorizontal: moderateScale(6),
+    borderRadius: moderateScale(10),
   },
   genreItem: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(11),
   },
   synopshisContainer: {
-    marginTop: 20,
+    marginTop: moderateScale(12),
   },
   synopshisTitle: {
     backgroundColor: Color.DISABLE_BUTTON_COLOR,
     textAlign: 'center',
-    padding: 8,
-    borderRadius: 8,
+    padding: moderateScale(8),
+    borderRadius: moderateScale(8),
     color: Color.TEXT_COLOR,
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: moderateScale(16),
   },
   synopshisTextContainer: {
-    marginTop: 12,
+    marginTop: moderateScale(12),
   },
   synopshisText: {
     color: Color.TEXT_COLOR,
-    fontSize: 12,
+    fontSize: moderateScale(11),
     textAlign: 'justify',
   },
 });

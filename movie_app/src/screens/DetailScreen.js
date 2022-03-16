@@ -2,6 +2,7 @@ import {StyleSheet, StatusBar, FlatList, View, Image, Text} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {moderateScale} from 'react-native-size-matters';
 
 import {FetchSpecific} from '../config/api/index';
 import Color from '../config/utils/color';
@@ -33,7 +34,7 @@ const DetailScreen = ({route}) => {
     return (
       <SafeAreaView style={styleContainer.container}>
         <FlatList
-          columnWrapperStyle={{marginHorizontal: 20}}
+          columnWrapperStyle={{marginHorizontal: moderateScale(18)}}
           numColumns={3}
           data={data.credits.cast}
           keyExtractor={(item, index) => index}

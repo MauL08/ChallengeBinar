@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
+import {moderateScale} from 'react-native-size-matters';
 
 import Color from '../../config/utils/color';
 import {BackIcon, LoveIcon, ShareIcon} from '../../assets';
@@ -44,43 +45,43 @@ export default BackdropNavigation;
 
 const styles = StyleSheet.create({
   container: {
-    height: 220,
+    height: moderateScale(220),
   },
   topBarContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginHorizontal: 12,
-    marginTop: 10,
+    marginHorizontal: moderateScale(12),
+    marginTop: moderateScale(10),
   },
   backIconContainer: {
-    padding: 8,
+    padding: moderateScale(8),
     backgroundColor: Color.ACTIVE_BUTTON_COLOR,
-    borderRadius: 20,
+    borderRadius: moderateScale(20),
   },
   backIcon: {
-    height: 20,
-    width: 20,
+    height: moderateScale(20),
+    width: moderateScale(20),
     tintColor: Color.DISABLE_BUTTON_COLOR,
   },
   interactionContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: moderateScale(5),
   },
   loveIconContainer: {
-    padding: 9,
+    padding: moderateScale(9),
     backgroundColor: Color.ACTIVE_BUTTON_COLOR,
-    marginRight: 8,
-    borderRadius: 20,
+    marginRight: moderateScale(8),
+    borderRadius: moderateScale(20),
   },
   loveIcon: val => ({
     tintColor: val ? 'red' : Color.DISABLE_BUTTON_COLOR,
   }),
   shareIconContainer: {
-    padding: 8,
+    padding: moderateScale(8),
     backgroundColor: Color.ACTIVE_BUTTON_COLOR,
-    borderRadius: 20,
+    borderRadius: moderateScale(20),
   },
   shareIcon: {
     tintColor: Color.DISABLE_BUTTON_COLOR,
