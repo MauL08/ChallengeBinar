@@ -11,7 +11,6 @@ import BackdropNavigation from '../components/DetailScreen/BackdropNavigation';
 import DetailBanner from '../components/DetailScreen/DetailBanner';
 import BodyDetail from '../components/DetailScreen/BodyDetail';
 import Loading from '../components/Loading';
-
 import ActorListTitle from '../components/DetailScreen/ActorList';
 import {styles} from '../components/DetailScreen/ActorList';
 

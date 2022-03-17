@@ -11,10 +11,14 @@ const Header = props => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity
+        style={styles.iconContainer}
+        onPress={() => navigation.goBack()}>
         <Image source={BackIcon} style={styles.iconStyle} />
       </TouchableOpacity>
-      <Text style={styles.genreText}>GENRE INI ADALAH</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.genreText}>{props.title} Movies</Text>
+      </View>
     </View>
   );
 };
@@ -26,15 +30,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: moderateScale(16),
     marginTop: moderateScale(16),
-    justifyContent: 'center',
     alignItems: 'center',
   },
   iconStyle: {
-    alignItems: 'flex-start',
     tintColor: Color.ACTIVE_BUTTON_COLOR,
   },
+  textContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
   genreText: {
+    marginRight: moderateScale(12),
     color: Color.ACTIVE_BUTTON_COLOR,
     fontWeight: 'bold',
+    fontSize: moderateScale(16),
   },
 });

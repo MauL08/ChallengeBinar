@@ -3,12 +3,16 @@ import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 
 import {FetchAll} from '../config/api';
-import Loading from '../components/Loading';
 import Color from '../config/utils/color';
+
+import Genre from '../models/genre';
+
 import MovieList from '../components/MovieList';
+import Loading from '../components/Loading';
 import Header from '../components/GenreScreen/Header';
 
-const GenresScreen = props => {
+const GenresScreen = ({route}) => {
+  const objId = route.params.genreId;
   const [data, getData] = useState(false);
 
   useEffect(() => {
@@ -24,11 +28,17 @@ const GenresScreen = props => {
   }
 
   if (data) {
+    const genreTitle = Object.keys(Genre).find(key => Genre[key] === objId);
+
+    const movieByGenre = data.results.filter(item => {
+      return item.genre_ids.includes(objId);
+    });
+
     return (
       <View style={styles.container}>
         <GenresScreenStatusBar />
-        <Header />
-        {/* <MovieList data={data.results} /> */}
+        <Header title={genreTitle} />
+        <MovieList data={movieByGenre} />
       </View>
     );
   } else {
