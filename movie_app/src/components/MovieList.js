@@ -10,7 +10,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 
-import ListGenre from '../models/genre';
+import Genre from '../models/genre';
 import Color from '../config/utils/color';
 import * as Date from '../config/utils/changeDate';
 import {RateIcon} from '../assets/';
@@ -55,7 +55,7 @@ const MovieList = props => {
                 <Text style={styles.ratingText}>{item.vote_average}/10</Text>
               </View>
               <View style={styles.genreContainer}>
-                <Genres keys={item.genre_ids} list={ListGenre} />
+                <Genres keys={item.genre_ids} list={Genre} />
               </View>
               <View style={styles.showButtonContainer}>
                 <TouchableOpacity

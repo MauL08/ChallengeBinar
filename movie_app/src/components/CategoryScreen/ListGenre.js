@@ -1,14 +1,14 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const DrawerListScreen = () => {
+const ListGenre = () => {
   return (
     <View>
-      <Text>DrawerListScreen</Text>
+      <Text>ListGenre</Text>
     </View>
   );
 };
 
-export default DrawerListScreen;
+export default ListGenre;
 
 const styles = StyleSheet.create({});

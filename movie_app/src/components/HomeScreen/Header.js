@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Category')}>
         <Image source={ListIcon} />
       </TouchableOpacity>
       <Image source={Logo} />

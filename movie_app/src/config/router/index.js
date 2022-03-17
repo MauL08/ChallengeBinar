@@ -31,6 +31,11 @@ const Router = () => {
         component={GenresScreen}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="Category"
+        component={GenresScreen}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
