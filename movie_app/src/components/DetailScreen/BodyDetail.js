@@ -1,10 +1,13 @@
 import {StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {moderateScale} from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
 
 import Color from '../../config/utils/color';
 
 const BodyDetail = props => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.genreTitle}>Genres</Text>
@@ -15,7 +18,9 @@ const BodyDetail = props => {
           data={props.movieData.genres}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
-            <TouchableOpacity style={styles.genreItemContainer}>
+            <TouchableOpacity
+              style={styles.genreItemContainer}
+              onPress={() => navigation.navigate('Genres', {genreId: item.id})}>
               <Text style={styles.genreItem}>{item.name}</Text>
             </TouchableOpacity>
           )}

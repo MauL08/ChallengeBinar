@@ -9,6 +9,7 @@ import BackIcon from './icons/backArrow.png';
 import LoveIcon from './icons/love.png';
 import ShareIcon from './icons/share.png';
 import TimeIcon from './icons/time.png';
+import NextIcon from './icons/nextArrow.png';
 
 // Bottom Navbar Icons
 import Home from './icons/bottomNav/home.png';
@@ -27,6 +28,7 @@ export {
   LoveIcon,
   ShareIcon,
   TimeIcon,
+  NextIcon,
   Home,
   Favorite,
   User,

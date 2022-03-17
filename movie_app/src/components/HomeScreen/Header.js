@@ -1,17 +1,20 @@
 import {StyleSheet, TouchableOpacity, View, Image} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 
 import {Logo, SearchIcon, ListIcon} from '../../assets/index';
 
 const Header = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <TouchableOpacity>
         <Image source={ListIcon} />
       </TouchableOpacity>
       <Image source={Logo} />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Search')}>
         <Image source={SearchIcon} />
       </TouchableOpacity>
     </View>
