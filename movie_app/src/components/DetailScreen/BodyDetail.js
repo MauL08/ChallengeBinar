@@ -6,8 +6,6 @@ import {useNavigation} from '@react-navigation/native';
 import Color from '../../config/utils/color';
 
 const BodyDetail = props => {
-  const navigation = useNavigation();
-
   return (
     <View style={styles.container}>
       <Text style={styles.genreTitle}>Genres</Text>
@@ -18,9 +16,7 @@ const BodyDetail = props => {
           data={props.movieData.genres}
           keyExtractor={(item, index) => index}
           renderItem={({item}) => (
-            <TouchableOpacity
-              style={styles.genreItemContainer}
-              onPress={() => navigation.navigate('Genres', {genreId: item.id})}>
+            <TouchableOpacity style={styles.genreItemContainer}>
               <Text style={styles.genreItem}>{item.name}</Text>
             </TouchableOpacity>
           )}
