@@ -12,11 +12,11 @@ import Loading from '../components/Loading';
 import Header from '../components/GenreScreen/Header';
 
 const GenresScreen = ({route}) => {
-  const objId = route.params.genreId;
-  const [data, getData] = useState(false);
+  const [screenStatus, setScreenStatus] = useState(false);
+  const [data, getData] = useState({});
 
   useEffect(() => {
-    FetchAll.get(getData);
+    FetchAll.get(getData, setScreenStatus);
   }, []);
 
   function GenresScreenStatusBar() {
@@ -27,7 +27,9 @@ const GenresScreen = ({route}) => {
     ) : null;
   }
 
-  if (data) {
+  if (screenStatus) {
+    const objId = route.params.genreId;
+
     const genreTitle = Object.keys(Genre).find(key => Genre[key] === objId);
 
     const movieByGenre = data.results.filter(item => {

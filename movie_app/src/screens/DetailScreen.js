@@ -4,9 +4,8 @@ import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {moderateScale} from 'react-native-size-matters';
 
-import {FetchSpecific} from '../config/api/index';
+import {FetchSpecific} from '../config/api';
 import Color from '../config/utils/color';
-
 import BackdropNavigation from '../components/DetailScreen/BackdropNavigation';
 import DetailBanner from '../components/DetailScreen/DetailBanner';
 import BodyDetail from '../components/DetailScreen/BodyDetail';
@@ -15,10 +14,11 @@ import ActorListTitle from '../components/DetailScreen/ActorList';
 import {styles} from '../components/DetailScreen/ActorList';
 
 const DetailScreen = ({route}) => {
-  const [data, getData] = useState(false);
+  const [screenStatus, setScreenStatus] = useState(false);
+  const [data, getData] = useState({});
 
   useEffect(() => {
-    FetchSpecific.get(getData, route);
+    FetchSpecific.get(getData, setScreenStatus, route.params.movieId);
   }, []);
 
   function DetailScreenStatusBar() {
@@ -29,7 +29,9 @@ const DetailScreen = ({route}) => {
     ) : null;
   }
 
-  if (data) {
+  if (screenStatus) {
+    console.log(route.params.movieId);
+    console.log(data);
     return (
       <SafeAreaView style={styleContainer.container}>
         <FlatList

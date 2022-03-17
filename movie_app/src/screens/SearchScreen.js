@@ -9,10 +9,11 @@ import MovieList from '../components/MovieList';
 import Header from '../components/SearchScreen/Header';
 
 const SearchScreen = () => {
-  const [data, getData] = useState(false);
+  const [screenStatus, setScreenStatus] = useState(false);
+  const [data, getData] = useState({});
 
   useEffect(() => {
-    FetchAll.get(getData);
+    FetchAll.get(getData, setScreenStatus);
   }, []);
 
   function SearchScreenStatusBar() {
@@ -23,7 +24,7 @@ const SearchScreen = () => {
     ) : null;
   }
 
-  if (data) {
+  if (screenStatus) {
     return (
       <View style={styles.container}>
         <SearchScreenStatusBar />
