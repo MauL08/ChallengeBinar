@@ -8,6 +8,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {moderateScale} from 'react-native-size-matters';
+import Share from 'react-native-share';
 
 import Color from '../../config/utils/color';
 import {BackIcon, LoveIcon, ShareIcon} from '../../assets';
@@ -15,6 +16,20 @@ import {BackIcon, LoveIcon, ShareIcon} from '../../assets';
 const BackdropNavigation = props => {
   const navigation = useNavigation();
   const [loveCheck, setLoveCheck] = useState(false);
+
+  const onShare = async () => {
+    const content = {
+      message: 'Credits to the API : ',
+      url: 'https://www.themoviedb.org/',
+    };
+    await Share.open(content)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <ImageBackground
@@ -32,7 +47,7 @@ const BackdropNavigation = props => {
             onPress={() => setLoveCheck(!loveCheck)}>
             <Image source={LoveIcon} style={styles.loveIcon(loveCheck)} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.shareIconContainer}>
+          <TouchableOpacity style={styles.shareIconContainer} onPress={onShare}>
             <Image source={ShareIcon} style={styles.shareIcon} />
           </TouchableOpacity>
         </View>
