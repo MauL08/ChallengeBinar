@@ -15,6 +15,7 @@ import axios from 'axios';
 import {useIsFocused} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
+import {AUTH_API} from '@env';
 
 import Loading from '../../components/Loading';
 import Logo from '../../assets/images/banner.png';
@@ -24,16 +25,14 @@ const {width} = Dimensions.get('screen');
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
-  const [authStatus, setAuthStatus] = useState(true);
+  const [formScreen, setFormScreen] = useState(true);
 
   const StatusBarScreen = () => {
     const focus = useIsFocused();
 
     return focus ? (
       <StatusBar backgroundColor={Color.BACKGROUND_COLOR} />
-    ) : (
-      false
-    );
+    ) : null;
   };
 
   const [email, setEmail] = useState('');
@@ -49,35 +48,46 @@ const RegisterScreen = () => {
   const [longLoc, setLongLoc] = useState('');
   const [password, setPassword] = useState('');
 
-  const registerAuth = async () => {
-    setAuthStatus(false);
+  function validateEmail(email) {
+    const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]/;
+    const emailCheck = emailRegEx.test(email);
 
-    const content = {
-      email: email,
-      username: username,
-      password: password,
-      name: {
-        firstname: firstName,
-        lastname: lastName,
-      },
-      address: {
-        city: city,
-        street: street,
-        number: number,
-        zipcode: zipcode,
-        geolocation: {
-          lat: latLoc,
-          long: longLoc,
+    if (emailCheck) {
+      const content = {
+        email: email,
+        username: username,
+        password: password,
+        name: {
+          firstname: firstName,
+          lastname: lastName,
         },
-      },
-      phone: phone,
-    };
+        address: {
+          city: city,
+          street: street,
+          number: number,
+          zipcode: zipcode,
+          geolocation: {
+            lat: latLoc,
+            long: longLoc,
+          },
+        },
+        phone: phone,
+      };
+
+      return content;
+    } else {
+      return null;
+    }
+  }
+
+  const registerAuth = async () => {
+    setFormScreen(false);
+    const content = validateEmail(email);
     await axios
-      .post('https://fakestoreapi.com/users', content)
+      .post(`${AUTH_API}/users`, content)
       .then(res => {
         if (res.status <= 201) {
           Alert.alert('Thank You', 'Register Success!', [{text: 'OK'}]);
-          setAuthStatus(true);
         }
         console.log(res.data);
       })
@@ -86,6 +96,9 @@ const RegisterScreen = () => {
           {text: 'OK'},
         ]);
         console.log(err);
+      })
+      .finally(() => {
+        setFormScreen(true);
       });
   };
 
@@ -102,7 +115,7 @@ const RegisterScreen = () => {
   const [inputLongLoc, setInputLongLoc] = useState(false);
   const [inputPw, setInputPw] = useState(false);
 
-  if (authStatus) {
+  if (formScreen) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <StatusBarScreen />

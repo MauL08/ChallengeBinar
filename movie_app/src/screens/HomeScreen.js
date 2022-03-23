@@ -11,12 +11,12 @@ import Recommended from '../components/HomeScreen/Recommended';
 import Latest from '../components/HomeScreen/Latest';
 import Loading from '../components/Loading';
 
-const HomeScreen = () => {
-  const [screenStatus, setScreenStatus] = useState(false);
-  const [data, getData] = useState({});
+const HomeScreen = ({route}) => {
+  const token = route.params.token;
+  const [data, getData] = useState(false);
 
   useEffect(() => {
-    FetchAll.get(getData, setScreenStatus);
+    FetchAll.get(getData);
   }, []);
 
   function HomeScreenStatusBar() {
@@ -27,7 +27,7 @@ const HomeScreen = () => {
     ) : null;
   }
 
-  if (screenStatus) {
+  if (data && token) {
     return (
       <SafeAreaView style={styles.container}>
         <HomeScreenStatusBar />

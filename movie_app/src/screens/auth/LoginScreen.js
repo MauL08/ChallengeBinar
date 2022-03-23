@@ -15,6 +15,7 @@ import {useIsFocused} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
+import {AUTH_API} from '@env';
 
 import Logo from '../../assets/images/banner.png';
 import Loading from '../../components/Loading';
@@ -24,30 +25,45 @@ const {width} = Dimensions.get('screen');
 
 const LoginScreen = () => {
   const navigation = useNavigation();
-  const [authStatus, setAuthStatus] = useState(true);
+  const [formScreen, setFormScreen] = useState(true);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  function validateForm(username, password) {
+    if (username.length === 0 && password.length === 0) {
+      Alert.alert('Error', 'Please fill form correctly!', [
+        {text: 'OK', onPress: () => setFormScreen(true)},
+      ]);
+      return null;
+    } else {
+      const content = {
+        username: username, // mor_2314
+        password: password, // 83r5^_
+      };
+
+      return content;
+    }
+  }
+
   const loginAuth = async () => {
-    setAuthStatus(false);
-    const content = {
-      username: username, // mor_2314
-      password: password, // 83r5^_
-    };
+    setFormScreen(false);
+    const content = validateForm(username, password);
     await axios
-      .post('https://fakestoreapi.com/auth/login', content)
+      .post(`${AUTH_API}/auth/login`, content)
       .then(res => {
         if (res.status <= 201) {
-          setAuthStatus(true);
-          navigation.navigate('Main', {user: username, token: res.data.token});
+          navigation.navigate('Main', {token: res.data.token});
         }
       })
       .catch(err => {
         Alert.alert('Error', 'Login Failed! Please try again :)', [
-          {text: 'OK', onPress: () => setAuthStatus(true)},
+          {text: 'OK'},
         ]);
         console.log(err);
+      })
+      .finally(() => {
+        setFormScreen(true);
       });
   };
 
@@ -56,15 +72,13 @@ const LoginScreen = () => {
 
     return focus ? (
       <StatusBar backgroundColor={Color.BACKGROUND_COLOR} />
-    ) : (
-      false
-    );
+    ) : null;
   };
 
   const [inputUser, setInputUser] = useState(false);
   const [inputPass, setInputPass] = useState(false);
 
-  if (authStatus) {
+  if (formScreen) {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <StatusBarScreen />
@@ -118,17 +132,7 @@ const LoginScreen = () => {
             </View>
           </View>
         </View>
-        <TouchableOpacity
-          style={styles.loginButton}
-          onPress={() => {
-            if (username.length > 0 && password.length > 0) {
-              loginAuth();
-            } else {
-              Alert.alert('Error', 'Please fill form correctly!', [
-                {text: 'OK'},
-              ]);
-            }
-          }}>
+        <TouchableOpacity style={styles.loginButton} onPress={loginAuth}>
           <Text style={styles.loginButtonText}>Login</Text>
         </TouchableOpacity>
       </ScrollView>
