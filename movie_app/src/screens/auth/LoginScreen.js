@@ -15,6 +15,7 @@ import {useIsFocused} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 import {useNavigation} from '@react-navigation/native';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {AUTH_API} from '@env';
 
 import Logo from '../../assets/images/banner.png';
@@ -53,7 +54,8 @@ const LoginScreen = () => {
       .post(`${AUTH_API}/auth/login`, content)
       .then(res => {
         if (res.status <= 201) {
-          navigation.navigate('Main', {token: res.data.token});
+          AsyncStorage.setItem('token', res.data.token);
+          navigation.navigate('Main');
         }
       })
       .catch(err => {

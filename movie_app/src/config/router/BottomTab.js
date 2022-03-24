@@ -12,9 +12,7 @@ import Color from '../../config/utils/color';
 
 const Tab = createBottomTabNavigator();
 
-const MainScreen = ({route}) => {
-  const token = route.params.token;
-
+const MainScreen = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -26,7 +24,6 @@ const MainScreen = ({route}) => {
         },
       }}>
       <Tab.Screen
-        initialParams={{token: token}}
         name="Home"
         component={HomeScreen}
         options={{

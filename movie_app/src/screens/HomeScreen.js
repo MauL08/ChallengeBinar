@@ -2,6 +2,7 @@ import {StyleSheet, StatusBar} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {FetchAll} from '../config/api/index';
 import Color from '../config/utils/color';
@@ -11,13 +12,25 @@ import Recommended from '../components/HomeScreen/Recommended';
 import Latest from '../components/HomeScreen/Latest';
 import Loading from '../components/Loading';
 
-const HomeScreen = ({route}) => {
-  const token = route.params.token;
+const HomeScreen = () => {
+  const [token, setToken] = useState(false);
   const [data, getData] = useState(false);
 
   useEffect(() => {
+    getToken();
     FetchAll.get(getData);
   }, []);
+
+  const getToken = async () => {
+    try {
+      const data = await AsyncStorage.getItem('token');
+      if (data !== null) {
+        setToken(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function HomeScreenStatusBar() {
     const focus = useIsFocused();
