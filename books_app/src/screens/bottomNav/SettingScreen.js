@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const Success = () => {
+const SettingScreen = () => {
   return (
     <View>
-      <Text>Success</Text>
+      <Text>Sorry, this screen is currently empty!</Text>
     </View>
   );
 };
 
-export default Success;
+export default SettingScreen;
 
 const styles = StyleSheet.create({});

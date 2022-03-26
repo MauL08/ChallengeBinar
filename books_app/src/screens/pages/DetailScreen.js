@@ -4,7 +4,7 @@ import React from 'react';
 const DetailScreen = () => {
   return (
     <View>
-      <Text>DetailScreen</Text>
+      <Text>Sorry, this screen is currently empty!</Text>
     </View>
   );
 };
