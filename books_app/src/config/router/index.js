@@ -8,7 +8,7 @@ import {
   DetailScreen,
   ProfileScreen,
 } from '../../screens';
-import MainScreen from './BottomTab';
+import MainScreen from './BottomNav';
 
 const Stack = createNativeStackNavigator();
 
