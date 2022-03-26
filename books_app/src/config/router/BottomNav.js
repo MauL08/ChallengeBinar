@@ -7,20 +7,18 @@ import BooksScreen from '../../screens/bottomNav/BooksScreen';
 import BookmarkScreen from '../../screens/bottomNav/BookmarkScreen';
 import SettingScreen from '../../screens/bottomNav/SettingScreen';
 
-import Color from '../../config/utils/color';
-
 const Tab = createBottomTabNavigator();
 
 const MainScreen = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarShowLabel: false,
+        // tabBarShowLabel: false,
         headerShown: false,
-        tabBarStyle: {
-          backgroundColor: Color.BACKGROUND_COLOR,
-          elevation: 0,
-        },
+        // tabBarStyle: {
+        //   backgroundColor: Color.BACKGROUND_COLOR,
+        //   elevation: 0,
+        // },
       }}>
       <Tab.Screen
         name="Home"
