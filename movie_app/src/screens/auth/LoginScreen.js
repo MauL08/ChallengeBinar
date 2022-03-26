@@ -10,19 +10,19 @@ import {
   Alert,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
-import {useIsFocused} from '@react-navigation/native';
-import {moderateScale} from 'react-native-size-matters';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import { moderateScale } from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {AUTH_API} from '@env';
+import { AUTH_API } from '@env';
 
 import Logo from '../../assets/images/banner.png';
 import Loading from '../../components/Loading';
 import Color from '../../config/utils/color';
 
-const {width} = Dimensions.get('screen');
+const { width } = Dimensions.get('screen');
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -34,7 +34,7 @@ const LoginScreen = () => {
   function validateForm(username, password) {
     if (username.length === 0 && password.length === 0) {
       Alert.alert('Error', 'Please fill form correctly!', [
-        {text: 'OK', onPress: () => setFormScreen(true)},
+        { text: 'OK', onPress: () => setFormScreen(true) },
       ]);
       return null;
     } else {
@@ -60,7 +60,7 @@ const LoginScreen = () => {
       })
       .catch(err => {
         Alert.alert('Error', 'Login Failed! Please try again :)', [
-          {text: 'OK'},
+          { text: 'OK' },
         ]);
         console.log(err);
       })

@@ -7,21 +7,20 @@ import {
   Text,
   RefreshControl,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {useIsFocused} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {moderateScale} from 'react-native-size-matters';
+import React, { useState, useEffect } from 'react';
+import { useIsFocused } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { moderateScale } from 'react-native-size-matters';
 
-import {FetchSpecific} from '../config/api';
+import { FetchSpecific } from '../config/api';
 import Color from '../config/utils/color';
 import BackdropNavigation from '../components/DetailScreen/BackdropNavigation';
 import DetailBanner from '../components/DetailScreen/DetailBanner';
 import BodyDetail from '../components/DetailScreen/BodyDetail';
 import Loading from '../components/Loading';
-import ActorListTitle from '../components/DetailScreen/ActorList';
-import {styles} from '../components/DetailScreen/ActorList';
+import ActorListTitle, { styles } from '../components/DetailScreen/ActorList';
 
-const DetailScreen = ({route}) => {
+function DetailScreen({ route }) {
   const [data, getData] = useState(false);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const DetailScreen = ({route}) => {
           refreshControl={
             <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
           }
-          columnWrapperStyle={{marginHorizontal: moderateScale(18)}}
+          columnWrapperStyle={{ marginHorizontal: moderateScale(18) }}
           numColumns={3}
           data={data.credits.cast}
           keyExtractor={(item, index) => index}
@@ -64,10 +63,10 @@ const DetailScreen = ({route}) => {
               <ActorListTitle />
             </>
           )}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <View style={styles.castContainer}>
               <Image
-                source={{uri: item.profile_path}}
+                source={{ uri: item.profile_path }}
                 style={styles.castPicture}
               />
               <View style={styles.castNameContainer}>
@@ -78,10 +77,9 @@ const DetailScreen = ({route}) => {
         />
       </SafeAreaView>
     );
-  } else {
-    return <Loading />;
   }
-};
+  return <Loading />;
+}
 
 export default DetailScreen;
 

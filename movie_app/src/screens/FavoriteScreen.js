@@ -1,10 +1,10 @@
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import React from 'react';
-import {useIsFocused} from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 
 import Color from '../config/utils/color';
 
-const FavoriteScreen = () => {
+function FavoriteScreen() {
   function FavoriteScreenStatusBar() {
     const focus = useIsFocused();
 
@@ -22,12 +22,12 @@ const FavoriteScreen = () => {
         alignItems: 'center',
       }}>
       <FavoriteScreenStatusBar />
-      <Text style={{color: Color.TEXT_COLOR}}>
+      <Text style={{ color: Color.TEXT_COLOR }}>
         Sorry! This screen is currently empty.
       </Text>
     </View>
   );
-};
+}
 
 export default FavoriteScreen;
 
