@@ -5,6 +5,7 @@ import { bookmarkScreenStyle } from './main/bookmarkScreenStyle';
 import { settingScreenStyle } from './main/settingScreenStyle';
 import { loginScreenStyle } from './main/loginScreenStyle';
 import { registerScreenStyle } from './main/registerScreenStyle';
+import { successScreenStyle } from './main/successScreenStyle';
 
 // Semi Styles
 import { lottieStyle } from './semi/lottieStyle';
@@ -17,6 +18,7 @@ export {
   settingScreenStyle,
   loginScreenStyle,
   registerScreenStyle,
+  successScreenStyle,
   lottieStyle,
   tabBarStyle,
 };

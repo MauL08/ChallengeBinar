@@ -82,9 +82,9 @@ const LoginScreen = () => {
           />
         </View>
         <TouchableOpacity
-          style={registerScreenStyle.loginButton}
+          style={registerScreenStyle.registerButton}
           onPress={() => navigation.navigate('Success')}>
-          <Text style={registerScreenStyle.loginButtonText}>Register</Text>
+          <Text style={registerScreenStyle.registerButtonText}>Register</Text>
         </TouchableOpacity>
         <Text style={registerScreenStyle.guideText}>
           Already have an account?

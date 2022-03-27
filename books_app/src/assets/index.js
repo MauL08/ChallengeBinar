@@ -24,6 +24,7 @@ import FooterImage from './images/footer.png';
 
 // Animation
 import BookAnimation from './animation/loading.json';
+import CheckAnimation from './animation/check.json';
 
 export {
   EnabledHomeIcon,
@@ -44,4 +45,5 @@ export {
   LogoImage,
   FooterImage,
   BookAnimation,
+  CheckAnimation,
 };

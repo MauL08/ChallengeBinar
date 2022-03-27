@@ -67,7 +67,7 @@ export const registerScreenStyle = StyleSheet.create({
   textInput: {
     width: moderateScale(150),
   },
-  loginButton: {
+  registerButton: {
     marginTop: moderateScale(10),
     marginBottom: moderateScale(15),
     backgroundColor: Color.MAIN_COLOR,
@@ -75,7 +75,7 @@ export const registerScreenStyle = StyleSheet.create({
     width: moderateScale(200),
     padding: moderateScale(12),
   },
-  loginButtonText: {
+  registerButtonText: {
     color: Color.BACKGROUND_COLOR,
     fontWeight: 'bold',
     textAlign: 'center',
