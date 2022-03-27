@@ -68,7 +68,8 @@ export const registerScreenStyle = StyleSheet.create({
     width: moderateScale(150),
   },
   loginButton: {
-    marginVertical: moderateScale(10),
+    marginTop: moderateScale(10),
+    marginBottom: moderateScale(15),
     backgroundColor: Color.MAIN_COLOR,
     borderRadius: moderateScale(8),
     width: moderateScale(200),
