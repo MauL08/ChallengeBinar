@@ -8,15 +8,17 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-import { UserIcon, PassIcon, BannerImage } from '../../assets/';
+import { EmailIcon, PassIcon, BannerImage } from '../../assets/';
 import { loginScreenStyle } from '../../config/utils/styles';
 import ScreenStatusBar from '../../components/ScreenStatusBar';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
+  const navigation = useNavigation();
 
-  const [usernameFocus, setUsernameFocus] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
   return (
@@ -24,16 +26,16 @@ const LoginScreen = () => {
       <ScreenStatusBar status={focus} />
       <View style={loginScreenStyle.formContainer}>
         <Image source={BannerImage} style={loginScreenStyle.bannerImage} />
-        <View style={loginScreenStyle.usernameInputContainer(usernameFocus)}>
+        <View style={loginScreenStyle.emailInputContainer(emailFocus)}>
           <Image
-            source={UserIcon}
-            style={loginScreenStyle.userPrefixIcon(usernameFocus)}
+            source={EmailIcon}
+            style={loginScreenStyle.emailPrefixIcon(emailFocus)}
           />
           <TextInput
             style={loginScreenStyle.textInput}
-            placeholder="Username"
-            onFocus={() => setUsernameFocus(true)}
-            onBlur={() => setUsernameFocus(false)}
+            placeholder="Email"
+            onFocus={() => setEmailFocus(true)}
+            onBlur={() => setEmailFocus(false)}
           />
         </View>
         <View style={loginScreenStyle.passwordInputContainer(passwordFocus)}>
@@ -49,11 +51,13 @@ const LoginScreen = () => {
             secureTextEntry={true}
           />
         </View>
-        <TouchableOpacity style={loginScreenStyle.loginButton}>
+        <TouchableOpacity
+          style={loginScreenStyle.loginButton}
+          onPress={() => navigation.navigate('Main')}>
           <Text style={loginScreenStyle.loginButtonText}>Login</Text>
         </TouchableOpacity>
         <Text style={loginScreenStyle.guideText}>Don't have an account?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={loginScreenStyle.guideRegisterText}>Register</Text>
         </TouchableOpacity>
       </View>

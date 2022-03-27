@@ -34,13 +34,13 @@ export const loginScreenStyle = StyleSheet.create({
     width: moderateScale(200),
     marginVertical: moderateScale(30),
   },
-  usernameInputContainer: focus => ({
+  emailInputContainer: focus => ({
     ...inputStyle(focus),
   }),
   passwordInputContainer: focus => ({
     ...inputStyle(focus),
   }),
-  userPrefixIcon: focus => ({
+  emailPrefixIcon: focus => ({
     ...iconStyle(focus),
   }),
   passPrefixIcon: focus => ({

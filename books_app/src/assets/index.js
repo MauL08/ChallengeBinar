@@ -9,6 +9,7 @@ import DisabledBookIcon from './icons/bottomNav/disable/books.png';
 import DisabledBookmarkIcon from './icons/bottomNav/disable/bookmark.png';
 import DisabledSettingIcon from './icons/bottomNav/disable/setting.png';
 
+import EmailIcon from './icons/form/email.png';
 import UserIcon from './icons/form/username.png';
 import PassIcon from './icons/form/password.png';
 
@@ -28,6 +29,7 @@ export {
   DisabledBookIcon,
   DisabledBookmarkIcon,
   DisabledSettingIcon,
+  EmailIcon,
   UserIcon,
   PassIcon,
   BannerImage,
