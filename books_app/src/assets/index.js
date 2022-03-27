@@ -1,10 +1,25 @@
 // Icons
-import HomeIcon from './icons/bottomNav/home.png';
-import BookIcon from './icons/bottomNav/books.png';
-import BookmarkIcon from './icons/bottomNav/bookmark.png';
-import SettingIcon from './icons/bottomNav/setting.png';
+import EnabledHomeIcon from './icons/bottomNav/enable/home.png';
+import EnabledBookIcon from './icons/bottomNav/enable/books.png';
+import EnabledBookmarkIcon from './icons/bottomNav/enable/bookmark.png';
+import EnabledSettingIcon from './icons/bottomNav/enable/setting.png';
+
+import DisabledHomeIcon from './icons/bottomNav/disable/home.png';
+import DisabledBookIcon from './icons/bottomNav/disable/books.png';
+import DisabledBookmarkIcon from './icons/bottomNav/disable/bookmark.png';
+import DisabledSettingIcon from './icons/bottomNav/disable/setting.png';
 
 // Animation
 import BookAnimation from './animation/loading.json';
 
-export { HomeIcon, BookIcon, BookmarkIcon, SettingIcon, BookAnimation };
+export {
+  EnabledHomeIcon,
+  EnabledBookIcon,
+  EnabledBookmarkIcon,
+  EnabledSettingIcon,
+  DisabledHomeIcon,
+  DisabledBookIcon,
+  DisabledBookmarkIcon,
+  DisabledSettingIcon,
+  BookAnimation,
+};

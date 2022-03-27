@@ -6,7 +6,6 @@ import { settingScreenStyle } from './main/settingScreenStyle';
 
 // Semi Styles
 import { lottieStyle } from './semi/lottieStyle';
-import { bottomBarIconStyle } from './semi/bottomBarIconStyle';
 import { tabBarStyle } from './semi/tabBarStyle';
 
 export {
@@ -15,6 +14,5 @@ export {
   bookmarkScreenStyle,
   settingScreenStyle,
   lottieStyle,
-  bottomBarIconStyle,
   tabBarStyle,
 };
