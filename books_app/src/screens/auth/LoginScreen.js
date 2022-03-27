@@ -53,7 +53,7 @@ const LoginScreen = () => {
           <Text style={loginScreenStyle.loginButtonText}>Login</Text>
         </TouchableOpacity>
         <Text style={loginScreenStyle.guideText}>Don't have an account?</Text>
-        <TouchableOpacity style={loginScreenStyle.guideRegisterButton}>
+        <TouchableOpacity>
           <Text style={loginScreenStyle.guideRegisterText}>Register</Text>
         </TouchableOpacity>
       </View>
