@@ -1,4 +1,9 @@
-import { globalStyle } from './semi/global';
-import { backgroundAnimation } from './semi/lottie';
+// Main Styles
+import { homeStyle } from './main/homeStyle';
 
-export { globalStyle, backgroundAnimation };
+// Semi Styles
+import { lottieStyle } from './semi/lottieStyle';
+import { bottomBarIconStyle } from './semi/bottomBarIconStyle';
+import { tabBarStyle } from './semi/tabBarStyle';
+
+export { homeStyle, lottieStyle, bottomBarIconStyle, tabBarStyle };

@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-export const backgroundAnimation = StyleSheet.create({
+export const lottieStyle = StyleSheet.create({
   container: {
     backgroundColor: 'white',
   },

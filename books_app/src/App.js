@@ -20,7 +20,7 @@ const App = () => {
     connection.then(res => {
       setNetStatus(res);
     });
-  }, [connection, netStatus]);
+  }, [connection]);
 
   return (
     <NavigationContainer>

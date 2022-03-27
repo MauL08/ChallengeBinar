@@ -3,7 +3,7 @@ import LottieView from 'lottie-react-native';
 import { useIsFocused } from '@react-navigation/native';
 
 import { BookAnimation } from '../assets';
-import { backgroundAnimation } from '../config/utils/styles';
+import { lottieStyle } from '../config/utils/styles';
 import ScreenStatusBar from './ScreenStatusBar';
 
 const Loading = () => {
@@ -16,7 +16,7 @@ const Loading = () => {
         source={BookAnimation}
         autoPlay
         loop
-        style={backgroundAnimation.container}
+        style={lottieStyle.container}
       />
     </>
   );
