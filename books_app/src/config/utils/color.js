@@ -3,6 +3,7 @@ const Color = {
   BACKGROUND_COLOR: '#FDFDFD',
   BUY_BUTTON_COLOR: '#01B684',
   DISABLE_BUTTON_COLOR: '#19191B',
+  NON_ACTIVE_COLOR: '#CDCDCD',
 };
 
 export default Color;

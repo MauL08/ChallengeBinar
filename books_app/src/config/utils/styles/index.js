@@ -3,6 +3,7 @@ import { homeStyle } from './main/homeStyle';
 import { bookScreenStyle } from './main/bookScreenStyle';
 import { bookmarkScreenStyle } from './main/bookmarkScreenStyle';
 import { settingScreenStyle } from './main/settingScreenStyle';
+import { loginScreenStyle } from './main/loginScreenStyle';
 
 // Semi Styles
 import { lottieStyle } from './semi/lottieStyle';
@@ -13,6 +14,7 @@ export {
   bookScreenStyle,
   bookmarkScreenStyle,
   settingScreenStyle,
+  loginScreenStyle,
   lottieStyle,
   tabBarStyle,
 };

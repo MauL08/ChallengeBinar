@@ -9,6 +9,13 @@ import DisabledBookIcon from './icons/bottomNav/disable/books.png';
 import DisabledBookmarkIcon from './icons/bottomNav/disable/bookmark.png';
 import DisabledSettingIcon from './icons/bottomNav/disable/setting.png';
 
+import UserIcon from './icons/form/username.png';
+import PassIcon from './icons/form/password.png';
+
+// Images
+import BannerImage from './images/Banner.png';
+import LogoImage from './images/Logo.png';
+
 // Animation
 import BookAnimation from './animation/loading.json';
 
@@ -21,5 +28,9 @@ export {
   DisabledBookIcon,
   DisabledBookmarkIcon,
   DisabledSettingIcon,
+  UserIcon,
+  PassIcon,
+  BannerImage,
+  LogoImage,
   BookAnimation,
 };
