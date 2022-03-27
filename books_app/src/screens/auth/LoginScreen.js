@@ -1,16 +1,20 @@
 import {
-  ScrollView,
   Text,
   View,
   Image,
   TextInput,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React, { useState } from 'react';
-import { useIsFocused } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-import { EmailIcon, PassIcon, BannerImage } from '../../assets/';
+import {
+  EmailIcon,
+  PassIcon,
+  LoginBannerImage,
+  FooterImage,
+} from '../../assets/';
 import { loginScreenStyle } from '../../config/utils/styles';
 import ScreenStatusBar from '../../components/ScreenStatusBar';
 
@@ -22,10 +26,13 @@ const LoginScreen = () => {
   const [passwordFocus, setPasswordFocus] = useState(false);
 
   return (
-    <ScrollView style={loginScreenStyle.container}>
+    <ImageBackground
+      source={FooterImage}
+      style={loginScreenStyle.container}
+      resizeMode="contain">
       <ScreenStatusBar status={focus} />
       <View style={loginScreenStyle.formContainer}>
-        <Image source={BannerImage} style={loginScreenStyle.bannerImage} />
+        <Image source={LoginBannerImage} style={loginScreenStyle.bannerImage} />
         <View style={loginScreenStyle.emailInputContainer(emailFocus)}>
           <Image
             source={EmailIcon}
@@ -61,7 +68,7 @@ const LoginScreen = () => {
           <Text style={loginScreenStyle.guideRegisterText}>Register</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </ImageBackground>
   );
 };
 

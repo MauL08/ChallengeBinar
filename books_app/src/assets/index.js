@@ -13,9 +13,14 @@ import EmailIcon from './icons/form/email.png';
 import UserIcon from './icons/form/username.png';
 import PassIcon from './icons/form/password.png';
 
+import BackArrowIcon from './icons/backArrow.png';
+
 // Images
 import BannerImage from './images/Banner.png';
+import LoginBannerImage from './images/loginBanner.png';
+import RegisterBannerImage from './images/registerBanner.png';
 import LogoImage from './images/Logo.png';
+import FooterImage from './images/footer.png';
 
 // Animation
 import BookAnimation from './animation/loading.json';
@@ -32,7 +37,11 @@ export {
   EmailIcon,
   UserIcon,
   PassIcon,
+  BackArrowIcon,
   BannerImage,
+  LoginBannerImage,
+  RegisterBannerImage,
   LogoImage,
+  FooterImage,
   BookAnimation,
 };
