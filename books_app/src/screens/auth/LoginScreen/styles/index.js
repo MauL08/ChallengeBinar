@@ -1,6 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
-import Color from '../../color';
+import Color from '../../../../config/utils/color';
 
 const { height } = Dimensions.get('screen');
 
@@ -13,7 +13,7 @@ const inputStyle = focus => ({
   borderRightColor: Color.BACKGROUND_COLOR,
   borderTopColor: Color.BACKGROUND_COLOR,
   width: moderateScale(200),
-  marginBottom: moderateScale(15),
+  marginBottom: moderateScale(18),
 });
 
 const iconStyle = focus => ({
@@ -22,20 +22,11 @@ const iconStyle = focus => ({
   marginLeft: moderateScale(7),
 });
 
-export const registerScreenStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.BACKGROUND_COLOR,
     height: height,
-  },
-  backArrowContainer: {
-    marginLeft: moderateScale(15),
-    marginTop: moderateScale(15),
-    position: 'absolute',
-  },
-  backArrow: {
-    height: moderateScale(25),
-    width: moderateScale(25),
   },
   formContainer: {
     justifyContent: 'center',
@@ -44,19 +35,13 @@ export const registerScreenStyle = StyleSheet.create({
   bannerImage: {
     height: moderateScale(240),
     width: moderateScale(200),
-    marginBottom: moderateScale(15),
+    marginBottom: moderateScale(30),
   },
-  usernameInputContainer: focus => ({
-    ...inputStyle(focus),
-  }),
   emailInputContainer: focus => ({
     ...inputStyle(focus),
   }),
   passwordInputContainer: focus => ({
     ...inputStyle(focus),
-  }),
-  usernamePrefixIcon: focus => ({
-    ...iconStyle(focus),
   }),
   emailPrefixIcon: focus => ({
     ...iconStyle(focus),
@@ -67,15 +52,14 @@ export const registerScreenStyle = StyleSheet.create({
   textInput: {
     width: moderateScale(150),
   },
-  registerButton: {
-    marginTop: moderateScale(10),
-    marginBottom: moderateScale(15),
+  loginButton: {
+    marginVertical: moderateScale(15),
     backgroundColor: Color.MAIN_COLOR,
     borderRadius: moderateScale(8),
     width: moderateScale(200),
     padding: moderateScale(12),
   },
-  registerButtonText: {
+  loginButtonText: {
     color: Color.BACKGROUND_COLOR,
     fontWeight: 'bold',
     textAlign: 'center',

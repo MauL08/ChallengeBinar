@@ -2,17 +2,18 @@ import { Text, View } from 'react-native';
 import React from 'react';
 import { useIsFocused } from '@react-navigation/native';
 
-import ScreenStatusBar from '../../components/ScreenStatusBar';
-import { bookScreenStyle } from '../../config/utils/styles';
+import { styles } from './styles';
+import ScreenStatusBar from '../../../components/ScreenStatusBar';
 
-const BooksScreen = () => {
+const SettingScreen = () => {
   const focus = useIsFocused();
+
   return (
-    <View style={bookScreenStyle.container}>
+    <View style={styles.container}>
       <ScreenStatusBar status={focus} />
       <Text>Sorry, this screen is currently empty!</Text>
     </View>
   );
 };
 
-export default BooksScreen;
+export default SettingScreen;

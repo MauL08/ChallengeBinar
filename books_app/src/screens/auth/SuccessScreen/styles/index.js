@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
 
-import Color from '../../color';
+import Color from '../../../../config/utils/color';
 
-export const successScreenStyle = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Color.BACKGROUND_COLOR,

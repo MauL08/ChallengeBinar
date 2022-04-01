@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { Provider } from 'react-redux';
+import { store } from './config/api/store';
 import SplashScreen from 'react-native-splash-screen';
 import NetInfo from '@react-native-community/netinfo';
 
-import Router from './config/router';
 import NoInternet from './components/NoInternet';
+import Root from './config/router';
 
 const App = () => {
   const [netStatus, setNetStatus] = useState(true);
@@ -23,9 +24,7 @@ const App = () => {
   }, [connection]);
 
   return (
-    <NavigationContainer>
-      {netStatus ? <Router /> : <NoInternet />}
-    </NavigationContainer>
+    <Provider store={store}>{netStatus ? <Root /> : <NoInternet />}</Provider>
   );
 };
 

@@ -2,9 +2,9 @@ import { Text, View, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 
-import { CheckAnimation } from '../../assets';
-import { successScreenStyle } from '../../config/utils/styles/main/successScreenStyle';
-import ScreenStatusBar from '../../components/ScreenStatusBar';
+import { CheckAnimation } from '../../../assets';
+import { styles } from './styles';
+import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import LottieView from 'lottie-react-native';
 
 const SuccessScreen = () => {
@@ -12,24 +12,24 @@ const SuccessScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={successScreenStyle.container}>
+    <View style={styles.container}>
       <ScreenStatusBar status={focus} />
-      <Text style={successScreenStyle.titleText}>Registration Completed!</Text>
-      <View style={successScreenStyle.checkerContainer}>
+      <Text style={styles.titleText}>Registration Completed!</Text>
+      <View style={styles.checkerContainer}>
         <LottieView
           source={CheckAnimation}
           autoPlay={true}
           loop={false}
-          style={successScreenStyle.checker}
+          style={styles.checker}
         />
-        <Text style={successScreenStyle.checkerText}>
+        <Text style={styles.checkerText}>
           We sent email verification to your email
         </Text>
       </View>
       <TouchableOpacity
-        style={successScreenStyle.backLoginButton}
+        style={styles.backLoginButton}
         onPress={() => navigation.navigate('Login')}>
-        <Text style={successScreenStyle.backLoginText}>Back to Login</Text>
+        <Text style={styles.backLoginText}>Back to Login</Text>
       </TouchableOpacity>
     </View>
   );

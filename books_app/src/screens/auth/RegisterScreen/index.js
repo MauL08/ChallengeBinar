@@ -16,9 +16,9 @@ import {
   BackArrowIcon,
   RegisterBannerImage,
   FooterImage,
-} from '../../assets/';
-import { registerScreenStyle } from '../../config/utils/styles';
-import ScreenStatusBar from '../../components/ScreenStatusBar';
+} from '../../../assets';
+import { styles } from './styles';
+import ScreenStatusBar from '../../../components/ScreenStatusBar';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
@@ -31,50 +31,47 @@ const LoginScreen = () => {
   return (
     <ImageBackground
       source={FooterImage}
-      style={registerScreenStyle.container}
+      style={styles.container}
       resizeMode="contain">
       <ScreenStatusBar status={focus} />
       <TouchableOpacity
-        style={registerScreenStyle.backArrowContainer}
+        style={styles.backArrowContainer}
         onPress={() => navigation.navigate('Login')}>
-        <Image source={BackArrowIcon} style={registerScreenStyle.backArrow} />
+        <Image source={BackArrowIcon} style={styles.backArrow} />
       </TouchableOpacity>
-      <View style={registerScreenStyle.formContainer}>
-        <Image
-          source={RegisterBannerImage}
-          style={registerScreenStyle.bannerImage}
-        />
-        <View style={registerScreenStyle.usernameInputContainer(usernameFocus)}>
+      <View style={styles.formContainer}>
+        <Image source={RegisterBannerImage} style={styles.bannerImage} />
+        <View style={styles.usernameInputContainer(usernameFocus)}>
           <Image
             source={UserIcon}
-            style={registerScreenStyle.usernamePrefixIcon(usernameFocus)}
+            style={styles.usernamePrefixIcon(usernameFocus)}
           />
           <TextInput
-            style={registerScreenStyle.textInput}
+            style={styles.textInput}
             placeholder="Full Name"
             onFocus={() => setUsernameFocus(true)}
             onBlur={() => setUsernameFocus(false)}
           />
         </View>
-        <View style={registerScreenStyle.emailInputContainer(emailFocus)}>
+        <View style={styles.emailInputContainer(emailFocus)}>
           <Image
             source={EmailIcon}
-            style={registerScreenStyle.emailPrefixIcon(emailFocus)}
+            style={styles.emailPrefixIcon(emailFocus)}
           />
           <TextInput
-            style={registerScreenStyle.textInput}
+            style={styles.textInput}
             placeholder="Email"
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
           />
         </View>
-        <View style={registerScreenStyle.passwordInputContainer(passwordFocus)}>
+        <View style={styles.passwordInputContainer(passwordFocus)}>
           <Image
             source={PassIcon}
-            style={registerScreenStyle.passPrefixIcon(passwordFocus)}
+            style={styles.passPrefixIcon(passwordFocus)}
           />
           <TextInput
-            style={registerScreenStyle.textInput}
+            style={styles.textInput}
             placeholder="Password"
             onFocus={() => setPasswordFocus(true)}
             onBlur={() => setPasswordFocus(false)}
@@ -82,15 +79,13 @@ const LoginScreen = () => {
           />
         </View>
         <TouchableOpacity
-          style={registerScreenStyle.registerButton}
+          style={styles.registerButton}
           onPress={() => navigation.navigate('Success')}>
-          <Text style={registerScreenStyle.registerButtonText}>Register</Text>
+          <Text style={styles.registerButtonText}>Register</Text>
         </TouchableOpacity>
-        <Text style={registerScreenStyle.guideText}>
-          Already have an account?
-        </Text>
+        <Text style={styles.guideText}>Already have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text style={registerScreenStyle.guideRegisterText}>Login</Text>
+          <Text style={styles.guideRegisterText}>Login</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

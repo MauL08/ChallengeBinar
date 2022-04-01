@@ -2,7 +2,7 @@ import { View, Image } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { tabBarStyle } from '../utils/styles';
+import { tabBarStyle } from './tabBarStyle';
 import {
   EnabledHomeIcon,
   EnabledBookIcon,
