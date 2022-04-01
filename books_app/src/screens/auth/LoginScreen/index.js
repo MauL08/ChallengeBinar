@@ -34,12 +34,12 @@ const LoginScreen = () => {
     const emailStatus = emailRegEx.test(email); // Boolean
 
     if (email.length === 0 && password.length === 0) {
-      Alert.alert('Error', 'Please fill form correctly');
+      Alert.alert('Error', 'Empty form, Please fill form correctly!');
     } else {
       if (emailStatus && password.length >= 8) {
         navigation.navigate('Main');
       } else {
-        Alert.alert('Error', 'Invalid Form');
+        Alert.alert('Error', 'Invalid Form!');
       }
     }
   };

@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
@@ -27,6 +28,25 @@ const LoginScreen = () => {
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const formChecker = () => {
+    const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]/;
+    const emailStatus = emailRegEx.test(email); // Boolean
+
+    if (email.length === 0 && password.length === 0 && username.length === 0) {
+      Alert.alert('Error', 'Empty form, Please fill form correctly!');
+    } else {
+      if (username && emailStatus && password.length >= 8) {
+        navigation.navigate('Success');
+      } else {
+        Alert.alert('Error', 'Invalid Form!');
+      }
+    }
+  };
 
   return (
     <ImageBackground
@@ -51,6 +71,7 @@ const LoginScreen = () => {
             placeholder="Full Name"
             onFocus={() => setUsernameFocus(true)}
             onBlur={() => setUsernameFocus(false)}
+            onChangeText={text => setUsername(text)}
           />
         </View>
         <View style={styles.emailInputContainer(emailFocus)}>
@@ -63,6 +84,7 @@ const LoginScreen = () => {
             placeholder="Email"
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
+            onChangeText={text => setEmail(text)}
           />
         </View>
         <View style={styles.passwordInputContainer(passwordFocus)}>
@@ -75,12 +97,11 @@ const LoginScreen = () => {
             placeholder="Password"
             onFocus={() => setPasswordFocus(true)}
             onBlur={() => setPasswordFocus(false)}
+            onChangeText={text => setPassword(text)}
             secureTextEntry={true}
           />
         </View>
-        <TouchableOpacity
-          style={styles.registerButton}
-          onPress={() => navigation.navigate('Success')}>
+        <TouchableOpacity style={styles.registerButton} onPress={formChecker}>
           <Text style={styles.registerButtonText}>Register</Text>
         </TouchableOpacity>
         <Text style={styles.guideText}>Already have an account?</Text>
