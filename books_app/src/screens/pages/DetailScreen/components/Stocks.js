@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import React from 'react';
-import { ms } from 'react-native-size-matters';
 import { Rating } from 'react-native-ratings';
 
+import { styles } from '../styles/stocksStyle';
 import theBook from '../../../../models/detailBook';
-import Color from '../../../../config/utils/color';
 
 const Stocks = () => {
   return (
@@ -36,37 +35,3 @@ const Stocks = () => {
 };
 
 export default Stocks;
-
-const styles = StyleSheet.create({
-  buyBanner: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: ms(20),
-    marginHorizontal: ms(40),
-  },
-  container: {
-    alignItems: 'center',
-  },
-  title: {
-    color: Color.MAIN_COLOR,
-    fontWeight: 'bold',
-    marginBottom: ms(3),
-  },
-  amount: {
-    fontWeight: '500',
-    color: Color.DISABLE_BUTTON_COLOR,
-  },
-  ratingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  ratingText: {
-    color: Color.DISABLE_BUTTON_COLOR,
-    marginLeft: ms(5),
-    fontWeight: '500',
-  },
-  detailedText: {
-    color: Color.NON_ACTIVE_COLOR,
-  },
-});
