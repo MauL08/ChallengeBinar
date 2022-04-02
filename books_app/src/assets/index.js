@@ -14,6 +14,12 @@ import UserIcon from './icons/form/username.png';
 import PassIcon from './icons/form/password.png';
 
 import BackArrowIcon from './icons/backArrow.png';
+import BackIcon from './icons/back.png';
+import ListIcon from './icons/list.png';
+import LoveIcon from './icons/love.png';
+import SearchIcon from './icons/search.png';
+import ShareIcon from './icons/share.png';
+import RateIcon from './icons/star.png';
 
 // Images
 import BannerImage from './images/Banner.png';
@@ -39,6 +45,12 @@ export {
   UserIcon,
   PassIcon,
   BackArrowIcon,
+  BackIcon,
+  ListIcon,
+  LoveIcon,
+  SearchIcon,
+  ShareIcon,
+  RateIcon,
   BannerImage,
   LoginBannerImage,
   RegisterBannerImage,

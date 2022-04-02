@@ -6,8 +6,8 @@ import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { styles } from './styles';
 
 import Books from '../../../models/allBooks';
-import PopularBooks from './components/popularBooks';
-import RecommendBooks from './components/recommendBooks';
+import PopularBooks from './components/PopularBooks';
+import RecommendBooks from './components/RecommendBooks';
 
 const HomeScreen = () => {
   const focus = useIsFocused();
