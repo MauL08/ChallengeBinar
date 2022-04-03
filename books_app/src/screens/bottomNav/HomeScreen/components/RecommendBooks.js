@@ -7,12 +7,15 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import Books from '../../../../models/allBooks';
 import { ms } from 'react-native-size-matters';
 import Color from '../../../../config/utils/color';
 
 const RecommendBooks = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Recommended</Text>
@@ -22,7 +25,9 @@ const RecommendBooks = () => {
         data={Books}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => (
-          <TouchableOpacity style={styles.bookContainer(index)}>
+          <TouchableOpacity
+            style={styles.bookContainer(index)}
+            onPress={() => navigation.navigate('Detail')}>
             <Image
               source={{ uri: item.cover_image }}
               style={styles.bookCover}

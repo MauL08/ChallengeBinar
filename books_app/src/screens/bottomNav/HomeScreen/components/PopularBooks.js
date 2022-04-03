@@ -3,15 +3,19 @@ import React from 'react';
 import { ms } from 'react-native-size-matters';
 import { Rating } from 'react-native-ratings';
 import NumberFormat from 'react-number-format';
+import { useNavigation } from '@react-navigation/native';
 
 import Color from '../../../../config/utils/color';
 import Books from '../../../../models/allBooks';
 
 const PopularBooks = props => {
   const index = props.index;
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity style={styles.bookContainer(index)}>
+    <TouchableOpacity
+      style={styles.bookContainer(index)}
+      onPress={() => navigation.navigate('Detail')}>
       <Image
         source={{ uri: props.items.cover_image }}
         style={styles.bookImage}

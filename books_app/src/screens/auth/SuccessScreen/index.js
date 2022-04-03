@@ -15,17 +15,12 @@ const SuccessScreen = () => {
     <View style={styles.container}>
       <ScreenStatusBar status={focus} />
       <Text style={styles.titleText}>Registration Completed!</Text>
-      <View style={styles.checkerContainer}>
-        <LottieView
-          source={CheckAnimation}
-          autoPlay={true}
-          loop={false}
-          style={styles.checker}
-        />
-        <Text style={styles.checkerText}>
-          We sent email verification to your email
-        </Text>
-      </View>
+      <LottieView
+        source={CheckAnimation}
+        autoPlay={true}
+        loop={false}
+        style={styles.checker}
+      />
       <TouchableOpacity
         style={styles.backLoginButton}
         onPress={() => navigation.navigate('Login')}>

@@ -15,12 +15,8 @@ export const styles = StyleSheet.create({
     fontSize: moderateScale(20),
     marginTop: moderateScale(45),
   },
-  checkerContainer: {
-    alignItems: 'center',
-  },
   checker: {
-    height: moderateScale(180),
-    marginBottom: moderateScale(20),
+    height: moderateScale(200),
   },
   checkerText: {
     fontWeight: 'bold',
