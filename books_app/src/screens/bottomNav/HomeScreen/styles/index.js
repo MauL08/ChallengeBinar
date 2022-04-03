@@ -10,4 +10,12 @@ export const styles = StyleSheet.create({
   container: {
     margin: ms(18),
   },
+  popular: {
+    color: Color.DISABLE_BUTTON_COLOR,
+    letterSpacing: ms(1),
+    fontSize: ms(16),
+    fontWeight: 'bold',
+    marginTop: ms(16),
+    marginLeft: ms(18),
+  },
 });

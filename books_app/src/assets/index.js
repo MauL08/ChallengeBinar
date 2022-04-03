@@ -20,6 +20,8 @@ import LoveIcon from './icons/love.png';
 import SearchIcon from './icons/search.png';
 import ShareIcon from './icons/share.png';
 import RateIcon from './icons/star.png';
+import AccountIcon from './icons/user.png';
+import NextArrowIcon from './icons/nextArrow.png';
 
 // Images
 import BannerImage from './images/Banner.png';
@@ -51,6 +53,8 @@ export {
   SearchIcon,
   ShareIcon,
   RateIcon,
+  AccountIcon,
+  NextArrowIcon,
   BannerImage,
   LoginBannerImage,
   RegisterBannerImage,
