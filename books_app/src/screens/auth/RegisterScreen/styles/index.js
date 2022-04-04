@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import { ms } from 'react-native-size-matters';
 import Color from '../../../../config/utils/color';
 
 const { height } = Dimensions.get('screen');
@@ -12,14 +12,14 @@ const inputStyle = focus => ({
   borderLeftColor: Color.BACKGROUND_COLOR,
   borderRightColor: Color.BACKGROUND_COLOR,
   borderTopColor: Color.BACKGROUND_COLOR,
-  width: moderateScale(200),
-  marginBottom: moderateScale(15),
+  width: ms(200),
+  marginBottom: ms(15),
 });
 
 const iconStyle = focus => ({
   tintColor: focus ? Color.MAIN_COLOR : Color.NON_ACTIVE_COLOR,
-  marginRight: moderateScale(12),
-  marginLeft: moderateScale(7),
+  marginRight: ms(12),
+  marginLeft: ms(7),
 });
 
 export const styles = StyleSheet.create({
@@ -29,22 +29,23 @@ export const styles = StyleSheet.create({
     height: height,
   },
   backArrowContainer: {
-    marginLeft: moderateScale(15),
-    marginTop: moderateScale(15),
+    marginLeft: ms(15),
+    marginTop: ms(15),
     position: 'absolute',
   },
   backArrow: {
-    height: moderateScale(25),
-    width: moderateScale(25),
+    height: ms(25),
+    width: ms(25),
   },
   formContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: ms(10),
   },
   bannerImage: {
-    height: moderateScale(240),
-    width: moderateScale(200),
-    marginBottom: moderateScale(15),
+    height: ms(240),
+    width: ms(200),
+    marginBottom: ms(15),
   },
   usernameInputContainer: focus => ({
     ...inputStyle(focus),
@@ -65,29 +66,29 @@ export const styles = StyleSheet.create({
     ...iconStyle(focus),
   }),
   textInput: {
-    width: moderateScale(150),
+    width: ms(150),
   },
   registerButton: {
-    marginTop: moderateScale(10),
-    marginBottom: moderateScale(15),
+    marginTop: ms(10),
+    marginBottom: ms(15),
     backgroundColor: Color.MAIN_COLOR,
-    borderRadius: moderateScale(8),
-    width: moderateScale(200),
-    padding: moderateScale(12),
+    borderRadius: ms(8),
+    width: ms(200),
+    padding: ms(12),
   },
   registerButtonText: {
     color: Color.BACKGROUND_COLOR,
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: moderateScale(14),
+    fontSize: ms(14),
   },
   guideText: {
-    fontSize: moderateScale(12),
+    fontSize: ms(12),
   },
   guideRegisterText: {
     color: Color.MAIN_COLOR,
     fontWeight: 'bold',
-    marginTop: moderateScale(3),
-    fontSize: moderateScale(14),
+    marginTop: ms(3),
+    fontSize: ms(14),
   },
 });

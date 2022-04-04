@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 import {
   EmailIcon,
@@ -18,10 +19,12 @@ import {
 } from '../../../assets';
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
+import { postLoginAuth } from '../../../config/api/slice/userSlice';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
@@ -37,7 +40,11 @@ const LoginScreen = () => {
       Alert.alert('Error', 'Empty form, Please fill form correctly!');
     } else {
       if (emailStatus && password.length >= 8) {
-        navigation.navigate('Main');
+        const content = {
+          email: email,
+          password: password,
+        };
+        dispatch(postLoginAuth(content));
       } else {
         Alert.alert('Error', 'Invalid Form!');
       }

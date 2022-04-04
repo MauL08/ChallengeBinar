@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
-import { store } from './config/api/store';
 import SplashScreen from 'react-native-splash-screen';
 import NetInfo from '@react-native-community/netinfo';
+
+// import { persistor, store } from './config/api/store';
+import { store } from './config/api/store';
+// import { PersistGate } from 'redux-persist/integration/react';
 
 import NoInternet from './components/NoInternet';
 import Root from './config/router';
