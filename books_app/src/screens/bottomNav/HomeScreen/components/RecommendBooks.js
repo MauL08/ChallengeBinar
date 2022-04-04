@@ -3,9 +3,8 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from '../styles/recommendStyle';
-import Books from '../../../../models/allBooks';
 
-const RecommendBooks = () => {
+const RecommendBooks = props => {
   const navigation = useNavigation();
 
   return (
@@ -14,12 +13,14 @@ const RecommendBooks = () => {
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={true}
-        data={Books}
+        data={props.data}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => (
           <TouchableOpacity
             style={styles.bookContainer(index)}
-            onPress={() => navigation.navigate('Detail')}>
+            onPress={() =>
+              navigation.navigate('Detail', { id: props.items.id })
+            }>
             <Image
               source={{ uri: item.cover_image }}
               style={styles.bookCover}

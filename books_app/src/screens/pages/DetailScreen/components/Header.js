@@ -2,11 +2,12 @@ import { View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import Share from 'react-native-share';
+import PushNotification from 'react-native-push-notification';
 
 import { styles } from '../styles/headerStyle';
 import { BackIcon, LoveIcon, ShareIcon } from '../../../../assets';
 
-const Header = () => {
+const Header = props => {
   const navigation = useNavigation();
 
   const onShare = async () => {
@@ -23,6 +24,14 @@ const Header = () => {
       });
   };
 
+  const onPushNotification = value => {
+    PushNotification.localNotification({
+      channelId: 'notification-channel',
+      title: 'You liked a book.',
+      message: value,
+    });
+  };
+
   return (
     <View style={styles.header}>
       <TouchableOpacity
@@ -31,7 +40,9 @@ const Header = () => {
         <Image source={BackIcon} style={styles.backIcon} />
       </TouchableOpacity>
       <View style={styles.interactionContainer}>
-        <TouchableOpacity style={styles.loveIconContainer}>
+        <TouchableOpacity
+          style={styles.loveIconContainer}
+          onPress={() => onPushNotification(props.title)}>
           <Image source={LoveIcon} style={styles.loveIcon} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.shareIconContainer} onPress={onShare}>

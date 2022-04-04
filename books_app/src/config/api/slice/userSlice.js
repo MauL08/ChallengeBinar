@@ -34,7 +34,9 @@ export const postRegisterAuth = createAsyncThunk(
 );
 
 const initialState = {
+  isLogged: false,
   userInfo: {},
+  token: {},
 };
 
 const userSlice = createSlice({
@@ -47,10 +49,11 @@ const userSlice = createSlice({
     },
     [postLoginAuth.fulfilled]: (state, action) => {
       console.log('Login Success');
-      navigate('Main');
       return {
         ...state,
-        userInfo: action.payload,
+        isLogged: true,
+        userInfo: action.payload.user,
+        token: action.payload.tokens.access.token,
       };
     },
     [postLoginAuth.rejected]: () => {
@@ -65,7 +68,8 @@ const userSlice = createSlice({
       navigate('Success');
       return {
         ...state,
-        userInfo: action.payload,
+        userInfo: action.payload.user,
+        token: action.payload.tokens.access.token,
       };
     },
     [postRegisterAuth.rejected]: () => {

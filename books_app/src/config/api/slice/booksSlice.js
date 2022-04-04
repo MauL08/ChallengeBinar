@@ -1,27 +1,39 @@
 import axios from 'axios';
 import { BASE_URL } from '../baseAPI';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+// import { store } from '../store';
 
-export const getAllBooks = createAsyncThunk('books/allBooks', async () => {
+// const token = store.getState().user.token;
+
+// axios.defaults.headers.Authorization = `Bearer ${token}`;
+
+export const getAllBooks = createAsyncThunk('books/allBooks', async token => {
   try {
-    const response = await axios.get(`${BASE_URL}/books`);
+    const response = await axios.get(`${BASE_URL}/books`, {
+      Authorization: `Bearer ${token}`,
+    });
     return response.data;
   } catch (error) {
     console.log(error);
   }
 });
 
-export const getBooksByID = createAsyncThunk('books/booksByID', async id => {
-  try {
-    const response = await axios.get(`${BASE_URL}/books/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-});
+export const getBooksByID = createAsyncThunk(
+  'books/booksByID',
+  async (token, id) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/books/${id}`, {
+        Authorization: `Bearer ${token}`,
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 
 const initialState = {
-  books: {},
+  booksData: {},
 };
 
 const booksSlice = createSlice({
@@ -35,7 +47,7 @@ const booksSlice = createSlice({
       console.log('Get Books Success');
       return {
         ...state,
-        books: action.payload,
+        booksData: action.payload,
       };
     },
     [getAllBooks.rejected]: () => {
@@ -48,7 +60,7 @@ const booksSlice = createSlice({
       console.log('Get Books by ID Success');
       return {
         ...state,
-        books: action.payload,
+        booksData: action.payload,
       };
     },
     [getBooksByID.rejected]: () => {

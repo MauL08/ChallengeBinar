@@ -1,10 +1,11 @@
-import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
-// import logger from 'redux-logger';
+import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
 // import { persistStore, persistReducer } from 'redux-persist';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import booksSlice from './slice/booksSlice';
 import userSlice from './slice/userSlice';
+import globalSlice from './slice/globalSlice';
 
 // const persistConfig = {
 //   key: 'Key-App',
@@ -20,10 +21,11 @@ import userSlice from './slice/userSlice';
 
 export const store = configureStore({
   // reducer: persistedReducer,
-  // middleware: applyMiddleware(logger),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
   reducer: {
     user: userSlice,
     books: booksSlice,
+    global: globalSlice,
   },
 });
 

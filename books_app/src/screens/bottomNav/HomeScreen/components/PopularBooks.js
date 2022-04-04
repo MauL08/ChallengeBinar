@@ -12,7 +12,7 @@ const PopularBooks = props => {
   return (
     <TouchableOpacity
       style={styles.bookContainer(index)}
-      onPress={() => navigation.navigate('Detail')}>
+      onPress={() => navigation.navigate('Detail', { id: props.items.id })}>
       <Image
         source={{ uri: props.items.cover_image }}
         style={styles.bookImage}
