@@ -2,11 +2,6 @@ import axios from 'axios';
 import { BASE_URL } from '../baseAPI';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { setLoading } from './globalSlice';
-import { store } from '../store';
-
-const token = store.getState().user.token;
-
-axios.defaults.headers.Authorization = `Bearer ${token}`;
 
 axios.defaults.validateStatus = status => {
   return status < 500;
@@ -14,10 +9,16 @@ axios.defaults.validateStatus = status => {
 
 export const getAllBooks = createAsyncThunk(
   'books/allBooks',
-  async ({ dispatch }) => {
+  async (token, { dispatch }) => {
     try {
       dispatch(setLoading(true));
-      const response = await axios.get(`${BASE_URL}/books`);
+      const response = await axios.get(`${BASE_URL}/books`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response);
+      console.log(token);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -27,14 +28,21 @@ export const getAllBooks = createAsyncThunk(
   },
 );
 
-export const getBooksByID = createAsyncThunk('books/booksByID', async id => {
-  try {
-    const response = await axios.get(`${BASE_URL}/books/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-});
+export const getBooksByID = createAsyncThunk(
+  'books/booksByID',
+  async (token, id) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/books/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
 
 const initialState = {
   booksData: {},

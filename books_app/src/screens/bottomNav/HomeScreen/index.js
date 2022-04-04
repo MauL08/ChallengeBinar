@@ -20,12 +20,12 @@ const HomeScreen = () => {
   const dispatch = useDispatch();
 
   const { isLoading } = useSelector(state => state.global);
-  const { userInfo } = useSelector(state => state.user);
+  const { userInfo, token } = useSelector(state => state.user);
   const bookData = useSelector(state => state.books.booksData);
 
   useEffect(() => {
-    dispatch(getAllBooks());
-  }, [dispatch]);
+    dispatch(getAllBooks(token));
+  }, [dispatch, token]);
 
   if (!isLoading) {
     return (
