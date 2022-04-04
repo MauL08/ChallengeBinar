@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 import {
   UserIcon,
@@ -20,10 +21,12 @@ import {
 } from '../../../assets';
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
+import { postRegisterAuth } from '../../../config/api/slice/userSlice';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
@@ -41,7 +44,12 @@ const LoginScreen = () => {
       Alert.alert('Error', 'Empty form, Please fill form correctly!');
     } else {
       if (username && emailStatus && password.length >= 8) {
-        navigation.navigate('Success');
+        const content = {
+          name: username,
+          email: email,
+          password: password,
+        };
+        dispatch(postRegisterAuth(content));
       } else {
         Alert.alert('Error', 'Invalid Form!');
       }

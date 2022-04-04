@@ -20,18 +20,20 @@ export const postLoginAuth = createAsyncThunk(
 
 export const postRegisterAuth = createAsyncThunk(
   'user/registerAuth',
-  async data => {
+  async (data, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${BASE_URL}/auth/register`, data);
+      console.log(response.data);
       return response.data;
     } catch (error) {
-      console.log(error);
+      const logErr = error.response.data.message;
+      Alert.alert('Error', logErr);
+      return rejectWithValue(error.response.data);
     }
   },
 );
 
 const initialState = {
-  isSuccess: false,
   userInfo: {},
 };
 
@@ -39,11 +41,12 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   extraReducers: {
+    // Post Login
     [postLoginAuth.pending]: () => {
       console.log('Pending');
     },
     [postLoginAuth.fulfilled]: (state, action) => {
-      console.log('Success');
+      console.log('Login Success');
       navigate('Main');
       return {
         ...state,
@@ -51,6 +54,21 @@ const userSlice = createSlice({
       };
     },
     [postLoginAuth.rejected]: () => {
+      console.log('Rejected');
+    },
+    // Post Register
+    [postRegisterAuth.pending]: () => {
+      console.log('Pending');
+    },
+    [postRegisterAuth.fulfilled]: (state, action) => {
+      console.log('Register Success');
+      navigate('Success');
+      return {
+        ...state,
+        userInfo: action.payload,
+      };
+    },
+    [postRegisterAuth.rejected]: () => {
       console.log('Rejected');
     },
   },
