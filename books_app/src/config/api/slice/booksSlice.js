@@ -17,8 +17,6 @@ export const getAllBooks = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response);
-      console.log(token);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -30,16 +28,19 @@ export const getAllBooks = createAsyncThunk(
 
 export const getBooksByID = createAsyncThunk(
   'books/booksByID',
-  async (token, id) => {
+  async (credential, { dispatch }) => {
     try {
-      const response = await axios.get(`${BASE_URL}/books/${id}`, {
+      dispatch(setLoading(true));
+      const response = await axios.get(`${BASE_URL}/books/${credential.id}`, {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${credential.token}`,
         },
       });
       return response.data;
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(setLoading(false));
     }
   },
 );
@@ -59,10 +60,9 @@ const booksSlice = createSlice({
         booksData: action.payload,
       };
     },
-    [getBooksByID.fulfilled]: (state, action) => {
+    [getBooksByID.fulfilled]: action => {
       console.log('Get Books by ID Success');
       return {
-        ...state,
         booksData: action.payload,
       };
     },

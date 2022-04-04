@@ -61,6 +61,11 @@ const initialState = {
 const userSlice = createSlice({
   name: 'user',
   initialState,
+  reducers: {
+    setLogout: state => {
+      (state.token = ''), (state.userInfo = {});
+    },
+  },
   extraReducers: {
     // Post Login
     [postLoginAuth.fulfilled]: (state, action) => {
@@ -80,6 +85,12 @@ const userSlice = createSlice({
         token: action.payload.tokens.access.token,
       };
     },
+    // [postLoginAuth.rejected]: () => {
+    //   console.log('Rejected');
+    // },
+    // [postRegisterAuth.rejected]: () => {
+    //   console.log('Rejected');
+    // },
   },
 });
 

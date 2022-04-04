@@ -18,9 +18,7 @@ const RecommendBooks = props => {
         renderItem={({ item, index }) => (
           <TouchableOpacity
             style={styles.bookContainer(index)}
-            onPress={() =>
-              navigation.navigate('Detail', { id: props.items.id })
-            }>
+            onPress={() => navigation.navigate('Detail', { bookId: item.id })}>
             <Image
               source={{ uri: item.cover_image }}
               style={styles.bookCover}

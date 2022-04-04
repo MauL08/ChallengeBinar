@@ -1,5 +1,5 @@
-import { View, FlatList, Text } from 'react-native';
-import React, { useEffect } from 'react';
+import { View, FlatList, Text, RefreshControl } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { useIsFocused } from '@react-navigation/native';
 import { ms } from 'react-native-size-matters';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,10 +18,17 @@ import { getAllBooks } from '../../../config/api/slice/booksSlice';
 const HomeScreen = () => {
   const focus = useIsFocused();
   const dispatch = useDispatch();
+  const [refresh, setRefresh] = useState(false);
 
   const { isLoading } = useSelector(state => state.global);
   const { userInfo, token } = useSelector(state => state.user);
   const bookData = useSelector(state => state.books.booksData);
+
+  const onRefresh = () => {
+    setRefresh(true);
+    dispatch(getAllBooks(token));
+    setRefresh(false);
+  };
 
   useEffect(() => {
     dispatch(getAllBooks(token));
@@ -31,6 +38,9 @@ const HomeScreen = () => {
     return (
       <View style={styles.main}>
         <FlatList
+          refreshControl={
+            <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+          }
           showsVerticalScrollIndicator={false}
           data={bookData.results}
           numColumns={2}
@@ -46,7 +56,7 @@ const HomeScreen = () => {
             </>
           )}
           renderItem={({ item, index }) => (
-            <PopularBooks items={item} index={index} />
+            <PopularBooks data={item} index={index} />
           )}
         />
       </View>
