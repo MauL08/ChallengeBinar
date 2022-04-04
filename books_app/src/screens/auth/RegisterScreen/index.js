@@ -6,10 +6,11 @@ import {
   TouchableOpacity,
   ImageBackground,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   UserIcon,
@@ -27,6 +28,8 @@ const LoginScreen = () => {
   const focus = useIsFocused();
   const navigation = useNavigation();
   const dispatch = useDispatch();
+
+  const { isLoading } = useSelector(state => state.global);
 
   const [usernameFocus, setUsernameFocus] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
@@ -110,7 +113,11 @@ const LoginScreen = () => {
           />
         </View>
         <TouchableOpacity style={styles.registerButton} onPress={formChecker}>
-          <Text style={styles.registerButtonText}>Register</Text>
+          {isLoading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text style={styles.registerButtonText}>Register</Text>
+          )}
         </TouchableOpacity>
         <Text style={styles.guideText}>Already have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import React, { useState } from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
@@ -20,19 +21,19 @@ import {
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { postLoginAuth } from '../../../config/api/slice/userSlice';
-import { setLoading } from '../../../config/api/slice/globalSlice';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const { isLogged } = useSelector(state => state.user);
 
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { isLoading } = useSelector(state => state.global);
 
   const formChecker = () => {
     const emailRegEx = /[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-z]/;
@@ -47,10 +48,6 @@ const LoginScreen = () => {
           password: password,
         };
         dispatch(postLoginAuth(content));
-        if (isLogged) {
-          navigation.navigate('Main');
-        }
-        dispatch(setLoading(true));
       } else {
         Alert.alert('Error', 'Invalid Form!');
       }
@@ -93,7 +90,11 @@ const LoginScreen = () => {
           />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={formChecker}>
-          <Text style={styles.loginButtonText}>Login</Text>
+          {isLoading ? (
+            <ActivityIndicator color="white" />
+          ) : (
+            <Text style={styles.loginButtonText}>Login</Text>
+          )}
         </TouchableOpacity>
         <Text style={styles.guideText}>Don't have an account?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>

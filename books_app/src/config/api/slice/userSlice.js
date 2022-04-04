@@ -3,40 +3,59 @@ import axios from 'axios';
 import { BASE_URL } from '../baseAPI';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { navigate } from '../../router/Navigate';
+import { setLoading } from './globalSlice';
+
+axios.defaults.validateStatus = status => {
+  return status < 500;
+};
 
 export const postLoginAuth = createAsyncThunk(
   'user/loginAuth',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, dispatch }) => {
     try {
+      dispatch(setLoading(true));
       const response = await axios.post(`${BASE_URL}/auth/login`, data);
+      if (response.status <= 201) {
+        navigate('Main');
+      }
+      if (response.status === 401) {
+        const logErr = response.data.message;
+        Alert.alert('Error', logErr);
+      }
       return response.data;
     } catch (error) {
-      const logErr = error.response.data.message;
-      Alert.alert('Error', logErr);
       return rejectWithValue(error.response.data);
+    } finally {
+      dispatch(setLoading(false));
     }
   },
 );
 
 export const postRegisterAuth = createAsyncThunk(
   'user/registerAuth',
-  async (data, { rejectWithValue }) => {
+  async (data, { rejectWithValue, dispatch }) => {
     try {
+      dispatch(setLoading(true));
       const response = await axios.post(`${BASE_URL}/auth/register`, data);
-      console.log(response.data);
+      if (response.status <= 201) {
+        navigate('Success');
+      }
+      if (response.status === 400) {
+        const logErr = response.data.message;
+        Alert.alert('Error', logErr);
+      }
       return response.data;
     } catch (error) {
-      const logErr = error.response.data.message;
-      Alert.alert('Error', logErr);
       return rejectWithValue(error.response.data);
+    } finally {
+      dispatch(setLoading(false));
     }
   },
 );
 
 const initialState = {
-  isLogged: false,
   userInfo: {},
-  token: {},
+  token: '',
 };
 
 const userSlice = createSlice({
@@ -44,36 +63,22 @@ const userSlice = createSlice({
   initialState,
   extraReducers: {
     // Post Login
-    [postLoginAuth.pending]: () => {
-      console.log('Pending');
-    },
     [postLoginAuth.fulfilled]: (state, action) => {
       console.log('Login Success');
       return {
         ...state,
-        isLogged: true,
         userInfo: action.payload.user,
         token: action.payload.tokens.access.token,
       };
     },
-    [postLoginAuth.rejected]: () => {
-      console.log('Rejected');
-    },
     // Post Register
-    [postRegisterAuth.pending]: () => {
-      console.log('Pending');
-    },
     [postRegisterAuth.fulfilled]: (state, action) => {
       console.log('Register Success');
-      navigate('Success');
       return {
         ...state,
         userInfo: action.payload.user,
         token: action.payload.tokens.access.token,
       };
-    },
-    [postRegisterAuth.rejected]: () => {
-      console.log('Rejected');
     },
   },
 });

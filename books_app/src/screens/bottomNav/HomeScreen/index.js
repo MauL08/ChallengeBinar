@@ -19,19 +19,20 @@ const HomeScreen = () => {
   const focus = useIsFocused();
   const dispatch = useDispatch();
 
-  const { userInfo, token, isLogged } = useSelector(state => state.user);
-  const movieData = useSelector(state => state.books.booksData);
+  const { isLoading } = useSelector(state => state.global);
+  const { userInfo } = useSelector(state => state.user);
+  const bookData = useSelector(state => state.books.booksData);
 
   useEffect(() => {
-    dispatch(getAllBooks(token));
-  }, [dispatch, token]);
+    dispatch(getAllBooks());
+  }, [dispatch]);
 
-  if (isLogged) {
+  if (!isLoading) {
     return (
       <View style={styles.main}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={movieData?.results}
+          data={bookData.results}
           numColumns={2}
           keyExtractor={(item, index) => String(index)}
           columnWrapperStyle={{ marginLeft: ms(15) }}
@@ -40,7 +41,7 @@ const HomeScreen = () => {
               <ScreenStatusBar status={focus} />
               <Header />
               <Welcome user={userInfo} />
-              <RecommendBooks data={movieData.results} />
+              <RecommendBooks data={bookData.results} />
               <Text style={styles.popular}>Popular</Text>
             </>
           )}
