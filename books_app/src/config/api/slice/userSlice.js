@@ -63,7 +63,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setLogout: state => {
-      (state.token = ''), (state.userInfo = {});
+      return {
+        ...state,
+        userInfo: {},
+        token: '',
+      };
     },
   },
   extraReducers: {
