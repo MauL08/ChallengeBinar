@@ -1,18 +1,24 @@
 import axios from 'axios';
-import { BASE_URL } from '@env';
-import { createSlice } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
+import { BASE_URL } from '../baseAPI';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-// export const fetchBooks = () = async dispatch => {
-//   await axios
-//     .get(`${BASE_URL}/books`)
-//     .then(res => {
-//       return res.data;
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// };
+export const getAllBooks = createAsyncThunk('books/allBooks', async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/books`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+export const getBooksByID = createAsyncThunk('books/booksByID', async id => {
+  try {
+    const response = await axios.get(`${BASE_URL}/books/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const initialState = {
   books: {},
@@ -21,9 +27,34 @@ const initialState = {
 const booksSlice = createSlice({
   name: 'books',
   initialState,
-  reducers: {},
-  extraReducers: {},
+  extraReducers: {
+    [getAllBooks.pending]: () => {
+      console.log('Pending');
+    },
+    [getAllBooks.fulfilled]: (state, action) => {
+      console.log('Get Books Success');
+      return {
+        ...state,
+        books: action.payload,
+      };
+    },
+    [getAllBooks.rejected]: () => {
+      console.log('Rejected');
+    },
+    [getBooksByID.pending]: () => {
+      console.log('Pending');
+    },
+    [getBooksByID.fulfilled]: (state, action) => {
+      console.log('Get Books by ID Success');
+      return {
+        ...state,
+        books: action.payload,
+      };
+    },
+    [getBooksByID.rejected]: () => {
+      console.log('Rejected');
+    },
+  },
 });
 
-const { action, reducer } = booksSlice;
-export default reducer;
+export default booksSlice.reducer;
