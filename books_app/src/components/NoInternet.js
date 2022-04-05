@@ -7,20 +7,30 @@ import {
 } from 'react-native';
 import { useIsFocused } from '@react-navigation/native';
 import React, { useState } from 'react';
-import Color from '../config/utils/color';
-import ScreenStatusBar from './ScreenStatusBar';
 import LottieView from 'lottie-react-native';
 import { ms } from 'react-native-size-matters';
-import { NoInternetAnimation } from '../assets';
+import NetInfo from '@react-native-community/netinfo';
+
 import { goBack } from '../config/router/Navigate';
+import { NoInternetAnimation } from '../assets';
+import ScreenStatusBar from './ScreenStatusBar';
+import Color from '../config/utils/color';
 
 const NoInternet = () => {
   const [refresh, setRefresh] = useState(false);
   const focus = useIsFocused();
 
+  const connection = () => {
+    NetInfo.fetch().then(state => {
+      if (state.isWifiEnabled) {
+        goBack();
+      }
+    });
+  };
+
   const onRefresh = () => {
+    connection();
     setRefresh(true);
-    goBack();
     setRefresh(false);
   };
 

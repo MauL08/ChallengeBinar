@@ -1,11 +1,19 @@
 import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from '../styles/recommendStyle';
 
 const RecommendBooks = props => {
   const navigation = useNavigation();
+  const { data = [] } = props;
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      setList(prevState => [...data]);
+    }
+  }, [data]);
 
   return (
     <View style={styles.container}>
@@ -13,7 +21,11 @@ const RecommendBooks = props => {
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={true}
-        data={props.data}
+        data={list
+          .sort((a, b) => {
+            return b.average_rating - a.average_rating;
+          })
+          .slice(0, 6)}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => (
           <TouchableOpacity

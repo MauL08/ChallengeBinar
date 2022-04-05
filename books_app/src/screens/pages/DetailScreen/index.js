@@ -58,7 +58,6 @@ const DetailScreen = ({ route }) => {
   };
 
   if (!isLoading) {
-    console.log(route.params.movieId);
     return (
       <ScrollView
         contentContainerStyle={styles.main}

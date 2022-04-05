@@ -54,14 +54,12 @@ const booksSlice = createSlice({
   initialState,
   extraReducers: {
     [getAllBooks.fulfilled]: (state, action) => {
-      console.log('Get Books Success');
       return {
         ...state,
         booksData: action.payload,
       };
     },
     [getBooksByID.fulfilled]: (state, action) => {
-      console.log('Get Books by ID Success');
       return {
         ...state,
         booksData: action.payload,

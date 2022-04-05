@@ -73,7 +73,6 @@ const userSlice = createSlice({
   extraReducers: {
     // Post Login
     [postLoginAuth.fulfilled]: (state, action) => {
-      console.log('Login Success');
       return {
         ...state,
         userInfo: action.payload.user,
@@ -82,7 +81,6 @@ const userSlice = createSlice({
     },
     // Post Register
     [postRegisterAuth.fulfilled]: (state, action) => {
-      console.log('Register Success');
       return {
         ...state,
         userInfo: action.payload.user,

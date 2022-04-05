@@ -1,6 +1,5 @@
 import { Text, View } from 'react-native';
 import React from 'react';
-import { Rating } from 'react-native-ratings';
 
 import { styles } from '../styles/stocksStyle';
 
@@ -14,11 +13,6 @@ const Stocks = props => {
       <View style={styles.container}>
         <Text style={styles.title}>Rating</Text>
         <View style={styles.ratingContainer}>
-          <Rating
-            startingValue={Number(props.data.average_rating) / 2}
-            readonly={true}
-            imageSize={20}
-          />
           <Text style={styles.ratingText}>
             {Number(props.data.average_rating) / 2}
             <Text style={styles.detailedText}>/5</Text>
