@@ -9,12 +9,13 @@ import {
   ProfileScreen,
 } from '../../screens';
 import MainScreen from './BottomNav';
+import NoInternet from '../../components/NoInternet';
 
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="NoInternet">
       <Stack.Screen
         name="Login"
         component={LoginScreen}
@@ -43,6 +44,11 @@ const Router = () => {
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NoInternet"
+        component={NoInternet}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

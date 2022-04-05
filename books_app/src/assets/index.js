@@ -33,6 +33,7 @@ import FooterImage from './images/footer.png';
 // Animation
 import BookAnimation from './animation/loading.json';
 import CheckAnimation from './animation/check.json';
+import NoInternetAnimation from './animation/no-internet.json';
 
 export {
   EnabledHomeIcon,
@@ -62,4 +63,5 @@ export {
   FooterImage,
   BookAnimation,
   CheckAnimation,
+  NoInternetAnimation,
 };

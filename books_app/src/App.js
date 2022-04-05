@@ -3,9 +3,8 @@ import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
 import NetInfo from '@react-native-community/netinfo';
 
-// import { persistor, store } from './config/api/store';
-import { store } from './config/api/store';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './config/api/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import NoInternet from './components/NoInternet';
 import Root from './config/router';
@@ -27,7 +26,11 @@ const App = () => {
   }, [connection]);
 
   return (
-    <Provider store={store}>{netStatus ? <Root /> : <NoInternet />}</Provider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        {netStatus ? <Root /> : <NoInternet />}
+      </PersistGate>
+    </Provider>
   );
 };
 

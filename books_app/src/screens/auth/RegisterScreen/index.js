@@ -24,7 +24,7 @@ import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { postRegisterAuth } from '../../../config/api/slice/userSlice';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const focus = useIsFocused();
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -128,4 +128,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
