@@ -12,6 +12,7 @@ import ScreenStatusBar from './ScreenStatusBar';
 import LottieView from 'lottie-react-native';
 import { ms } from 'react-native-size-matters';
 import { NoInternetAnimation } from '../assets';
+import { goBack } from '../config/router/Navigate';
 
 const NoInternet = () => {
   const [refresh, setRefresh] = useState(false);
@@ -19,6 +20,7 @@ const NoInternet = () => {
 
   const onRefresh = () => {
     setRefresh(true);
+    goBack();
     setRefresh(false);
   };
 

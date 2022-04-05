@@ -89,13 +89,18 @@ const userSlice = createSlice({
         token: action.payload.tokens.access.token,
       };
     },
-    // [postLoginAuth.rejected]: () => {
-    //   console.log('Rejected');
+    // [postLoginAuth.rejected]: state => {
+    //   return {
+    //     ...state,
+    //   };
     // },
-    // [postRegisterAuth.rejected]: () => {
-    //   console.log('Rejected');
+    // [postRegisterAuth.rejected]: state => {
+    //   return {
+    //     ...state,
+    //   };
     // },
   },
 });
 
+export const { setLogout } = userSlice.actions;
 export default userSlice.reducer;

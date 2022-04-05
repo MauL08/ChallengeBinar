@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { styles } from './styles';
 
+import { Slicer } from '../../../config/utils/bookSlicer';
+
 import Loading from '../../../components/Loading';
 import Header from './components/Header';
 import Welcome from './components/Welcome';
@@ -51,7 +53,7 @@ const HomeScreen = () => {
               <ScreenStatusBar status={focus} />
               <Header />
               <Welcome user={userInfo} />
-              <RecommendBooks data={bookData.results} />
+              <RecommendBooks data={Slicer(bookData.results)} />
               <Text style={styles.popular}>Popular</Text>
             </>
           )}

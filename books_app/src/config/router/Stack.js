@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NetInfo from '@react-native-community/netinfo';
 
 import {
   LoginScreen,
@@ -14,8 +15,20 @@ import NoInternet from '../../components/NoInternet';
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
+  const [netStatus, setNetStatus] = useState(true);
+
+  const connection = NetInfo.fetch().then(state => {
+    return state.isConnected;
+  });
+
+  useEffect(() => {
+    connection.then(res => {
+      setNetStatus(res);
+    });
+  }, [connection]);
+
   return (
-    <Stack.Navigator initialRouteName="NoInternet">
+    <Stack.Navigator initialRouteName={netStatus ? 'Login' : 'NoInternet'}>
       <Stack.Screen
         name="Login"
         component={LoginScreen}

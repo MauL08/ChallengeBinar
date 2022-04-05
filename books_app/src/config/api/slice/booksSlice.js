@@ -60,9 +60,10 @@ const booksSlice = createSlice({
         booksData: action.payload,
       };
     },
-    [getBooksByID.fulfilled]: action => {
+    [getBooksByID.fulfilled]: (state, action) => {
       console.log('Get Books by ID Success');
       return {
+        ...state,
         booksData: action.payload,
       };
     },
