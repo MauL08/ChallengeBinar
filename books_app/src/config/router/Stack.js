@@ -17,7 +17,8 @@ const Stack = createNativeStackNavigator();
 
 const Router = () => {
   const connection = NetInfo.fetch().then(state => {
-    return state.isWifiEnabled;
+    console.log(state);
+    return state.isConnected;
   });
 
   useEffect(() => {

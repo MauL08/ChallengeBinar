@@ -3,6 +3,7 @@ import React from 'react';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { ms } from 'react-native-size-matters';
+
 import Color from '../../../config/utils/color';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { setLogout } from '../../../config/api/slice/userSlice';
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: Color.BACKGROUND_COLOR,
   },
   textGreet: {
     fontSize: ms(14),

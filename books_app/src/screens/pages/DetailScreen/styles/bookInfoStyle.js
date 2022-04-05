@@ -5,17 +5,20 @@ import Color from '../../../../config/utils/color';
 export const styles = StyleSheet.create({
   bookInfo: {
     flexDirection: 'row',
-    marginTop: ms(10),
+    marginTop: ms(20),
     marginHorizontal: ms(20),
   },
   bookCover: {
-    height: ms(200),
-    width: ms(180),
+    height: ms(250),
+    width: ms(170),
     borderWidth: 1,
     borderColor: Color.BACKGROUND_COLOR,
+    marginRight: ms(10),
+    borderRadius: ms(10),
   },
   bookDetail: {
     marginTop: ms(20),
+    marginLeft: ms(5),
     width: ms(150),
   },
   titleBook: {

@@ -59,30 +59,33 @@ const DetailScreen = ({ route }) => {
 
   if (!isLoading) {
     return (
-      <ScrollView
-        contentContainerStyle={styles.main}
-        refreshControl={
-          <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
-        }>
-        <ScreenStatusBar status={focus} />
-        <View>
-          <Header title={bookData.title} />
-          <BookInfo data={bookData} />
-          <Stocks data={bookData} />
-          <Overview data={bookData} />
-        </View>
-        <TouchableOpacity style={styles.buyButton}>
-          <NumberFormat
-            value={bookData.price}
-            displayType={'text'}
-            thousandSeparator={true}
-            prefix={'Rp'}
-            renderText={value => (
-              <Text style={styles.buyButtonText}>Buy for {value}</Text>
-            )}
-          />
-        </TouchableOpacity>
-      </ScrollView>
+      <View style={styles.container}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.main}
+          refreshControl={
+            <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+          }>
+          <ScreenStatusBar status={focus} />
+          <View>
+            <Header title={bookData.title} />
+            <BookInfo data={bookData} />
+            <Stocks data={bookData} />
+            <Overview data={bookData} />
+          </View>
+          <TouchableOpacity style={styles.buyButton}>
+            <NumberFormat
+              value={bookData.price}
+              displayType={'text'}
+              thousandSeparator={true}
+              prefix={'Rp'}
+              renderText={value => (
+                <Text style={styles.buyButtonText}>Buy for {value}</Text>
+              )}
+            />
+          </TouchableOpacity>
+        </ScrollView>
+      </View>
     );
   } else {
     return <Loading />;

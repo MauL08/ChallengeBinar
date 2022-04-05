@@ -3,7 +3,7 @@ import { ms } from 'react-native-size-matters';
 import Color from '../../../../config/utils/color';
 
 export const styles = StyleSheet.create({
-  main: {
+  container: {
     flex: 1,
     backgroundColor: Color.BACKGROUND_COLOR,
     justifyContent: 'space-between',

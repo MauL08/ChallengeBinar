@@ -1,14 +1,18 @@
 import { View, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import Share from 'react-native-share';
 import PushNotification from 'react-native-push-notification';
 
 import { styles } from '../styles/headerStyle';
 import { BackIcon, LoveIcon, ShareIcon } from '../../../../assets';
+import { getAllBooks } from '../../../../config/api/slice/booksSlice';
 
 const Header = props => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const { token } = useSelector(state => state.user);
 
   const onShare = async () => {
     const content = {
@@ -36,7 +40,10 @@ const Header = props => {
     <View style={styles.header}>
       <TouchableOpacity
         style={styles.backIconContainer}
-        onPress={() => navigation.goBack()}>
+        onPress={() => {
+          dispatch(getAllBooks(token));
+          navigation.navigate('Main');
+        }}>
         <Image source={BackIcon} style={styles.backIcon} />
       </TouchableOpacity>
       <View style={styles.interactionContainer}>
