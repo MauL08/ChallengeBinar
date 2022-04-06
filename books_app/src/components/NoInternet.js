@@ -22,7 +22,7 @@ const NoInternet = () => {
 
   const connection = () => {
     NetInfo.fetch().then(state => {
-      if (state.isWifiEnabled) {
+      if (state.isConnected) {
         goBack();
       }
     });
