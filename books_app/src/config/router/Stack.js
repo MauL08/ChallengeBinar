@@ -20,7 +20,6 @@ const Router = () => {
   const { token } = useSelector(state => state.user);
 
   const connection = NetInfo.fetch().then(state => {
-    console.log(state);
     return state.isConnected;
   });
 

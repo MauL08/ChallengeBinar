@@ -16,17 +16,18 @@ export const postLoginAuth = createAsyncThunk(
       dispatch(setLoading(true));
       const response = await axios.post(`${BASE_URL}/auth/login`, data);
       if (response.status <= 201) {
+        dispatch(setLoading(false));
         navigate('Main');
+        dispatch(setLoading(true));
       }
       if (response.status === 401) {
         const logErr = response.data.message;
         Alert.alert('Error', logErr);
+        dispatch(setLoading(false));
       }
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
-    } finally {
-      dispatch(setLoading(false));
     }
   },
 );
@@ -38,17 +39,17 @@ export const postRegisterAuth = createAsyncThunk(
       dispatch(setLoading(true));
       const response = await axios.post(`${BASE_URL}/auth/register`, data);
       if (response.status <= 201) {
+        dispatch(setLoading(false));
         navigate('Success');
       }
       if (response.status === 400) {
         const logErr = response.data.message;
         Alert.alert('Error', logErr);
+        dispatch(setLoading(false));
       }
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
-    } finally {
-      dispatch(setLoading(false));
     }
   },
 );

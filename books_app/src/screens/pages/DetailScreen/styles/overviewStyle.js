@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     fontSize: ms(12),
     fontWeight: '500',
     marginTop: ms(6),
-    letterSpacing: ms(1),
+    letterSpacing: ms(0.5),
     lineHeight: ms(18),
   },
 });
