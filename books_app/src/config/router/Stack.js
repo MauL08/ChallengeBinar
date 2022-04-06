@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NetInfo from '@react-native-community/netinfo';
+import { useSelector } from 'react-redux';
 
 import {
   LoginScreen,
@@ -16,6 +17,8 @@ import { navigate } from './Navigate';
 const Stack = createNativeStackNavigator();
 
 const Router = () => {
+  const { token } = useSelector(state => state.user);
+
   const connection = NetInfo.fetch().then(state => {
     console.log(state);
     return state.isConnected;
@@ -27,7 +30,10 @@ const Router = () => {
         navigate('NoInternet');
       }
     });
-  }, [connection]);
+    if (token !== '') {
+      navigate('Main');
+    }
+  }, [connection, token]);
 
   return (
     <Stack.Navigator initialRouteName="Login">
