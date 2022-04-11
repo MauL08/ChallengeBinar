@@ -11,6 +11,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleText: {
+    color: Color.DISABLE_BUTTON_COLOR,
     fontWeight: 'bold',
     fontSize: moderateScale(20),
     marginTop: moderateScale(45),

@@ -66,6 +66,7 @@ export const styles = StyleSheet.create({
     ...iconStyle(focus),
   }),
   textInput: {
+    color: Color.DISABLE_BUTTON_COLOR,
     width: ms(150),
   },
   registerButton: {
@@ -83,6 +84,7 @@ export const styles = StyleSheet.create({
     fontSize: ms(14),
   },
   guideText: {
+    color: Color.DISABLE_BUTTON_COLOR,
     fontSize: ms(12),
   },
   guideRegisterText: {

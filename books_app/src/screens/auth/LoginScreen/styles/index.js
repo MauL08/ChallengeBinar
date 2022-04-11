@@ -50,6 +50,7 @@ export const styles = StyleSheet.create({
     ...iconStyle(focus),
   }),
   textInput: {
+    color: Color.DISABLE_BUTTON_COLOR,
     width: moderateScale(150),
   },
   loginButton: {
@@ -66,6 +67,7 @@ export const styles = StyleSheet.create({
     fontSize: moderateScale(14),
   },
   guideText: {
+    color: Color.DISABLE_BUTTON_COLOR,
     fontSize: moderateScale(12),
   },
   guideRegisterText: {

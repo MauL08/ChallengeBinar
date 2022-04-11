@@ -21,6 +21,8 @@ import {
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { postLoginAuth } from '../../../config/api/slice/userSlice';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Color from '../../../config/utils/color';
 
 const LoginScreen = () => {
   const focus = useIsFocused();
@@ -70,6 +72,7 @@ const LoginScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Email"
+            placeholderTextColor={Color.NON_ACTIVE_COLOR}
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
             onChangeText={text => setEmail(text)}
@@ -83,6 +86,7 @@ const LoginScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Password"
+            placeholderTextColor={Color.NON_ACTIVE_COLOR}
             onFocus={() => setPasswordFocus(true)}
             onBlur={() => setPasswordFocus(false)}
             onChangeText={text => setPassword(text)}

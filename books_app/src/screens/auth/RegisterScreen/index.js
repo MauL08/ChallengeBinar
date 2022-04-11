@@ -23,6 +23,7 @@ import {
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { postRegisterAuth } from '../../../config/api/slice/userSlice';
+import Color from '../../../config/utils/color';
 
 const RegisterScreen = () => {
   const focus = useIsFocused();
@@ -80,6 +81,7 @@ const RegisterScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Full Name"
+            placeholderTextColor={Color.NON_ACTIVE_COLOR}
             onFocus={() => setUsernameFocus(true)}
             onBlur={() => setUsernameFocus(false)}
             onChangeText={text => setUsername(text)}
@@ -93,6 +95,7 @@ const RegisterScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Email"
+            placeholderTextColor={Color.NON_ACTIVE_COLOR}
             onFocus={() => setEmailFocus(true)}
             onBlur={() => setEmailFocus(false)}
             onChangeText={text => setEmail(text)}
@@ -106,6 +109,7 @@ const RegisterScreen = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Password"
+            placeholderTextColor={Color.NON_ACTIVE_COLOR}
             onFocus={() => setPasswordFocus(true)}
             onBlur={() => setPasswordFocus(false)}
             onChangeText={text => setPassword(text)}
