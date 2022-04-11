@@ -1,32 +1,32 @@
 const dataPenjualanPakAldi = [
   {
-    namaProduct: "Sepatu Futsal Nike Vapor Academy 8",
+    namaProduct: 'Sepatu Futsal Nike Vapor Academy 8',
     hargaSatuan: 760000,
-    kategori: "Sepatu Sport",
+    kategori: 'Sepatu Sport',
     totalTerjual: 90,
   },
   {
-    namaProduct: "Sepatu Warrior Tristan Black Brown High",
+    namaProduct: 'Sepatu Warrior Tristan Black Brown High',
     hargaSatuan: 960000,
-    kategori: "Sepatu Sneaker",
+    kategori: 'Sepatu Sneaker',
     totalTerjual: 37,
   },
   {
-    namaProduct: "Sepatu Warrior Tristan Maroon High ",
-    kategori: "Sepatu Sneaker",
+    namaProduct: 'Sepatu Warrior Tristan Maroon High ',
+    kategori: 'Sepatu Sneaker',
     hargaSatuan: 360000,
     totalTerjual: 90,
   },
   {
-    namaProduct: "Sepatu Warrior Rainbow Tosca Corduroy",
+    namaProduct: 'Sepatu Warrior Rainbow Tosca Corduroy',
     hargaSatuan: 120000,
-    kategori: "Sepatu Sneaker",
+    kategori: 'Sepatu Sneaker',
     totalTerjual: 90,
   },
 ];
 
 const getTotalPenjualan = (dataPenjualan) => {
-  if (typeof dataPenjualan === "object") {
+  if (typeof dataPenjualan === 'object') {
     let terjual = dataPenjualan.map((val) => {
       return val.totalTerjual;
     });
@@ -38,15 +38,17 @@ const getTotalPenjualan = (dataPenjualan) => {
 
     return total;
   } else if (
-    typeof dataPenjualan === "number" ||
-    typeof dataPenjualan === "string"
+    typeof dataPenjualan === 'number' ||
+    typeof dataPenjualan === 'string'
   ) {
-    return "Error: Invalid data type";
+    return 'Error: Invalid data type';
   } else {
-    return "Error: No parameter included";
+    return 'Error: No parameter included';
   }
 };
 
-console.log(getTotalPenjualan(dataPenjualanPakAldi));
-console.log(getTotalPenjualan(0));
-console.log(getTotalPenjualan());
+// console.log(getTotalPenjualan(dataPenjualanPakAldi));
+// console.log(getTotalPenjualan(0));
+// console.log(getTotalPenjualan());
+
+module.exports = getTotalPenjualan;
