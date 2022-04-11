@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: ms(18),
   },
   welcomeText: {
+    color: Color.NON_ACTIVE_COLOR,
     letterSpacing: ms(1),
     fontSize: ms(14),
     fontWeight: '500',
@@ -33,6 +34,7 @@ export const styles = StyleSheet.create({
     tintColor: Color.NON_ACTIVE_COLOR,
   },
   searchText: {
+    color: Color.DISABLE_BUTTON_COLOR,
     marginLeft: ms(4),
     fontSize: ms(14),
     height: ms(50),

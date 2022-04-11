@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.BACKGROUND_COLOR,
   },
   textGreet: {
+    color: Color.DISABLE_BUTTON_COLOR,
     fontSize: ms(14),
     fontWeight: 'bold',
   },
