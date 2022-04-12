@@ -21,7 +21,6 @@ import {
 import { styles } from './styles';
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { postLoginAuth } from '../../../config/api/slice/userSlice';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import Color from '../../../config/utils/color';
 
 const LoginScreen = () => {

@@ -1,17 +1,25 @@
-import { Text, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import React from 'react';
 import { useIsFocused } from '@react-navigation/native';
 
 import ScreenStatusBar from '../../../components/ScreenStatusBar';
 import { styles } from './styles';
 
+import VideoScreen from './components/VideoScreen';
+import MusicPlayer from './components/MusicPlayer';
+import ImageViewer from './components/ImageViewer';
+import PDFViewer from './components/PDFViewer';
+
 const BooksScreen = () => {
   const focus = useIsFocused();
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ScreenStatusBar status={focus} />
-      <Text>Sorry, this screen is currently empty!</Text>
-    </View>
+      <VideoScreen />
+      <MusicPlayer />
+      <ImageViewer />
+      <PDFViewer />
+    </ScrollView>
   );
 };
 

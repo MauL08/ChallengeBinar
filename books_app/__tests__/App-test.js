@@ -4,11 +4,23 @@
 
 import 'react-native';
 import React from 'react';
-import App from '../App';
 
 // Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
-it('renders correctly', () => {
-  renderer.create(<App />);
+import { Provider } from 'react-redux';
+import { persistor, store } from '../src/config/api/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import Root from '../src/config/router';
+
+const AppComponent = () => (
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <Root />
+    </PersistGate>
+  </Provider>
+);
+
+test('renders correctly', () => {
+  create(<AppComponent />);
 });
