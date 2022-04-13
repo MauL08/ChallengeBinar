@@ -7,6 +7,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Color.BACKGROUND_COLOR,
   },
+  secMain: {
+    marginBottom: ms(90),
+  },
   container: {
     margin: ms(18),
   },

@@ -37,28 +37,30 @@ const HomeScreen = () => {
   if (!isLoading) {
     return (
       <View style={styles.main}>
-        <FlatList
-          refreshControl={
-            <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
-          }
-          showsVerticalScrollIndicator={false}
-          data={bookData.results}
-          numColumns={2}
-          keyExtractor={(item, index) => String(index)}
-          columnWrapperStyle={{ marginLeft: ms(15) }}
-          ListHeaderComponent={() => (
-            <>
-              <ScreenStatusBar status={focus} />
-              <Header />
-              <Welcome user={userInfo} />
-              <RecommendBooks data={bookData.results} />
-              <Text style={styles.popular}>Popular</Text>
-            </>
-          )}
-          renderItem={({ item, index }) => (
-            <PopularBooks data={item} index={index} />
-          )}
-        />
+        <View style={styles.secMain}>
+          <FlatList
+            refreshControl={
+              <RefreshControl refreshing={refresh} onRefresh={onRefresh} />
+            }
+            showsVerticalScrollIndicator={false}
+            data={bookData.results}
+            numColumns={2}
+            keyExtractor={(item, index) => String(index)}
+            columnWrapperStyle={{ marginLeft: ms(15) }}
+            ListHeaderComponent={() => (
+              <>
+                <ScreenStatusBar status={focus} />
+                <Header />
+                <Welcome user={userInfo} />
+                <RecommendBooks data={bookData.results} />
+                <Text style={styles.popular}>Popular</Text>
+              </>
+            )}
+            renderItem={({ item, index }) => (
+              <PopularBooks data={item} index={index} />
+            )}
+          />
+        </View>
       </View>
     );
   } else {

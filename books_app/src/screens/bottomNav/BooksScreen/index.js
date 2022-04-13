@@ -1,4 +1,4 @@
-import { ScrollView } from 'react-native';
+import { ScrollView, Text } from 'react-native';
 import React from 'react';
 import { useIsFocused } from '@react-navigation/native';
 
@@ -15,6 +15,7 @@ const BooksScreen = () => {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <ScreenStatusBar status={focus} />
+      <Text style={styles.title}>Media Handling</Text>
       <VideoScreen />
       <MusicPlayer />
       <ImageViewer />

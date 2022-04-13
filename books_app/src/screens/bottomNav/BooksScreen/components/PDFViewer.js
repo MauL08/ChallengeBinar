@@ -5,6 +5,7 @@ import Color from '../../../../config/utils/color';
 
 const PDFViewer = () => {
   const [type, setType] = useState('Internal');
+  const [file, setFile] = useState('');
 
   return (
     <View style={styles.container}>
@@ -22,6 +23,23 @@ const PDFViewer = () => {
         </TouchableOpacity>
       </View>
       <Text style={styles.textHelper}>You're viewing {type} PDF</Text>
+      <View style={styles.contentContainer}>
+        {type === 'Internal' ? (
+          file ? (
+            <View />
+          ) : (
+            <View>
+              <TouchableOpacity
+                style={styles.pickButton}
+                onPress={() => setFile('Document Available')}>
+                <Text style={styles.pickButtonText}>Pick a PDF File</Text>
+              </TouchableOpacity>
+            </View>
+          )
+        ) : (
+          <View />
+        )}
+      </View>
     </View>
   );
 };
@@ -32,10 +50,10 @@ const styles = StyleSheet.create({
   container: {
     paddingVertical: ms(20),
     paddingHorizontal: ms(20),
-
     backgroundColor: Color.BACKGROUND_COLOR,
     borderRadius: ms(20),
     marginTop: ms(20),
+    marginBottom: ms(200),
     marginHorizontal: ms(20),
     elevation: ms(6),
   },
@@ -74,5 +92,16 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     alignItems: 'center',
+  },
+  pickButton: {
+    backgroundColor: Color.MAIN_COLOR,
+    paddingVertical: ms(5),
+    paddingHorizontal: ms(12),
+    borderRadius: ms(4),
+    marginVertical: ms(25),
+  },
+  pickButtonText: {
+    color: Color.BACKGROUND_COLOR,
+    fontWeight: '500',
   },
 });

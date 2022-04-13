@@ -2,16 +2,14 @@ import { StyleSheet } from 'react-native';
 import { ms } from 'react-native-size-matters';
 
 import Color from '../../../../config/utils/color';
-import Books from '../../../../models/allBooks';
 
 export const styles = StyleSheet.create({
-  bookContainer: index => ({
-    marginBottom: index === Books.length - 1 ? ms(90) : ms(0),
+  bookContainer: {
     marginTop: ms(18),
     marginHorizontal: ms(15),
     alignItems: 'center',
     width: ms(140),
-  }),
+  },
   bookImage: {
     height: ms(210),
     width: ms(140),

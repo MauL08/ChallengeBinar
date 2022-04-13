@@ -18,6 +18,8 @@ target 'books_app' do
 
   pod 'react-native-video', :path => '../node_modules/react-native-video'
 
+  pod 'RNSoundPlayer', :path => '../node_modules/react-native-sound-player'
+
   target 'books_appTests' do
     inherit! :complete
     # Pods for testing
