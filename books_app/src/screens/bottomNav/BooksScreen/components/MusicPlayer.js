@@ -126,7 +126,7 @@ const MusicPlayer = () => {
             </View>
             <View style={styles.buttonControl}>
               <TouchableOpacity onPress={prevSong} style={styles.pickButton}>
-                <Text style={styles.pickButtonText}>Prev Song</Text>
+                <Text style={styles.pickButtonText}>Prev</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
@@ -152,7 +152,7 @@ const MusicPlayer = () => {
                 <Text style={styles.pickButtonText}>Stop</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={nextSong} style={styles.pickButton}>
-                <Text style={styles.pickButtonText}>Next Song</Text>
+                <Text style={styles.pickButtonText}>Next</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -225,7 +225,7 @@ const styles = StyleSheet.create({
   buttonControl: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    width: ms(310),
+    width: ms(280),
   },
   songContainer: {
     alignItems: 'center',

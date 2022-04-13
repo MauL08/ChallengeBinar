@@ -168,7 +168,24 @@ const VideoScreen = () => {
       <View style={styles.contentContainer}>
         {type === 'Internal' ? (
           file ? (
-            <View style={styles.controlBanner} />
+            <View style={styles.controlBanner}>
+              <VideoPlayer
+                source={{
+                  uri: Videos[videoIndex].sources[0],
+                }}
+                style={styles.controlBanner}
+                videoStyle={styles.videoBanner}
+                volume={0.1}
+                resizeMode="cover"
+                showOnStart={false}
+                paused={pause}
+                onBack={() => setFile('')}
+                onPlay={() => setPause(false)}
+                onEnd={() => setPause(true)}
+                controlTimeout={5000}
+                scrubbing={30}
+              />
+            </View>
           ) : (
             <View>
               <TouchableOpacity

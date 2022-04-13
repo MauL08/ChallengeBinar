@@ -53,13 +53,13 @@ const ImageViewer = () => {
         {type === 'Internal' ? (
           file ? (
             <View>
+              <Text style={styles.imageTitle}>Image title</Text>
               <TouchableOpacity
                 style={styles.pickButton}
                 onPress={() => setFile('')}>
                 <Text style={styles.pickButtonText}>Choose another Image</Text>
               </TouchableOpacity>
               <Image />
-              <Text style={styles.imageTitle}>Image title</Text>
             </View>
           ) : (
             <View>
@@ -90,7 +90,7 @@ const ImageViewer = () => {
                     setImageIndex(currState => currState - 1);
                   }
                 }}>
-                <Text style={styles.pickButtonText}>Prev Movie</Text>
+                <Text style={styles.pickButtonText}>Prev Image</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.pickButton}>
                 <Text
@@ -100,7 +100,7 @@ const ImageViewer = () => {
                       setImageIndex(currState => currState + 1);
                     }
                   }}>
-                  Next Movie
+                  Next Image
                 </Text>
               </TouchableOpacity>
             </View>
