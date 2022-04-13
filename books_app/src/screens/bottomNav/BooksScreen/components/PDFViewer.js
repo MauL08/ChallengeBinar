@@ -1,11 +1,37 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
+import Pdf from 'react-native-pdf';
+import * as OpenAnything from 'react-native-openanything';
 import Color from '../../../../config/utils/color';
 
 const PDFViewer = () => {
   const [type, setType] = useState('Internal');
   const [file, setFile] = useState('');
+
+  const Files = [
+    {
+      title: 'Dummy PDF',
+      docs: 'https://www.learningcontainer.com/wp-content/uploads/2019/09/sample-pdf-file.pdf',
+    },
+    {
+      title: 'Yukon',
+      docs: 'https://www.orimi.com/pdf-test.pdf',
+    },
+    {
+      title: 'Graph Maps',
+      docs: 'https://www.learningcontainer.com/wp-content/uploads/2019/09/sample-pdf-download-10-mb.pdf',
+    },
+    {
+      title: 'ETS',
+      docs: 'https://www.ets.org/Media/Tests/GRE/pdf/gre_research_validity_data.pdf',
+    },
+  ];
+
+  // External Files
+  const [filesIndex, setFilesIndex] = useState(0);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   return (
     <View style={styles.container}>
@@ -37,7 +63,74 @@ const PDFViewer = () => {
             </View>
           )
         ) : (
-          <View />
+          <View style={styles.documentContainer}>
+            <View style={styles.documentView}>
+              <Pdf
+                source={{ uri: Files[filesIndex].docs }}
+                style={styles.document}
+                page={page}
+                onLoadComplete={numberOfPages => {
+                  setTotalPage(numberOfPages);
+                }}
+              />
+            </View>
+            <Text style={styles.documentCount}>{Files[filesIndex].title}</Text>
+            <Text style={styles.documentCount}>
+              Pages {page} of {totalPage}
+            </Text>
+            <Text style={styles.documentCount}>
+              ({filesIndex + 1}/{Files.length})
+            </Text>
+            <TouchableOpacity
+              style={styles.fullButton}
+              onPress={() => OpenAnything.Pdf(Files[filesIndex].docs)}>
+              <Text style={styles.fullButtonText}>Full Screen</Text>
+            </TouchableOpacity>
+            <View style={styles.pageControl}>
+              <TouchableOpacity
+                style={styles.pageButton}
+                onPress={() => {
+                  if (page > 1) {
+                    setPage(currState => currState - 1);
+                  }
+                }}>
+                <Text style={styles.pageButtonText}>Prev Page</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.pageButton}>
+                <Text
+                  style={styles.pageButtonText}
+                  onPress={() => {
+                    if (page !== totalPage) {
+                      setPage(currState => currState + 1);
+                    }
+                  }}>
+                  Next Page
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonControl}>
+              <TouchableOpacity
+                style={styles.pickButton}
+                onPress={() => {
+                  if (filesIndex > 0) {
+                    setFilesIndex(currState => currState - 1);
+                  }
+                }}>
+                <Text style={styles.pickButtonText}>Prev Docs</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.pickButton}>
+                <Text
+                  style={styles.pickButtonText}
+                  onPress={() => {
+                    if (filesIndex < Files.length - 1) {
+                      setFilesIndex(currState => currState + 1);
+                    }
+                  }}>
+                  Next Docs
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         )}
       </View>
     </View>
@@ -53,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.BACKGROUND_COLOR,
     borderRadius: ms(20),
     marginTop: ms(20),
-    marginBottom: ms(200),
+    marginBottom: ms(100),
     marginHorizontal: ms(20),
     elevation: ms(6),
   },
@@ -98,9 +191,55 @@ const styles = StyleSheet.create({
     paddingVertical: ms(5),
     paddingHorizontal: ms(12),
     borderRadius: ms(4),
-    marginVertical: ms(25),
+    marginVertical: ms(15),
   },
   pickButtonText: {
+    color: Color.BACKGROUND_COLOR,
+    fontWeight: '500',
+  },
+  buttonControl: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: ms(220),
+  },
+  fullButton: {
+    backgroundColor: Color.MAIN_COLOR,
+    paddingVertical: ms(5),
+    paddingHorizontal: ms(12),
+    borderRadius: ms(4),
+    marginTop: ms(15),
+  },
+  fullButtonText: {
+    color: Color.BACKGROUND_COLOR,
+    fontWeight: '500',
+  },
+  documentContainer: {
+    alignItems: 'center',
+  },
+  documentCount: {
+    color: Color.NON_ACTIVE_COLOR,
+    textAlign: 'center',
+    marginTop: ms(5),
+    fontSize: ms(12),
+    fontWeight: '500',
+  },
+  document: {
+    height: ms(300),
+    width: ms(300),
+  },
+  pageControl: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    width: ms(220),
+  },
+  pageButton: {
+    backgroundColor: Color.MAIN_COLOR,
+    paddingVertical: ms(5),
+    paddingHorizontal: ms(12),
+    borderRadius: ms(4),
+    marginTop: ms(15),
+  },
+  pageButtonText: {
     color: Color.BACKGROUND_COLOR,
     fontWeight: '500',
   },
