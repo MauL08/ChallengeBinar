@@ -18,7 +18,7 @@ const ImageViewer = () => {
   const [file, setFile] = useState('');
 
   // Camera
-  const [cameraPermission, setCameraPermission] = useState('granted'); // Use Redux Next Time
+  const [cameraPermission, setCameraPermission] = useState(true); // Use Redux Next Time
 
   const requestCameraPermission = async () => {
     try {
@@ -35,7 +35,7 @@ const ImageViewer = () => {
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         setCameraPermission(granted);
       } else {
-        setCameraPermission('');
+        setCameraPermission(false);
       }
     } catch (err) {
       console.warn(err);
@@ -48,11 +48,9 @@ const ImageViewer = () => {
     } else {
       const options = {
         title: 'Open Camera',
-        options: {
-          saveToPhotos: true,
-          mediaType: 'photo',
-          includeBase64: false,
-        },
+        saveToPhotos: true,
+        mediaType: 'photo',
+        path: 'images',
       };
       launchCamera(options, response => {
         if (response.assets) {
@@ -68,11 +66,8 @@ const ImageViewer = () => {
   const openGallery = () => {
     const options = {
       title: 'Open Gallery',
-      options: {
-        saveToPhotos: true,
-        mediaType: 'photo',
-        includeBase64: false,
-      },
+      mediaType: 'photo',
+      path: 'images',
     };
     launchImageLibrary(options, response => {
       if (response.assets) {
@@ -141,12 +136,12 @@ const ImageViewer = () => {
               <TouchableOpacity
                 style={styles.takeButton}
                 onPress={() => openCamera()}>
-                <Text style={styles.takeButtonText}>Take a Photo</Text>
+                <Text style={styles.takeButtonText}>Take Photo</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
                 onPress={() => openGallery()}>
-                <Text style={styles.pickButtonText}>Pick an Image</Text>
+                <Text style={styles.pickButtonText}>Pick Images</Text>
               </TouchableOpacity>
             </View>
           )

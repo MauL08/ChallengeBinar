@@ -1,10 +1,22 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  PermissionsAndroid,
+} from 'react-native';
 import React, { useState } from 'react';
 import VideoPlayer from 'react-native-video-controls';
 import { ms } from 'react-native-size-matters';
+
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+
 import Color from '../../../../config/utils/color';
 
 const VideoScreen = () => {
+  // External Video
+  const [videoIndex, setVideoIndex] = useState(0);
+
   const Videos = [
     {
       description:
@@ -146,8 +158,66 @@ const VideoScreen = () => {
   // Internal Video
   const [file, setFile] = useState('');
 
-  // External Video
-  const [videoIndex, setVideoIndex] = useState(0);
+  // Open Camera
+  const [cameraPermission, setCameraPermission] = useState(true); // Use Redux Next Time
+
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'App Camera Permission',
+          message: 'App needs access to your camera ',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        setCameraPermission(granted);
+      } else {
+        setCameraPermission(false);
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const openCamera = () => {
+    if (!cameraPermission) {
+      requestCameraPermission();
+    } else {
+      const options = {
+        title: 'Open Gallery',
+        saveToPhotos: true,
+        mediaType: 'video',
+        path: 'video',
+      };
+      launchCamera(options, response => {
+        if (response.assets) {
+          setFile(response.assets[0].uri);
+        } else {
+          setFile('');
+        }
+      });
+    }
+  };
+
+  // Open Gallery
+  const openGallery = () => {
+    const options = {
+      title: 'Open Gallery',
+      mediaType: 'video',
+      path: 'video',
+    };
+    launchImageLibrary(options, response => {
+      if (response.assets) {
+        setFile(response.assets[0].uri);
+      } else {
+        setFile('');
+      }
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -171,7 +241,7 @@ const VideoScreen = () => {
             <View style={styles.controlBanner}>
               <VideoPlayer
                 source={{
-                  uri: Videos[videoIndex].sources[0],
+                  uri: file,
                 }}
                 style={styles.controlBanner}
                 videoStyle={styles.videoBanner}
@@ -189,9 +259,14 @@ const VideoScreen = () => {
           ) : (
             <View>
               <TouchableOpacity
+                style={styles.takeButton}
+                onPress={() => openCamera()}>
+                <Text style={styles.takeButtonText}>Take Video</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => setFile('Video Available')}>
-                <Text style={styles.pickButtonText}>Pick a Video</Text>
+                onPress={() => openGallery()}>
+                <Text style={styles.pickButtonText}>Pick Videos</Text>
               </TouchableOpacity>
             </View>
           )
@@ -298,7 +373,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: ms(12),
     borderRadius: ms(4),
     marginTop: ms(10),
-    marginBottom: ms(25),
+    marginBottom: ms(15),
   },
   pickButtonText: {
     color: Color.BACKGROUND_COLOR,
@@ -332,5 +407,17 @@ const styles = StyleSheet.create({
     marginTop: ms(10),
     fontSize: ms(12),
     fontWeight: '500',
+  },
+  takeButton: {
+    backgroundColor: Color.MAIN_COLOR,
+    paddingVertical: ms(5),
+    paddingHorizontal: ms(12),
+    borderRadius: ms(4),
+    marginTop: ms(15),
+  },
+  takeButtonText: {
+    color: Color.BACKGROUND_COLOR,
+    fontWeight: '500',
+    textAlign: 'center',
   },
 });
