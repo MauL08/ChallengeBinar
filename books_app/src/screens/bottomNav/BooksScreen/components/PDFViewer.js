@@ -115,6 +115,7 @@ const PDFViewer = () => {
                   if (filesIndex > 0) {
                     setFilesIndex(currState => currState - 1);
                   }
+                  setPage(1);
                 }}>
                 <Text style={styles.pickButtonText}>Prev Docs</Text>
               </TouchableOpacity>
@@ -125,6 +126,7 @@ const PDFViewer = () => {
                     if (filesIndex < Files.length - 1) {
                       setFilesIndex(currState => currState + 1);
                     }
+                    setPage(1);
                   }}>
                   Next Docs
                 </Text>

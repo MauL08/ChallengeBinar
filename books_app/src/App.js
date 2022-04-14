@@ -1,3 +1,4 @@
+import { LogBox } from 'react-native';
 import React, { useEffect } from 'react';
 import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
@@ -6,6 +7,8 @@ import { persistor, store } from './config/api/store';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import Root from './config/router';
+
+LogBox.ignoreLogs(['new NativeEventEmitter']); // Ignore log notification by message
 
 const App = () => {
   useEffect(() => {

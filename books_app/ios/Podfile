@@ -24,6 +24,8 @@ target 'books_app' do
 
   pod 'react-native-pdf', :path => '../node_modules/react-native-pdf'
 
+  pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
+
   target 'books_appTests' do
     inherit! :complete
     # Pods for testing

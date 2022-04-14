@@ -1,11 +1,87 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  PermissionsAndroid,
+} from 'react-native';
 import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
+
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+
 import Color from '../../../../config/utils/color';
 
 const ImageViewer = () => {
   const [type, setType] = useState('Internal');
   const [file, setFile] = useState('');
+
+  // Camera
+  const [cameraPermission, setCameraPermission] = useState('granted'); // Use Redux Next Time
+
+  const requestCameraPermission = async () => {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA,
+        {
+          title: 'App Camera Permission',
+          message: 'App needs access to your camera ',
+          buttonNeutral: 'Ask Me Later',
+          buttonNegative: 'Cancel',
+          buttonPositive: 'OK',
+        },
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        setCameraPermission(granted);
+      } else {
+        setCameraPermission('');
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  };
+
+  const openCamera = () => {
+    if (!cameraPermission) {
+      requestCameraPermission();
+    } else {
+      const options = {
+        title: 'Open Camera',
+        options: {
+          saveToPhotos: true,
+          mediaType: 'photo',
+          includeBase64: false,
+        },
+      };
+      launchCamera(options, response => {
+        if (response.assets) {
+          setFile(response.assets[0].uri);
+        } else {
+          setFile('');
+        }
+      });
+    }
+  };
+
+  // Gallery
+  const openGallery = () => {
+    const options = {
+      title: 'Open Gallery',
+      options: {
+        saveToPhotos: true,
+        mediaType: 'photo',
+        includeBase64: false,
+      },
+    };
+    launchImageLibrary(options, response => {
+      if (response.assets) {
+        setFile(response.assets[0].uri);
+      } else {
+        setFile('');
+      }
+    });
+  };
 
   // External Image
   const [imageIndex, setImageIndex] = useState(0);
@@ -53,19 +129,23 @@ const ImageViewer = () => {
         {type === 'Internal' ? (
           file ? (
             <View>
-              <Text style={styles.imageTitle}>Image title</Text>
+              <Image source={{ uri: file }} style={styles.imageBanner} />
               <TouchableOpacity
                 style={styles.pickButton}
                 onPress={() => setFile('')}>
                 <Text style={styles.pickButtonText}>Choose another Image</Text>
               </TouchableOpacity>
-              <Image />
             </View>
           ) : (
             <View>
               <TouchableOpacity
+                style={styles.takeButton}
+                onPress={() => openCamera()}>
+                <Text style={styles.takeButtonText}>Take a Photo</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => setFile('Image Available')}>
+                onPress={() => openGallery()}>
                 <Text style={styles.pickButtonText}>Pick an Image</Text>
               </TouchableOpacity>
             </View>
@@ -169,6 +249,7 @@ const styles = StyleSheet.create({
   pickButtonText: {
     color: Color.BACKGROUND_COLOR,
     fontWeight: '500',
+    textAlign: 'center',
   },
   imageContainer: {
     alignItems: 'center',
@@ -189,5 +270,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     width: ms(300),
+  },
+  takeButton: {
+    backgroundColor: Color.MAIN_COLOR,
+    paddingVertical: ms(5),
+    paddingHorizontal: ms(12),
+    borderRadius: ms(4),
+    marginTop: ms(15),
+  },
+  takeButtonText: {
+    color: Color.BACKGROUND_COLOR,
+    fontWeight: '500',
+    textAlign: 'center',
   },
 });

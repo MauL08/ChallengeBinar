@@ -8,7 +8,7 @@ import { styles } from './styles';
 import VideoScreen from './components/VideoScreen';
 import MusicPlayer from './components/MusicPlayer';
 import ImageViewer from './components/ImageViewer';
-import PDFViewer from './components/PDFViewer';
+import PDFViewer from './components/PDFViewer'; //Ignore all log notifications
 
 const BooksScreen = () => {
   const focus = useIsFocused();
