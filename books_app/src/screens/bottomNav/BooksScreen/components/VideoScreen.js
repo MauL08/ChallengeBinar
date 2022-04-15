@@ -9,7 +9,8 @@ import React, { useState } from 'react';
 import VideoPlayer from 'react-native-video-controls';
 import { ms } from 'react-native-size-matters';
 
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import DocumentPicker from 'react-native-document-picker';
+import { launchCamera } from 'react-native-image-picker';
 
 import Color from '../../../../config/utils/color';
 
@@ -204,19 +205,25 @@ const VideoScreen = () => {
   };
 
   // Open Gallery
-  const openGallery = () => {
-    const options = {
-      title: 'Open Gallery',
-      mediaType: 'video',
-      path: 'video',
-    };
-    launchImageLibrary(options, response => {
-      if (response.assets) {
-        setFile(response.assets[0].uri);
-      } else {
-        setFile('');
-      }
-    });
+  const openGallery = async () => {
+    try {
+      const response = await DocumentPicker.pick();
+      setFile(response[0].uri);
+    } catch (err) {
+      setFile('');
+    }
+    // const options = {
+    //   title: 'Open Gallery',
+    //   mediaType: 'video',
+    //   path: 'video',
+    // };
+    // launchImageLibrary(options, response => {
+    //   if (response.assets) {
+    //     setFile(response.assets[0].uri);
+    //   } else {
+    //     setFile('');
+    //   }
+    // });
   };
 
   return (

@@ -9,6 +9,7 @@ import {
 import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 
+import DocumentPicker from 'react-native-document-picker';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 import Color from '../../../../config/utils/color';
@@ -63,19 +64,25 @@ const ImageViewer = () => {
   };
 
   // Gallery
-  const openGallery = () => {
-    const options = {
-      title: 'Open Gallery',
-      mediaType: 'photo',
-      path: 'images',
-    };
-    launchImageLibrary(options, response => {
-      if (response.assets) {
-        setFile(response.assets[0].uri);
-      } else {
-        setFile('');
-      }
-    });
+  const openGallery = async () => {
+    try {
+      const response = await DocumentPicker.pick();
+      setFile(response[0].uri);
+    } catch (err) {
+      setFile('');
+    }
+    // const options = {
+    //   title: 'Open Gallery',
+    //   mediaType: 'photo',
+    //   path: 'images',
+    // };
+    // launchImageLibrary(options, response => {
+    //   if (response.assets) {
+    //     setFile(response.assets[0].uri);
+    //   } else {
+    //     setFile('');
+    //   }
+    // });
   };
 
   // External Image

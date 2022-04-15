@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
+
 import Pdf from 'react-native-pdf';
 import * as OpenAnything from 'react-native-openanything';
 import DocumentPicker from 'react-native-document-picker';
-import RNFS from 'react-native-fs';
 
 import Color from '../../../../config/utils/color';
 
