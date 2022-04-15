@@ -64,7 +64,7 @@ const ImageViewer = () => {
   };
 
   // Gallery
-  const openGallery = async () => {
+  const openStorage = async () => {
     try {
       const response = await DocumentPicker.pick();
       setFile(response[0].uri);
@@ -147,7 +147,7 @@ const ImageViewer = () => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => openGallery()}>
+                onPress={() => openStorage()}>
                 <Text style={styles.pickButtonText}>Pick Images</Text>
               </TouchableOpacity>
             </View>

@@ -37,14 +37,14 @@ const PDFViewer = () => {
   ];
 
   // Internal Files
-  const handlePDF = async () => {
+  const openStorage = async () => {
     try {
       const response = await DocumentPicker.pick({
         presentationStyle: 'fullScreen',
       });
       setFile(response[0]);
     } catch (err) {
-      console.log(err);
+      setFile('');
     }
   };
 
@@ -72,7 +72,7 @@ const PDFViewer = () => {
             <View style={styles.documentView}>
               <TouchableOpacity
                 style={styles.fullButton}
-                onPress={() => handlePDF()}>
+                onPress={() => openStorage()}>
                 <Text style={styles.fullButtonText}>Choose another PDF</Text>
               </TouchableOpacity>
               <Pdf
@@ -123,7 +123,7 @@ const PDFViewer = () => {
             <View>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => handlePDF()}>
+                onPress={() => openStorage()}>
                 <Text style={styles.pickButtonText}>Pick a PDF File</Text>
               </TouchableOpacity>
             </View>

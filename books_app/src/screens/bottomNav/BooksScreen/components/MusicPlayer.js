@@ -2,9 +2,15 @@ import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 import SoundPlayer from 'react-native-sound-player';
+
+import DocumentPicker from 'react-native-document-picker';
+
 import Color from '../../../../config/utils/color';
 
 const MusicPlayer = () => {
+  // External Sound
+  const [musicIndex, setMusicIndex] = useState(0);
+
   const [type, setType] = useState('Internal');
   const [file, setFile] = useState('');
 
@@ -39,15 +45,22 @@ const MusicPlayer = () => {
     },
   ];
 
-  // External Sound
-  const [musicIndex, setMusicIndex] = useState(0);
+  // Internal Sound
+  const openStorage = async () => {
+    try {
+      const res = await DocumentPicker.pick();
+      setFile(res[0]);
+    } catch (error) {
+      setFile('');
+    }
+  };
 
   // Sound State
   const [musicStatus, setMusicStatus] = useState('Play');
 
   // Sound Function
   const playSong = () => {
-    SoundPlayer.playUrl(TRACKS[musicIndex].audioUrl);
+    SoundPlayer.playUrl(file.uri);
     setMusicStatus('Pause');
   };
 
@@ -99,12 +112,43 @@ const MusicPlayer = () => {
       <View style={styles.contentContainer}>
         {type === 'Internal' ? (
           file ? (
-            <View />
+            <View style={styles.musicContainer}>
+              <TouchableOpacity
+                style={styles.pickButton}
+                onPress={() => {
+                  openStorage();
+                }}>
+                <Text style={styles.pickButtonText}>Choose another Music</Text>
+              </TouchableOpacity>
+              <Text style={styles.musicTitle}>Playing {file.name}</Text>
+              <View style={styles.buttonControl}>
+                <TouchableOpacity
+                  style={styles.pickButton}
+                  onPress={() => {
+                    switch (musicStatus) {
+                      case 'Play':
+                        playSong();
+                        break;
+                      case 'Pause':
+                        pauseSong();
+                        break;
+                      case 'Resume':
+                        resumeSong();
+                        break;
+                    }
+                  }}>
+                  <Text style={styles.pickButtonText}>{musicStatus}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={stopSong} style={styles.pickButton}>
+                  <Text style={styles.pickButtonText}>Stop</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           ) : (
             <View>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => setFile('Music Available')}>
+                onPress={() => openStorage()}>
                 <Text style={styles.pickButtonText}>Pick a Music</Text>
               </TouchableOpacity>
             </View>
@@ -240,7 +284,6 @@ const styles = StyleSheet.create({
     width: ms(280),
   },
   musicTitle: {
-    marginTop: ms(10),
     fontWeight: 'bold',
     color: Color.DISABLE_BUTTON_COLOR,
   },
@@ -255,5 +298,8 @@ const styles = StyleSheet.create({
     marginTop: ms(5),
     fontSize: ms(12),
     fontWeight: '500',
+  },
+  musicContainer: {
+    alignItems: 'center',
   },
 });
