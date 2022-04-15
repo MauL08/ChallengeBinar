@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 
 import DocumentPicker from 'react-native-document-picker';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { launchCamera } from 'react-native-image-picker';
 
 import Color from '../../../../config/utils/color';
 
@@ -57,19 +57,19 @@ const ImageViewer = () => {
         if (response.assets) {
           setFile(response.assets[0].uri);
         } else {
-          setFile('');
+          setFile(currState => currState);
         }
       });
     }
   };
 
   // Gallery
-  const openGallery = async () => {
+  const openStorage = async () => {
     try {
       const response = await DocumentPicker.pick();
       setFile(response[0].uri);
     } catch (err) {
-      setFile('');
+      setFile(currState => currState);
     }
     // const options = {
     //   title: 'Open Gallery',
@@ -132,22 +132,29 @@ const ImageViewer = () => {
           file ? (
             <View>
               <Image source={{ uri: file }} style={styles.imageBanner} />
-              <TouchableOpacity
-                style={styles.pickButton}
-                onPress={() => setFile('')}>
-                <Text style={styles.pickButtonText}>Choose another Image</Text>
-              </TouchableOpacity>
+              <View style={styles.controlContainer}>
+                <TouchableOpacity
+                  style={styles.pickButton}
+                  onPress={() => openCamera()}>
+                  <Text style={styles.pickButtonText}>Open Camera</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.pickButton}
+                  onPress={() => openStorage()}>
+                  <Text style={styles.pickButtonText}>Change Image</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           ) : (
-            <View>
+            <View style={styles.controlContainer}>
               <TouchableOpacity
-                style={styles.takeButton}
+                style={styles.pickButton}
                 onPress={() => openCamera()}>
-                <Text style={styles.takeButtonText}>Take Photo</Text>
+                <Text style={styles.pickButtonText}>Take Photo</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => openGallery()}>
+                onPress={() => openStorage()}>
                 <Text style={styles.pickButtonText}>Pick Images</Text>
               </TouchableOpacity>
             </View>
@@ -247,6 +254,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: ms(12),
     borderRadius: ms(4),
     marginVertical: ms(15),
+    marginHorizontal: ms(5),
   },
   pickButtonText: {
     color: Color.BACKGROUND_COLOR,
@@ -273,16 +281,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     width: ms(300),
   },
-  takeButton: {
-    backgroundColor: Color.MAIN_COLOR,
-    paddingVertical: ms(5),
-    paddingHorizontal: ms(12),
-    borderRadius: ms(4),
-    marginTop: ms(15),
-  },
-  takeButtonText: {
-    color: Color.BACKGROUND_COLOR,
-    fontWeight: '500',
-    textAlign: 'center',
+  controlContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
 });

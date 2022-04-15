@@ -119,6 +119,7 @@ const MusicPlayer = () => {
               <TouchableOpacity
                 style={styles.pickButton}
                 onPress={() => {
+                  stopSong();
                   openStorage();
                 }}>
                 <Text style={styles.pickButtonText}>Choose another Music</Text>
@@ -292,8 +293,10 @@ const styles = StyleSheet.create({
   },
   musicTitle: {
     marginTop: ms(15),
+    marginHorizontal: ms(20),
     fontWeight: 'bold',
     color: Color.DISABLE_BUTTON_COLOR,
+    textAlign: 'center',
   },
   musicArtist: {
     fontWeight: '500',

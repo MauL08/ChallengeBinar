@@ -198,7 +198,7 @@ const VideoScreen = () => {
         if (response.assets) {
           setFile(response.assets[0].uri);
         } else {
-          setFile('');
+          setFile(currState => currState);
         }
       });
     }
@@ -210,7 +210,7 @@ const VideoScreen = () => {
       const response = await DocumentPicker.pick();
       setFile(response[0].uri);
     } catch (err) {
-      setFile('');
+      setFile(currState => currState);
     }
     // const options = {
     //   title: 'Open Gallery',
@@ -264,11 +264,11 @@ const VideoScreen = () => {
               />
             </View>
           ) : (
-            <View>
+            <View style={styles.controlContainer}>
               <TouchableOpacity
-                style={styles.takeButton}
+                style={styles.pickButton}
                 onPress={() => openCamera()}>
-                <Text style={styles.takeButtonText}>Take Video</Text>
+                <Text style={styles.pickButtonText}>Take Video</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
@@ -379,8 +379,8 @@ const styles = StyleSheet.create({
     paddingVertical: ms(5),
     paddingHorizontal: ms(12),
     borderRadius: ms(4),
-    marginTop: ms(10),
-    marginBottom: ms(15),
+    marginVertical: ms(15),
+    marginHorizontal: ms(5),
   },
   pickButtonText: {
     color: Color.BACKGROUND_COLOR,
@@ -426,5 +426,9 @@ const styles = StyleSheet.create({
     color: Color.BACKGROUND_COLOR,
     fontWeight: '500',
     textAlign: 'center',
+  },
+  controlContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
 });
