@@ -6,12 +6,11 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from '../styles/popularStyle';
 
 const PopularBooks = props => {
-  const index = props.index;
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      style={styles.bookContainer(index)}
+      style={styles.bookContainer}
       onPress={() => navigation.navigate('Detail', { bookId: props.data.id })}>
       <Image
         source={{ uri: props.data.cover_image }}

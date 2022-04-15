@@ -56,9 +56,7 @@ const HomeScreen = () => {
                 <Text style={styles.popular}>Popular</Text>
               </>
             )}
-            renderItem={({ item, index }) => (
-              <PopularBooks data={item} index={index} />
-            )}
+            renderItem={({ item }) => <PopularBooks data={item} />}
           />
         </View>
       </View>

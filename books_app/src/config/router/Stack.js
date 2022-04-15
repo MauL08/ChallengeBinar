@@ -35,7 +35,7 @@ const Router = () => {
   }, [connection, token]);
 
   return (
-    <Stack.Navigator initialRouteName="Main">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Login"
         component={LoginScreen}
