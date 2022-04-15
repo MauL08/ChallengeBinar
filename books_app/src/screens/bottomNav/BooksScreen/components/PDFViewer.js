@@ -3,11 +3,19 @@ import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 import Pdf from 'react-native-pdf';
 import * as OpenAnything from 'react-native-openanything';
+import DocumentPicker from 'react-native-document-picker';
+import RNFS from 'react-native-fs';
+
 import Color from '../../../../config/utils/color';
 
 const PDFViewer = () => {
   const [type, setType] = useState('Internal');
   const [file, setFile] = useState('');
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
+
+  // External Files
+  const [filesIndex, setFilesIndex] = useState(0);
 
   const Files = [
     {
@@ -28,10 +36,19 @@ const PDFViewer = () => {
     },
   ];
 
-  // External Files
-  const [filesIndex, setFilesIndex] = useState(0);
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
+  // Internal Files
+  const handlePDF = async () => {
+    try {
+      const response = await DocumentPicker.pick({
+        presentationStyle: 'fullScreen',
+      });
+      setFile(response[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fullScreenPDF = () => {};
 
   return (
     <View style={styles.container}>
@@ -52,12 +69,61 @@ const PDFViewer = () => {
       <View style={styles.contentContainer}>
         {type === 'Internal' ? (
           file ? (
-            <View />
+            <View style={styles.documentView}>
+              <TouchableOpacity
+                style={styles.fullButton}
+                onPress={() => handlePDF()}>
+                <Text style={styles.fullButtonText}>Choose another PDF</Text>
+              </TouchableOpacity>
+              <Pdf
+                source={{ uri: file.uri }}
+                style={styles.document}
+                page={page}
+                onLoadComplete={numberOfPages => {
+                  setTotalPage(numberOfPages);
+                }}
+              />
+              <Text style={styles.documentCount}>{file.name}</Text>
+              <Text style={styles.documentCount}>
+                Pages {page} of {totalPage}
+              </Text>
+              <TouchableOpacity style={styles.fullButton}>
+                <Text
+                  style={styles.fullButtonText}
+                  onPress={() => {
+                    OpenAnything.Open(file.uri);
+                  }}>
+                  Full Screen
+                </Text>
+              </TouchableOpacity>
+              <View style={styles.pageControl}>
+                <TouchableOpacity
+                  style={styles.pageButton}
+                  onPress={() => {
+                    if (page > 1) {
+                      setPage(currState => currState - 1);
+                    }
+                  }}>
+                  <Text style={styles.pageButtonText}>Prev Page</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.pageButton}>
+                  <Text
+                    style={styles.pageButtonText}
+                    onPress={() => {
+                      if (page !== totalPage) {
+                        setPage(currState => currState + 1);
+                      }
+                    }}>
+                    Next Page
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
           ) : (
             <View>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => setFile('Document Available')}>
+                onPress={() => handlePDF()}>
                 <Text style={styles.pickButtonText}>Pick a PDF File</Text>
               </TouchableOpacity>
             </View>
@@ -83,7 +149,7 @@ const PDFViewer = () => {
             </Text>
             <TouchableOpacity
               style={styles.fullButton}
-              onPress={() => OpenAnything.Pdf(Files[filesIndex].docs)}>
+              onPress={() => OpenAnything.Open(Files[filesIndex].docs)}>
               <Text style={styles.fullButtonText}>Full Screen</Text>
             </TouchableOpacity>
             <View style={styles.pageControl}>
@@ -218,6 +284,9 @@ const styles = StyleSheet.create({
   documentContainer: {
     alignItems: 'center',
   },
+  documentView: {
+    alignItems: 'center',
+  },
   documentCount: {
     color: Color.NON_ACTIVE_COLOR,
     textAlign: 'center',
@@ -226,6 +295,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   document: {
+    marginTop: ms(10),
     height: ms(300),
     width: ms(300),
   },
