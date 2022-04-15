@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 
 import Pdf from 'react-native-pdf';
-import * as OpenAnything from 'react-native-openanything';
 import DocumentPicker from 'react-native-document-picker';
 import FileViewer from 'react-native-file-viewer';
 
@@ -58,7 +57,6 @@ const PDFViewer = () => {
       .catch(() => {
         setFile(currState => currState);
       });
-    // OpenAnything.Open(file.uri);
   };
 
   return (
@@ -160,7 +158,15 @@ const PDFViewer = () => {
             </Text>
             <TouchableOpacity
               style={styles.fullButton}
-              onPress={() => OpenAnything.Open(Files[filesIndex].docs)}>
+              onPress={() => {
+                const path = FileViewer.open(Files[filesIndex].docs)
+                  .then(() => {
+                    setFile(path);
+                  })
+                  .catch(() => {
+                    setFile(currState => currState);
+                  });
+              }}>
               <Text style={styles.fullButtonText}>Full Screen</Text>
             </TouchableOpacity>
             <View style={styles.pageControl}>
