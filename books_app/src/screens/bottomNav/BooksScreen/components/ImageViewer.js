@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 
 import DocumentPicker from 'react-native-document-picker';
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { launchCamera } from 'react-native-image-picker';
 
 import Color from '../../../../config/utils/color';
 

@@ -14,6 +14,9 @@ const MusicPlayer = () => {
   const [type, setType] = useState('Internal');
   const [file, setFile] = useState('');
 
+  const randSoundLogo =
+    'https://cdn.dribbble.com/users/3547568/screenshots/14395014/media/0b94c75b97182946d495f34c16eab987.jpg?compress=1&resize=400x300&vertical=top';
+
   const TRACKS = [
     {
       title: 'Kalimba Beat',
@@ -51,7 +54,7 @@ const MusicPlayer = () => {
       const res = await DocumentPicker.pick();
       setFile(res[0]);
     } catch (error) {
-      setFile('');
+      setFile(currState => currState);
     }
   };
 
@@ -120,6 +123,10 @@ const MusicPlayer = () => {
                 }}>
                 <Text style={styles.pickButtonText}>Choose another Music</Text>
               </TouchableOpacity>
+              <Image
+                source={{ uri: randSoundLogo }}
+                style={styles.posterImage}
+              />
               <Text style={styles.musicTitle}>Playing {file.name}</Text>
               <View style={styles.buttonControl}>
                 <TouchableOpacity
@@ -284,6 +291,7 @@ const styles = StyleSheet.create({
     width: ms(280),
   },
   musicTitle: {
+    marginTop: ms(15),
     fontWeight: 'bold',
     color: Color.DISABLE_BUTTON_COLOR,
   },

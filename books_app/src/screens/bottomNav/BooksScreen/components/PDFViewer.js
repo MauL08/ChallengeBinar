@@ -5,6 +5,7 @@ import { ms } from 'react-native-size-matters';
 import Pdf from 'react-native-pdf';
 import * as OpenAnything from 'react-native-openanything';
 import DocumentPicker from 'react-native-document-picker';
+import FileViewer from 'react-native-file-viewer';
 
 import Color from '../../../../config/utils/color';
 
@@ -44,11 +45,21 @@ const PDFViewer = () => {
       });
       setFile(response[0]);
     } catch (err) {
-      setFile('');
+      setFile(currState => currState);
     }
   };
 
-  const fullScreenPDF = () => {};
+  const fullScreenPDF = () => {
+    const path = FileViewer.open(file.uri)
+      .then(() => {
+        console.log(path);
+        setFile(path);
+      })
+      .catch(() => {
+        setFile(currState => currState);
+      });
+    // OpenAnything.Open(file.uri);
+  };
 
   return (
     <View style={styles.container}>
@@ -91,7 +102,7 @@ const PDFViewer = () => {
                 <Text
                   style={styles.fullButtonText}
                   onPress={() => {
-                    OpenAnything.Open(file.uri);
+                    fullScreenPDF();
                   }}>
                   Full Screen
                 </Text>

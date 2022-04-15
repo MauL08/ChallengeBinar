@@ -28,6 +28,8 @@ target 'books_app' do
 
   pod 'RNFS', :path => '../node_modules/react-native-fs'
 
+  pod 'RNFileViewer', :path => '../node_modules/react-native-file-viewer'
+
   target 'books_appTests' do
     inherit! :complete
     # Pods for testing
