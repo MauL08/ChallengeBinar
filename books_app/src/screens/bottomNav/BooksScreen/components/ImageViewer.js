@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import { ms } from 'react-native-size-matters';
 
 import DocumentPicker from 'react-native-document-picker';
-import { launchCamera } from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 import Color from '../../../../config/utils/color';
 
@@ -64,7 +64,7 @@ const ImageViewer = () => {
   };
 
   // Gallery
-  const openStorage = async () => {
+  const openGallery = async () => {
     try {
       const response = await DocumentPicker.pick();
       setFile(response[0].uri);
@@ -147,7 +147,7 @@ const ImageViewer = () => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={styles.pickButton}
-                onPress={() => openStorage()}>
+                onPress={() => openGallery()}>
                 <Text style={styles.pickButtonText}>Pick Images</Text>
               </TouchableOpacity>
             </View>
