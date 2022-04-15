@@ -19,13 +19,7 @@ const Header = props => {
       message: 'Credits to the API : ',
       url: 'http://code.aldipee.com/api/v1/books',
     };
-    await Share.open(content)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    await Share.open(content);
   };
 
   const onPushNotification = value => {

@@ -9,7 +9,7 @@ axios.defaults.validateStatus = status => {
 
 export const getAllBooks = createAsyncThunk(
   'books/allBooks',
-  async (token, { dispatch }) => {
+  async (token, { rejectWithValue, dispatch }) => {
     try {
       dispatch(setLoading(true));
       const response = await axios.get(`${BASE_URL}/books`, {
@@ -19,7 +19,7 @@ export const getAllBooks = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log(error);
+      return rejectWithValue(error.response.data);
     } finally {
       dispatch(setLoading(false));
     }
@@ -28,7 +28,7 @@ export const getAllBooks = createAsyncThunk(
 
 export const getBooksByID = createAsyncThunk(
   'books/booksByID',
-  async (credential, { dispatch }) => {
+  async (credential, { rejectWithValue, dispatch }) => {
     try {
       dispatch(setLoading(true));
       const response = await axios.get(`${BASE_URL}/books/${credential.id}`, {
@@ -38,7 +38,7 @@ export const getBooksByID = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      console.log(error);
+      return rejectWithValue(error.response.data);
     } finally {
       dispatch(setLoading(false));
     }
